@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">LangLibrary</string>
+    <string name="app_base_name">昱周科技管理端</string>
+    <string name="app_company">昱周科技</string>
+    <string name="app_main_title">昱周360平台管理</string>
+
+
+    <string name="app_login_out">退出登录</string>
+
+    <string name="app_title_CRM">用户管理系统CRM</string>
+    <string name="app_title_GDGL">工单管理</string>
+    <string name="app_title_LRGD">录入工单</string>
+    <string name="app_title_ZDSQ">转单申请</string>
+    <string name="app_title_CWGL">财务管理</string>
+    <string name="app_title_SJBB">数据报表</string>
+</resources>

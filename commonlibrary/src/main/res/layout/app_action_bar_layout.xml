@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:id="@+id/ic_bm_top_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/app_name"
+        android:padding="12dp"
+        android:src="@mipmap/ic_bm_back"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/ic_bm_top_news"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:padding="12dp"
+            android:src="@mipmap/ic_bm_news" />
+
+        <View
+            android:id="@+id/v_hp_news"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_hp_point_red" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txt_bm_top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/txtColorBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txt_bm_top_title_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/txtColorBlack"
+        android:layout_marginStart="44dp"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/txt_bm_top_title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="16dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textColor="#0078ff"
+        android:textSize="14sp" />
+    <ImageView
+        android:id="@+id/ic_bm_top_right"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_marginEnd="6dp"/>
+
+</FrameLayout>

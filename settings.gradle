@@ -1,0 +1,2 @@
+include ':app', ':databaselibrary', ':commonlibrary', ':langlibrary', ':msgbuslibrary', ':appmine', ':appplayer', ':applive', ':appradio'
+rootProject.name='TengriDemo'

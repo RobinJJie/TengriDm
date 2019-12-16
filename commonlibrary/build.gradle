@@ -1,0 +1,51 @@
+apply from: "${rootProject.rootDir}/common_config.gradle"
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "androidx.appcompat:appcompat:$project.ext.appcompat"
+    implementation "com.jakewharton:butterknife:$project.ext.butterknifeV"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$project.ext.butterknifeV"
+    api 'com.google.android.material:material:1.2.0-alpha01'
+
+    //网络部分
+    api 'com.squareup.retrofit2:retrofit:2.5.0'
+    api 'com.squareup.retrofit2:converter-gson:2.5.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    //路由
+    api 'com.alibaba:arouter-api:1.4.1'
+    //屏幕适配
+    api 'me.jessyan:autosize:1.1.2'
+    implementation project(path: ':databaselibrary')
+    implementation project(path: ':msgbuslibrary')
+    implementation project(path: ':langlibrary')
+
+    //图片加载
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+}
