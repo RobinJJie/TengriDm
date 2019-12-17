@@ -18,16 +18,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:text="活动直播"
             android:textSize="17sp" />
 
         <TextView
+            android:layout_marginStart="20dp"
             android:id="@+id/txt_sz_zb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:text="时政直播"
             android:textSize="17sp" />
 
@@ -35,7 +38,7 @@
 
     <View
         android:id="@+id/view_indicator"
-        android:layout_width="20dp"
+        android:layout_width="28dp"
         android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/colorMainTheme" />

@@ -10,10 +10,10 @@ public interface ConstantsRouter {
     int RESULT_CANCELED = 0;
     int RESULT_OK = -1;
     interface Live{
-        String Live_Home="/applive/LiveFragment";
+        String Live_Home="/app_live/LiveFragment";
     }
 
     interface Home{
-        String HomeMainActivity="/apphome/MainActivity";
+        String HomeMainActivity="/app_home/MainActivity";
     }
 }

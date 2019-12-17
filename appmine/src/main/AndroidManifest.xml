@@ -4,7 +4,6 @@
     package="com.qdgdcm.appmine">
 
     <application
-        android:theme="@style/AppTheme.NoStatusBar"
         tools:ignore="GoogleAppIndexingWarning">
     </application>
 

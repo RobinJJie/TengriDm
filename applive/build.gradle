@@ -54,7 +54,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$project.ext.butterknifeV"
     implementation "androidx.appcompat:appcompat:$project.ext.appcompat"
     implementation project(path: ':commonlibrary')
-
+    annotationProcessor "com.alibaba:arouter-compiler:$project.ext.arouterCompilerV"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

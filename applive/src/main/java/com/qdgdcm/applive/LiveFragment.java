@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.fragment.app.Fragment;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
@@ -16,6 +17,7 @@ import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.app.FragmentPresenter;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
+import com.lk.robin.commonlibrary.tools.TimerTool;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -96,16 +98,16 @@ public class LiveFragment extends FragmentPresenter {
     private void setIndicator(int position) {
 //        viewPager.setCurrentItem(position);
         if (position == 0) {
-            indicatorTxt(txtHd, 12, 15).start();
-            indicatorTxt(txtSz, 15, 12).start();
-            txtHd.setTextColor(getResources().getColor(R.color.txtColorBlack));
+            indicatorTxt(txtHd, 15, 17).start();
+            indicatorTxt(txtSz, 17, 15).start();
+            txtHd.setTextColor(getResources().getColor(R.color.colorMainTheme));
             txtSz.setTextColor(getResources().getColor(R.color.txtColorGray));
             indicatorAnimator(txtHd).start();
         } else if (position == 1) {
-            indicatorTxt(txtHd, 15, 12).start();
-            indicatorTxt(txtSz, 12, 15).start();
+            indicatorTxt(txtHd, 17, 15).start();
+            indicatorTxt(txtSz, 15, 17).start();
             txtHd.setTextColor(getResources().getColor(R.color.txtColorGray));
-            txtSz.setTextColor(getResources().getColor(R.color.txtColorBlack));
+            txtSz.setTextColor(getResources().getColor(R.color.colorMainTheme));
             indicatorAnimator(txtSz).start();
         }
     }
@@ -129,6 +131,18 @@ public class LiveFragment extends FragmentPresenter {
     @Override
     protected void initData() {
         super.initData();
+        TimerTool timerTool=new TimerTool(200,50);
+        timerTool.setOnTimer(new TimerTool.OnTimer() {
+            @Override
+            public void OnTick(long millisUntilFinished) {
 
+            }
+
+            @Override
+            public void OnFinish() {
+                setIndicator(0);
+            }
+        });
+        timerTool.start();
     }
 }

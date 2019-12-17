@@ -1,5 +1,6 @@
 package com.qdgdcm.apphome;
 
+import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 
@@ -10,6 +11,7 @@ import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.DpTool;
 import com.lk.robin.commonlibrary.widget.GlobalPlay;
 import com.qdgdcm.apphome.fragment.MainFragment;
+import com.qdgdcm.apphome.fragment.MineFragment;
 
 @Route(path = ConstantsRouter.Home.HomeMainActivity)
 public class MainActivity extends ActivityPresenter {
@@ -39,10 +41,15 @@ public class MainActivity extends ActivityPresenter {
         globalplay.show();
         globalplay.play(R.mipmap.ic_home_biting_bangdan);
         globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
-//        globalplay.setBackgroundColor(Color.TRANSPARENT);
+        globalplay.setBackgroundColor(Color.TRANSPARENT);
         globalplay.setProgress(0.6F);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.root, new MainFragment()).commit();
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        MainFragment mainFragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.root_view,mainFragment ).commit();
+    }
 }

@@ -7,12 +7,12 @@ import android.os.Bundle;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 
-public class MainActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_main);
         ARouter.getInstance().build(ConstantsRouter.Home.HomeMainActivity).navigation();
     }
 }
