@@ -43,11 +43,11 @@ dependencies {
     implementation project(path: ':commonlibrary')
     if (!project.ext.isDebug) {
 
-//        ':appmine', ':appplayer', ':applive', ':appradio'
         implementation project(path: ':appmine')
         implementation project(path: ':appplayer')
         implementation project(path: ':applive')
         implementation project(path: ':appradio')
+        implementation project(path: ':apphome')
 
     }
 

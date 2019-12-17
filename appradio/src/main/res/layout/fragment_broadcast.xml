@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BroadcastFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="广播"
+        android:textColor="@color/txtColorBlack"
+        android:textSize="20sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="14dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_bg_broadcast" />
+            </FrameLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/im_syj"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="11dp"
+                        android:src="@mipmap/ic_gb_shouyinji" />
+
+                    <TextView
+                        android:id="@+id/txt_syj_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/im_syj"
+                        android:text="内蒙古交通广播"
+                        android:textColor="@color/txtColorBlack"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txt_syj_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_syj_name"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/im_syj"
+                        android:text="内蒙古交通广播"
+                        android:textColor="@color/txtColorGray"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="11dp"
+                        android:src="@mipmap/ic_player_pause" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_radio_station_cnr" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_radio_station_local" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_radio_station_international_radio" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ic_radio_station_celected" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/root_xssd"
+                layout="@layout/frag_item_title_recycler_view_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

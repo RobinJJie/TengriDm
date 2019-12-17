@@ -10,6 +10,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -27,7 +29,7 @@ public abstract class AppFragment extends Fragment {
     protected Unbinder mRootUnBinder;
     // 标示是否第一次初始化数据
     protected boolean mIsFirstInitData = true;
-
+    protected ARouter mRouter =ARouter.getInstance();
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

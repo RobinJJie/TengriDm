@@ -2,12 +2,17 @@ package com.lk.robin.commonlibrary.app;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.lk.robin.commonlibrary.tools.StatusBarUtil;
+import com.lk.robin.commonlibrary.R;
+import com.lk.robin.commonlibrary.tools.DpTool;
 
 import java.util.List;
 
@@ -18,6 +23,8 @@ import butterknife.ButterKnife;
  * @version 1.0
  */
 public abstract class AppActivity extends AppCompatActivity {
+
+    protected FrameLayout playBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,6 +91,10 @@ public abstract class AppActivity extends AppCompatActivity {
      * 初始化控件
      */
     protected void initWidget() {
+        playBar= (FrameLayout) LayoutInflater.from(this).inflate(R.layout.app_player_bottom_layout,null,false);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(DpTool.DpToPx(this, 60), DpTool.DpToPx(this, 60));
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
+        this.addContentView(playBar,layoutParams);
         ButterKnife.bind(this);
     }
 
