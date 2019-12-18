@@ -70,6 +70,30 @@ public class StatusBarUtil {
     }
 
     /**
+     * 状态栏深色模式，设置状态栏白色文字、图标，
+     * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
+     *
+     * @param fixBarHeight 是否修改标题栏顶部间距以兼容水滴屏、刘海屏
+     * @return 1:MIUUI 2:Flyme 3:android6.0
+     */
+    public static int StatusBarDarkMode(Activity activity, boolean fixBarHeight) {
+        int result = 0;
+        if (MIUISetStatusBarLightMode(activity, false)) {
+            //小米
+            result = 1;
+        } else if (FlymeSetStatusBarLightMode(activity.getWindow(), false)) {
+            //魅族
+            result = 2;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //6.0以上
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            result = 3;
+        }
+        if (fixBarHeight) setStatusBarHeight(activity);
+        return result;
+    }
+
+    /**
      * 设置状态栏图标为深色和魅族特定的文字风格
      * 可以用来判断是否为Flyme用户
      *
