@@ -133,6 +133,7 @@
         </LinearLayout>
 
         <include
+            android:layout_marginTop="30dp"
             android:id="@+id/root_shsy"
             layout="@layout/frag_item_title_recycler_view_layout"
             android:layout_width="match_parent"

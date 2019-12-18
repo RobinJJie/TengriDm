@@ -14,6 +14,9 @@ import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
 import com.qdgdcm.apphome.fragment.homeitem.HomeFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -42,6 +45,8 @@ public class MainFragment extends AppFragment {
     private AppFragment fragmentLive;
     private AppFragment fragmentMine;
 
+    private List<Fragment> fragmentList=new ArrayList<>();
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.fragment_main;
@@ -57,6 +62,37 @@ public class MainFragment extends AppFragment {
     protected void initData() {
         super.initData();
         manager = getChildFragmentManager();
+
+        if (fragmentHome == null) {
+            fragmentHome = new HomeFragment();
+            fragmentList.add(fragmentHome);
+
+        }
+        if (fragmentRadio==null){
+            Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
+            if (fragRadio instanceof AppFragment) {
+                fragmentRadio= (AppFragment) fragRadio;
+                fragmentList.add(fragmentRadio);
+            }
+        }
+        if (fragmentLive==null){
+            Object fragLive = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
+            if (fragLive instanceof AppFragment) {
+                fragmentLive= (AppFragment) fragLive;
+                fragmentList.add(fragmentLive);
+            }
+        }
+        if (fragmentMine==null){
+            Object fragMine = mRouter.build(ConstantsRouter.Mine.MineHome).navigation();
+            if (fragMine instanceof AppFragment) {
+                fragmentMine= (AppFragment) fragMine;
+                fragmentList.add(fragmentMine);
+            }
+        }
+
+        for (int i = 0; i < fragmentList.size(); i++) {
+            manager.beginTransaction().add(R.id.root_content_frg,fragmentList.get(i),String.valueOf("Frag_"+i)).commit();
+        }
         selectedBar(R.id.root_bar_home);
         cheange(0);
     }
@@ -87,37 +123,51 @@ public class MainFragment extends AppFragment {
     }
 
     private void cheange(int pos) {
-        if (pos == 0) {
-            if (fragmentHome == null) {
-                fragmentHome = new HomeFragment();
-            }
-            manager.beginTransaction().replace(R.id.root_content_frg, fragmentHome).commit();
-        } else if (pos == 1) {
-            if (fragmentRadio==null){
-                Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
-                if (fragRadio instanceof AppFragment) {
-                    fragmentRadio= (AppFragment) fragRadio;
-                }
-            }
-            manager.beginTransaction().replace(R.id.root_content_frg, fragmentRadio).commit();
 
-        } else if (pos == 2) {
-            if (fragmentLive==null){
-                Object fragLive = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
-                if (fragLive instanceof AppFragment) {
-                    fragmentLive= (AppFragment) fragLive;
-                }
+        for (int i = 0; i < fragmentList.size(); i++) {
+            if (pos==i){
+                manager.beginTransaction().show(fragmentList.get(pos)).commit();
+            }else {
+                manager.beginTransaction().hide(fragmentList.get(i)).commit();
             }
-            manager.beginTransaction().replace(R.id.root_content_frg, fragmentLive).commit();
 
-        } else if (pos == 3) {
-            if (fragmentMine==null){
-                Object fragMine = mRouter.build(ConstantsRouter.Mine.MineHome).navigation();
-                if (fragMine instanceof AppFragment) {
-                    fragmentMine= (AppFragment) fragMine;
-                }
-            }
-            manager.beginTransaction().replace(R.id.root_content_frg, fragmentMine).commit();
         }
+
+//        if (pos == 0) {
+//            if (fragmentHome == null) {
+//                fragmentHome = new HomeFragment();
+//                manager.beginTransaction().replace(R.id.root_content_frg, fragmentHome).commit();
+//
+//            }
+//        } else if (pos == 1) {
+//            if (fragmentRadio==null){
+//                Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
+//                if (fragRadio instanceof AppFragment) {
+//                    fragmentRadio= (AppFragment) fragRadio;
+//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentRadio).commit();
+//
+//                }
+//            }
+//
+//        } else if (pos == 2) {
+//            if (fragmentLive==null){
+//                Object fragLive = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
+//                if (fragLive instanceof AppFragment) {
+//                    fragmentLive= (AppFragment) fragLive;
+//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentLive).commit();
+//
+//                }
+//            }
+//
+//        } else if (pos == 3) {
+//            if (fragmentMine==null){
+//                Object fragMine = mRouter.build(ConstantsRouter.Mine.MineHome).navigation();
+//                if (fragMine instanceof AppFragment) {
+//                    fragmentMine= (AppFragment) fragMine;
+//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentMine).commit();
+//
+//                }
+//            }
+//        }
     }
 }

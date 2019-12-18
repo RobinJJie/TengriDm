@@ -44,9 +44,9 @@ dependencies {
     api 'com.alibaba:arouter-api:1.4.1'
     //屏幕适配
     api 'me.jessyan:autosize:1.1.2'
-    implementation project(path: ':databaselibrary')
-    implementation project(path: ':msgbuslibrary')
-    implementation project(path: ':langlibrary')
+    api project(path: ':databaselibrary')
+    api project(path: ':msgbuslibrary')
+    api project(path: ':langlibrary')
 
     //图片加载
     api 'com.github.bumptech.glide:glide:4.9.0'
