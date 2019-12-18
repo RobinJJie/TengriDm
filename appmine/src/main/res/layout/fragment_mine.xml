@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qdgdcm.appmine.MineFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_head"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="58dp"
+        app:cardCornerRadius="34dp"
+        app:cardElevation="1dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_mine_head" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/card_view_head"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/card_view_head"
+        android:text="KaCi"
+        android:textColor="@color/txtColorBlack"
+        android:textSize="21sp" />
+
+    <FrameLayout
+        android:layout_width="91dp"
+        android:layout_height="31dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="81dp"
+        android:background="@drawable/shap_mine_qiandao_globalplay">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:src="@mipmap/ic_mine_qian_dap" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="44dp"
+            android:text="签到"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="14sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/root_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_view_head"
+        android:layout_marginTop="42dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="458"
+                android:textColor="@color/txtColorBlack"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="积分"
+                android:textColor="@color/txtColorGray666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/txtColorBlack"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="下载"
+                android:textColor="@color/txtColorGray666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/txtColorBlack"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="消息"
+                android:textColor="@color/txtColorGray666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/root_zjst"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/root_num"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/ic_mine_zj_st" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="最近收听"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_app_more_01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/root_wdsc"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/root_zjst"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/ic_mine_colicet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="我的收藏"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_app_more_01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/root_hd"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/root_wdsc"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/ic_mine_active" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="活动"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_app_more_01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/root_yjfk"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/root_hd"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/ic_mine_yi_fk" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="意见反馈"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_app_more_01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/root_setting"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/root_yjfk"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/ic_mine_setting" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="设置"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/ic_app_more_01" />
+    </LinearLayout>
+</RelativeLayout>

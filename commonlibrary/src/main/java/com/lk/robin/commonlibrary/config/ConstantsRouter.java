@@ -16,4 +16,12 @@ public interface ConstantsRouter {
     interface Home{
         String HomeMainActivity="/app_home/MainActivity";
     }
+
+    interface Mine{
+        String MineHome="/app_mine/MineFragment";
+    }
+    interface Radio{
+        String RadioHome="/app_radio/BroadcastFragment";
+    }
+
 }

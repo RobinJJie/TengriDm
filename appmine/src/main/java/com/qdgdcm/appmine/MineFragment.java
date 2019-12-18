@@ -1,22 +1,14 @@
-package com.qdgdcm.apphome.fragment;
+package com.qdgdcm.appmine;
 
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
-import com.qdgdcm.apphome.R;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+@Route(path = ConstantsRouter.Mine.MineHome)
 public class MineFragment extends AppFragment {
 
 

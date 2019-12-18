@@ -11,7 +11,6 @@ import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.DpTool;
 import com.lk.robin.commonlibrary.widget.GlobalPlay;
 import com.qdgdcm.apphome.fragment.MainFragment;
-import com.qdgdcm.apphome.fragment.MineFragment;
 
 @Route(path = ConstantsRouter.Home.HomeMainActivity)
 public class MainActivity extends ActivityPresenter {

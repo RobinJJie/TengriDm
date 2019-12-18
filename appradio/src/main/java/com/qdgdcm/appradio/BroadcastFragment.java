@@ -9,23 +9,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.lk.robin.commonlibrary.app.AppFragment;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BroadcastFragment extends Fragment {
+@Route(path = ConstantsRouter.Radio.RadioHome)
+public class BroadcastFragment extends AppFragment {
 
 
     public BroadcastFragment() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_broadcast, container, false);
+    protected int getContentLayoutId() {
+        return R.layout.fragment_broadcast;
     }
 
 }

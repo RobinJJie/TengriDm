@@ -1,22 +1,46 @@
 package com.qdgdcm.apphome.fragment;
 
 
+import android.view.View;
+
+import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.commonlibrary.tools.StatusBarUtil;
 import com.qdgdcm.apphome.R;
+import com.qdgdcm.apphome.R2;
+import com.qdgdcm.apphome.fragment.homeitem.HomeFragment;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends AppFragment {
+    @BindView(R2.id.root_bar_home)
+    View barHome;
+    @BindView(R2.id.root_bar_radio)
+    View barRadio;
+    @BindView(R2.id.root_bar_live)
+    View barLive;
+    @BindView(R2.id.root_bar_mine)
+    View barMine;
+    private FragmentManager manager;
 
 
     public MainFragment() {
         // Required empty public constructor
     }
+
+    private AppFragment fragmentHome;
+    private AppFragment fragmentRadio;
+    private AppFragment fragmentLive;
+    private AppFragment fragmentMine;
 
     @Override
     protected int getContentLayoutId() {
@@ -24,11 +48,76 @@ public class MainFragment extends AppFragment {
     }
 
     @Override
+    protected void initWidget(View root) {
+        super.initWidget(root);
+        StatusBarUtil.StatusBarLightMode(getActivity(),true);
+    }
+
+    @Override
     protected void initData() {
         super.initData();
-        Object fragHomr = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
-        if (fragHomr instanceof AppFragment) {
-            getChildFragmentManager().beginTransaction().add(R.id.root_content_frg, (Fragment) fragHomr).commit();
+        manager = getChildFragmentManager();
+        selectedBar(R.id.root_bar_home);
+        cheange(0);
+    }
+
+    @OnClick({R2.id.root_bar_home, R2.id.root_bar_radio, R2.id.root_bar_live, R2.id.root_bar_mine})
+    void onClsick(View view) {
+        int id = view.getId();
+        if (id == R.id.root_bar_home) {
+            selectedBar(id);
+            cheange(0);
+        } else if (id == R.id.root_bar_radio) {
+            selectedBar(id);
+            cheange(1);
+        } else if (id == R.id.root_bar_live) {
+            selectedBar(id);
+            cheange(2);
+        } else if (id == R.id.root_bar_mine) {
+            selectedBar(id);
+            cheange(3);
+        }
+    }
+
+    private void selectedBar(@IdRes int id) {
+        barHome.setSelected(id == R.id.root_bar_home);
+        barRadio.setSelected(id == R.id.root_bar_radio);
+        barLive.setSelected(id == R.id.root_bar_live);
+        barMine.setSelected(id == R.id.root_bar_mine);
+    }
+
+    private void cheange(int pos) {
+        if (pos == 0) {
+            if (fragmentHome == null) {
+                fragmentHome = new HomeFragment();
+            }
+            manager.beginTransaction().replace(R.id.root_content_frg, fragmentHome).commit();
+        } else if (pos == 1) {
+            if (fragmentRadio==null){
+                Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
+                if (fragRadio instanceof AppFragment) {
+                    fragmentRadio= (AppFragment) fragRadio;
+                }
+            }
+            manager.beginTransaction().replace(R.id.root_content_frg, fragmentRadio).commit();
+
+        } else if (pos == 2) {
+            if (fragmentLive==null){
+                Object fragLive = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
+                if (fragLive instanceof AppFragment) {
+                    fragmentLive= (AppFragment) fragLive;
+                }
+            }
+            manager.beginTransaction().replace(R.id.root_content_frg, fragmentLive).commit();
+
+        } else if (pos == 3) {
+            if (fragmentMine==null){
+                Object fragMine = mRouter.build(ConstantsRouter.Mine.MineHome).navigation();
+                if (fragMine instanceof AppFragment) {
+                    fragmentMine= (AppFragment) fragMine;
+                }
+            }
+            manager.beginTransaction().replace(R.id.root_content_frg, fragmentMine).commit();
         }
     }
 }
