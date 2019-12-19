@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -40,13 +41,13 @@ public class HomeFragment extends AppFragment {
     protected void initWidget(View root) {
         super.initWidget(root);
         list.add(new TengriNewsHomeFragment());
-        list.add(new TengriNewsHomeFragment());
-        list.add(new TengriNewsHomeFragment());
+//        list.add(new TengriNewsHomeFragment());
+//        list.add(new TengriNewsHomeFragment());
 
         mViewPager.setAdapter(new FragAdapter(getChildFragmentManager(),0));
     }
 
-    class FragAdapter extends FragmentStatePagerAdapter{
+    class FragAdapter extends FragmentPagerAdapter {
 
         public FragAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);

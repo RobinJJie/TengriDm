@@ -409,4 +409,81 @@ public class HomDataHelper {
 
         return list;
     }
+
+    public static  List<ContentBean> getBannerList(){
+        List<ContentBean> list=new ArrayList<>();
+        ContentBean bean1=new ContentBean();
+        bean1.id = 0;
+        bean1.title = "英文第一季】01泥坑 Muddy Puddles";
+        bean1.info = "动画1-3岁女频男频磨耳朵";
+        bean1.countRead="72.5万";
+        bean1.albumNum="";
+        bean1.ReadioMan="小猪佩奇";
+        bean1.duration=" 59:59";
+        bean1.upDataTime="2019-01-25";
+        bean1.resId = R.mipmap.ic_local_banner_1;
+        list.add(bean1);
+
+        ContentBean bean2=new ContentBean();
+        bean2.id = 1;
+        bean2.title = "省委书记01";
+        bean2.info = "会员免费女频男频会员免费有声书";
+        bean2.countRead="19.0万";
+        bean2.albumNum="30集";
+        bean2.ReadioMan="小猪佩奇";
+        bean2.duration=" 59:59";
+        bean2.upDataTime="2019-01-25";
+        bean2.resId = R.mipmap.ic_local_banner_2;
+        list.add(bean2);
+
+        ContentBean bean3=new ContentBean();
+        bean3.id = 2;
+        bean3.title = "001-教父";
+        bean3.info = "会员免费女频男频会员免费畅销书";
+        bean3.countRead="19.9万";
+        bean3.albumNum="30集";
+        bean3.ReadioMan="读客熊猫君";
+        bean3.duration="59:59";
+        bean3.upDataTime="2019-06-28";
+        bean3.resId = R.mipmap.ic_local_banner_3;
+        list.add(bean3);
+
+        ContentBean bean4=new ContentBean();
+        bean4.id = 3;
+        bean4.title = "我们的困难在哪里？—— 重视解决问题的人，还是发现问题的人？";
+        bean4.info = "职场提升上班族沟通表达职场有声读物";
+        bean4.countRead="---";
+        bean4.albumNum="";
+        bean4.upDataTime=" 4小时前";
+        bean4.ReadioMan=" 爱播讲堂";
+        bean4.duration="59:59";
+        bean4.resId = R.mipmap.ic_local_banner_4;
+        list.add(bean4);
+
+        ContentBean bean5=new ContentBean();
+        bean5.id = 4;
+        bean5.title = "樊登：实现成长";
+        bean5.info = "艺人访谈";
+        bean5.countRead="1.0万";
+        bean5.albumNum="";
+        bean5.upDataTime="3天前";
+        bean5.ReadioMan="嘉人";
+        bean5.duration="59:59";
+        bean5.resId = R.mipmap.ic_local_banner_5;
+        list.add(bean5);
+
+        ContentBean bean6=new ContentBean();
+        bean6.id = 5;
+        bean6.title = "朱元璋演义_1";
+        bean6.info = "古代刘兰芳明清";
+        bean6.countRead="594.8万";
+        bean6.albumNum="";
+        bean6.upDataTime="2015-11-30";
+        bean6.ReadioMan="包子爱油条";
+        bean6.duration="59:59";
+        bean6.resId = R.mipmap.ic_local_banner_6;
+        list.add(bean6);
+
+        return list;
+    }
 }

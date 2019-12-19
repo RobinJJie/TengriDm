@@ -2,6 +2,7 @@ package com.qdgdcm.apphome.fragment.homeitem;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,15 +19,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.commonlibrary.net.Rsp;
+import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.langlibrary.HomDataHelper;
 import com.lk.robin.langlibrary.bean.ContentBean;
+import com.lk.robin.msgbuslibrary.mag.MsgRsp;
+import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
+import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
+import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
+import com.youth.banner.Banner;
+import com.youth.banner.loader.ImageLoader;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -45,6 +57,8 @@ public class TengriNewsHomeFragment extends AppFragment {
     LinearLayout rootXs;
     @BindView(R2.id.root_er_tong)
     LinearLayout rootErT;
+    @BindView(R2.id.banner)
+    Banner mBanner;
 
     public TengriNewsHomeFragment() {
         // Required empty public constructor
@@ -65,6 +79,15 @@ public class TengriNewsHomeFragment extends AppFragment {
         initZy();
         initYzsd();
         initXs();
+        mBanner.setImageLoader(new GlideImageLoader());
+        List<ContentBean> bannerList = HomDataHelper.getBannerList();
+        List<Integer> ids=new ArrayList<>();
+        for (int i = 0; i < bannerList.size(); i++) {
+            ids.add(bannerList.get(i).resId);
+        }
+        mBanner.setImages(ids);
+        mBanner.setDelayTime(2800);
+        mBanner.start();
     }
 
     private void initShSy() {
@@ -139,7 +162,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         }
     }
 
-    private void initXs(){
+    private void initXs() {
         TextView txtTitle = rootXs.findViewById(R.id.txt_title);
         txtTitle.setText("相声");
         RecyclerView mRecyclerView = rootXs.findViewById(R.id.recycler_view);
@@ -149,6 +172,20 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapterV2);
         mRecyclerView.setNestedScrollingEnabled(false);
+    }
+
+    @OnClick({R2.id.root_home_biting})
+    void onClicks(View view){
+        int id = view.getId();
+        if (id==R.id.root_home_biting){
+            MsgRsp<TurnToFrag> rsp=new MsgRsp<>();
+            TurnToFrag frag=new TurnToFrag();
+
+            rsp.code= MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+            rsp.data=frag;
+            frag.fragHoust= ConstantsRouter.Home.HomeMainBitingListFragment;
+            MsgServer.init().save(rsp);
+        }
     }
 
     class HomeAdapterV1 extends RecyclerView.Adapter<HomeAdapterV1.ViewHolder> {
@@ -220,7 +257,7 @@ public class TengriNewsHomeFragment extends AppFragment {
             holder.txtInfo.setText(list.get(position).info);
             holder.txtTitle.setText(list.get(position).title);
             holder.readCount.setText(list.get(position).countRead);
-            Glide.with(Objects.requireNonNull(getContext())).load(list.get(position).resId).into(holder.ic);
+            Glide.with(Factory.app()).load(list.get(position).resId).into(holder.ic);
         }
 
         @Override
@@ -247,6 +284,26 @@ public class TengriNewsHomeFragment extends AppFragment {
                 ic = itemView.findViewById(R.id.rv_album_cover);
                 txtJi = itemView.findViewById(R.id.tv_album_num);
             }
+        }
+    }
+
+    class GlideImageLoader extends ImageLoader {
+
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+
+//            imageView.setImageResource((Integer) path);
+            Glide.with(context).
+                    load("http://up.enterdesk.com/edpic/54/a1/ba/54a1ba113f364341f9d8a94fd9406646.jpg")
+                    .skipMemoryCache(false)
+                    .into(imageView);
+        }
+
+        @Override
+        public ImageView createImageView(Context context) {
+            ImageView imageView=new ImageView(context);
+            imageView.setPadding(34,0,34,0);
+            return imageView;
         }
     }
 

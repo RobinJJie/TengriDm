@@ -11,4 +11,7 @@ public class ContentBean {
     public int resId;
     public String countRead;
     public String albumNum;
+    public String ReadioMan;
+    public String upDataTime;
+    public String duration;
 }

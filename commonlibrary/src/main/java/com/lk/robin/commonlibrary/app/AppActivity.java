@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.lk.robin.commonlibrary.R;
 import com.lk.robin.commonlibrary.tools.DpTool;
 
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 public abstract class AppActivity extends AppCompatActivity {
 
     protected FrameLayout playBar;
-
+    protected ARouter mRouter =ARouter.getInstance();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

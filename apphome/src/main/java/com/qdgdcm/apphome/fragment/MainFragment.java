@@ -7,6 +7,7 @@ import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.StatusBarUtil;
@@ -20,10 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
+@Route(path = ConstantsRouter.Home.HomeMainFragment)
 public class MainFragment extends AppFragment {
     @BindView(R2.id.root_bar_home)
     View barHome;

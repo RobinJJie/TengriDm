@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:ignore="HardcodedText,SmallSp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textSize="18sp"
+        tools:text="1" />
+
+    <com.lk.robin.commonlibrary.widget.round.RoundedImageView
+        android:id="@+id/rv_album_cover"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="14dp"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="5dp"
+        app:riv_oval="false" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/tv_album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大师相声精选"
+            android:textColor="@color/color_111111"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_album_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:lines="1"
+            android:text="说学逗唱精妙绝伦，吹棒嘲讽寓教育人。我们本着不是经典不选、不笑掉大牙不选、不让..."
+            android:textColor="@color/txtColorGray666"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/ic_listener_num" />
+
+            <TextView
+                android:id="@+id/tv_album_listener"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="1.3万"
+                android:textColor="@color/txtColorGray"
+                android:textSize="9sp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_album_nums" />
+
+            <TextView
+                android:id="@+id/tv_album_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="14集"
+                android:textColor="@color/txtColorGray"
+                android:textSize="9sp" />
+        </LinearLayout>
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ececec"/>
+    </LinearLayout>
+</LinearLayout>
