@@ -141,7 +141,7 @@
 
         <include
             android:id="@+id/root_yzsd"
-            layout="@layout/frag_item_title_recycler_view_layout"
+            layout="@layout/frag_item_title_view_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp" />

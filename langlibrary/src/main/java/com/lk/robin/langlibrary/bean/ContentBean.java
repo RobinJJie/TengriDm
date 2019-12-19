@@ -10,4 +10,5 @@ public class ContentBean {
     @IdRes
     public int resId;
     public String countRead;
+    public String albumNum;
 }

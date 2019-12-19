@@ -171,6 +171,7 @@ public class HomDataHelper {
         bean1.title = "蒋勋细说红楼梦";
         bean1.info = "【关注公众号：蒋勋（ID：jiangxunfm），获取更多蒋勋独家内容】 这是蒋勋老师在长达半个世纪的时间中反复阅读《红楼梦》三十多遍后的系列讲座录音集，蒋勋从美的角度，从情感出发梳理《红楼梦》文本中渗透出的细微感觉。 主播介绍 蒋勋——当代华人世界的文化教父，他是美学大师、诗人、小说家、演讲者、画家、名校教授。 课程大纲 每天能阅读一点就阅读一点,是读《红楼梦》最好的方法，一起跟随蒋勋老师的声音，在阅读《红楼梦》的日夜里慢慢修行！ 你将获得 1、理解每一个红楼人物，看不同形式的生命 2、从红楼中看到自己，看透中国人情社会，启发智慧 3、像大师一样欣赏红楼，读懂红楼，观照自身 4、蒋勋质感声音陪伴，夜晚暖心伴读";
         bean1.type = Type_YizhouShudian;
+        bean1.countRead="3.8";
         bean1.resId = R.mipmap.ic_local_yzsd_01;
         list.add(bean1);
 
@@ -179,6 +180,7 @@ public class HomDataHelper {
         bean2.title = "齐俊杰的财经读书圈";
         bean2.info = "每天十分钟，轻松解读财商经典 主播介绍 齐俊杰：新一代财经专栏作家，投资人，获得2016年今日头条评选的十大财经自媒体称号，是头条、百度、新浪、腾讯企鹅号、阿里大鱼号的年度签约财经作者，曾获得克劳锐金融自媒体第三名，清博指数财经网红全国排名第五位。 课程大纲 1、腾讯传 2、战胜华尔街 3、不良少年巴菲特 4、历代经济变革得失 5、投资中最简单的事 6、为什么中国人勤劳而不富有 你将获得 1、视角：投资人和专业财经作家，媒体人的视角； 2、实用：理论联系实际 把经典内容带入节目； 3、帮忙：个人视野和能力得到提升； 4、帮闲：丰富自己的财经知识，以及历史案例。";
         bean2.type = Type_YizhouShudian;
+        bean2.countRead="3.1";
         bean2.resId = R.mipmap.ic_local_yzsd_02;
         list.add(bean2);
 
@@ -187,6 +189,7 @@ public class HomDataHelper {
         bean3.title = "雷军亲述独家创业心法";
         bean3.info = "一次get雷布斯的19个核心技能";
         bean3.type = Type_YizhouShudian;
+        bean3.countRead="2.3";
         bean3.resId = R.mipmap.ic_local_yzsd_03;
         list.add(bean3);
 
@@ -195,6 +198,7 @@ public class HomDataHelper {
         bean4.title = "超高效时间管理课";
         bean4.info = "吴晓波力荐的时间管理课";
         bean4.type = Type_YizhouShudian;
+        bean4.countRead="4.6";
         bean4.resId = R.mipmap.ic_local_yzsd_04;
         list.add(bean4);
 
@@ -203,6 +207,7 @@ public class HomDataHelper {
         bean5.title = "团队管理每日谈";
         bean5.info = "什么最难管？管人啊！管理重在管，还是理？ 一起读大咖观点，每天学习管理之道。";
         bean5.type = Type_YizhouShudian;
+        bean5.countRead="5.3";
         bean5.resId = R.mipmap.ic_local_yzsd_06;
         list.add(bean5);
 
@@ -347,6 +352,8 @@ public class HomDataHelper {
         bean1.title = "大师相声精选";
         bean1.info = "说学逗唱精妙绝伦，吹棒嘲讽寓教育人。我们本着不是经典不选、不笑掉大牙不选、不让人回味无穷不选的原则，精选出马三立、侯宝林、刘宝瑞、马季等大师们呕心沥血的看家之作，为用户献上一段段百听不厌的相声好段子。";
         bean1.type = Type_Xiangsheng;
+        bean1.countRead="2.3万";
+        bean1.albumNum="32集";
         bean1.resId = R.mipmap.ic_local_xs_01;
         list.add(bean1);
 
@@ -355,6 +362,8 @@ public class HomDataHelper {
         bean2.title = "《相声有新人》";
         bean2.info = "全国首档相声类综艺竞演节目。全国相声新人集结角逐，究竟谁将C位出道？";
         bean2.type = Type_Xiangsheng;
+        bean2.countRead="1.6万";
+        bean2.albumNum="12集";
         bean2.resId = R.mipmap.ic_local_xs_02;
         list.add(bean2);
 
@@ -363,6 +372,8 @@ public class HomDataHelper {
         bean3.title = "唐杰忠相声集";
         bean3.info = "唐杰忠（1932—2017），著名相声表演艺术家。少年就读沈阳时，即学演相声。1949年参军做部队文工团团员，曾涉猎多种表演艺术，具有多才多艺的全面修养。1958年编、演相声《医生》、《探社》，分获广州军区文艺会演创作奖。1959年晋京深造，成为前辈相声艺术家刘宝瑞入室弟子，颇受教益。长期与马季、姜昆等相声名家合作，代表作品有《虎口遐想》、《新兵小传》、《找舅舅》等。";
         bean3.type = Type_Xiangsheng;
+        bean3.countRead="1.6万";
+        bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_local_xs_03;
         list.add(bean3);
 
@@ -371,6 +382,8 @@ public class HomDataHelper {
         bean4.title = "马三立相声集";
         bean4.info = "马三立 ，著名相声表演大师，是一位德艺双馨的人民艺术家，擅演“贯口”和文哏段子。马三立在长期的艺术实践中潜心探索，创立了独具特色的“马氏相声”，是当时相声界年龄最长、辈分最高、资历最老、造诣最深的“相声泰斗”，深受社会各界及广大观众的热爱与尊敬。";
         bean4.type = Type_Xiangsheng;
+        bean4.countRead="3.6万";
+        bean4.albumNum="22集";
         bean4.resId = R.mipmap.ic_local_xs_04;
         list.add(bean4);
 
@@ -379,6 +392,8 @@ public class HomDataHelper {
         bean5.title = "徐德亮王文林相声精选";
         bean5.info = "徐德亮 被誉为曲艺界极传统与极现结合的另类，“新文哏”相声的尝试者和风格树立者。 王文林 从艺40余年，捧逗皆佳，并能创作。";
         bean5.type = Type_Xiangsheng;
+        bean5.countRead="1.3万";
+        bean5.albumNum="32集";
         bean5.resId = R.mipmap.ic_local_xs_05;
         list.add(bean5);
 
@@ -387,6 +402,8 @@ public class HomDataHelper {
         bean6.title = "大逗相声社";
         bean6.info = "大逗相声社，极具北京当地特色的相声社团。以“北京孩子讲北京话”为创作演出宗旨，演出自带京味儿，成团四年，已经是北京当地极具知名度的相声表演社团之一。";
         bean6.type = Type_Xiangsheng;
+        bean6.countRead="1.3万";
+        bean6.albumNum="32集";
         bean6.resId = R.mipmap.ic_local_xs_06;
         list.add(bean6);
 

@@ -2,6 +2,7 @@ package com.qdgdcm.apphome.fragment.homeitem;
 
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.langlibrary.HomDataHelper;
 import com.lk.robin.langlibrary.bean.ContentBean;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -60,6 +63,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         initQg();
         initShSy();
         initZy();
+        initYzsd();
+        initXs();
     }
 
     private void initShSy() {
@@ -74,8 +79,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setNestedScrollingEnabled(false);
     }
 
-    private void initZy(){
-        TextView txtTitle = rootYzSd.findViewById(R.id.txt_title);
+    private void initZy() {
+        TextView txtTitle = rootZy.findViewById(R.id.txt_title);
         txtTitle.setText("综艺");
         RecyclerView mRecyclerView = rootZy.findViewById(R.id.recycler_view);
         List<ContentBean> dataLsit = HomDataHelper.getZongyiList();
@@ -86,8 +91,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setNestedScrollingEnabled(false);
     }
 
-    private void initQg(){
-        TextView txtTitle = rootYzSd.findViewById(R.id.txt_title);
+    private void initQg() {
+        TextView txtTitle = rootQg.findViewById(R.id.txt_title);
         txtTitle.setText("情感");
         RecyclerView mRecyclerView = rootQg.findViewById(R.id.recycler_view);
         List<ContentBean> dataLsit = HomDataHelper.getQingGanList();
@@ -99,8 +104,8 @@ public class TengriNewsHomeFragment extends AppFragment {
     }
 
 
-    private void initErT(){
-        TextView txtTitle = rootYzSd.findViewById(R.id.txt_title);
+    private void initErT() {
+        TextView txtTitle = rootErT.findViewById(R.id.txt_title);
         txtTitle.setText("儿童");
         RecyclerView mRecyclerView = rootErT.findViewById(R.id.recycler_view);
         List<ContentBean> dataLsit = HomDataHelper.getErTongList();
@@ -110,8 +115,44 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
     }
+
+    @SuppressLint({"SetTextI18n", "ResourceType"})
+    private void initYzsd() {
+        TextView txtTitle = rootYzSd.findViewById(R.id.txt_title);
+        txtTitle.setText("一周书单");
+        LinearLayout layout = rootYzSd.findViewById(R.id.root_linear);
+        layout.setPadding(20, 20, 20, 20);
+        layout.setBackgroundResource(R.drawable.bg_home_yzsd_082633);
+        List<ContentBean> yizhouShudan = HomDataHelper.getYizhouShudan();
+        if (yizhouShudan.size() >= 3) {
+            for (int i = 0; i < 3; i++) {
+                View itemView = LayoutInflater.from(getContext()).inflate(R.layout.app_item_one_icon_02_layout, layout, false);
+                TextView txtName = itemView.findViewById(R.id.txt_title);
+                TextView txtNum = itemView.findViewById(R.id.txt_count);
+                txtName.setTextColor(Color.WHITE);
+                ImageView ic = itemView.findViewById(R.id.ic_image);
+                txtName.setText(yizhouShudan.get(i).title);
+                txtNum.setText(yizhouShudan.get(i).countRead + "万");
+                Glide.with(Objects.requireNonNull(getContext())).load(yizhouShudan.get(i).resId).into(ic);
+                layout.addView(itemView);
+            }
+        }
+    }
+
+    private void initXs(){
+        TextView txtTitle = rootXs.findViewById(R.id.txt_title);
+        txtTitle.setText("相声");
+        RecyclerView mRecyclerView = rootXs.findViewById(R.id.recycler_view);
+        List<ContentBean> dataLsit = HomDataHelper.getXiangsheng();
+        HomeAdapterV2 adapterV2 = new HomeAdapterV2(dataLsit);
+        adapterV2.setSetCount(3);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(adapterV2);
+        mRecyclerView.setNestedScrollingEnabled(false);
+    }
+
     class HomeAdapterV1 extends RecyclerView.Adapter<HomeAdapterV1.ViewHolder> {
-        List<ContentBean> list ;
+        List<ContentBean> list;
 
         public HomeAdapterV1(List<ContentBean> list) {
             this.list = list;
@@ -130,7 +171,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.txtTitle.setText(list.get(position).title);
-            holder.ic.setImageResource(list.get(position).resId);
+            Glide.with(Objects.requireNonNull(getContext())).load(list.get(position).resId).into(holder.ic);
         }
 
         @Override
@@ -154,6 +195,58 @@ public class TengriNewsHomeFragment extends AppFragment {
 
         public void setSetCount(int setCount) {
             this.setCount = setCount;
+        }
+    }
+
+    class HomeAdapterV2 extends RecyclerView.Adapter<HomeAdapterV2.ViewHolder> {
+        List<ContentBean> list;
+        private int setCount;
+
+        public HomeAdapterV2(List<ContentBean> list) {
+            this.list = list;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_item_album_layout, parent, false);
+            return new ViewHolder(inflate);
+        }
+
+        @SuppressLint("ResourceType")
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.txtJi.setText(list.get(position).albumNum);
+            holder.txtInfo.setText(list.get(position).info);
+            holder.txtTitle.setText(list.get(position).title);
+            holder.readCount.setText(list.get(position).countRead);
+            Glide.with(Objects.requireNonNull(getContext())).load(list.get(position).resId).into(holder.ic);
+        }
+
+        @Override
+        public int getItemCount() {
+            if (setCount > 0) {
+                return setCount;
+            }
+            return list.size();
+        }
+
+        public void setSetCount(int setCount) {
+            this.setCount = setCount;
+        }
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+            private TextView txtTitle, txtInfo, readCount, txtJi;
+            private ImageView ic;
+
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                txtTitle = itemView.findViewById(R.id.tv_album_title);
+                txtInfo = itemView.findViewById(R.id.tv_album_info);
+                readCount = itemView.findViewById(R.id.tv_album_listener);
+                ic = itemView.findViewById(R.id.rv_album_cover);
+                txtJi = itemView.findViewById(R.id.tv_album_num);
+            }
         }
     }
 
