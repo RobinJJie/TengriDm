@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,132 +7,142 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     tools:context=".activity.PlayFMActivity"
-    tools:ignore="SmallSp" >
-    <LinearLayout
-        android:orientation="vertical"
+    tools:ignore="SmallSp">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ns_root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <include layout="@layout/rm_item_player_layout"
-                android:id="@+id/rl_player"/>
-            <LinearLayout
+            <include
+                android:id="@+id/rl_player"
+                layout="@layout/rm_item_player_layout" />
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingTop="18dp">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_player">
                 <ImageView
-                    android:id="@+id/iv_back"
-                    android:padding="10dp"
+                    android:id="@+id/iv_now_cover"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_app_more"/>
+                    android:src="@drawable/ic_neimengjiaotong"/>
                 <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="9dp"
+                    android:id="@+id/tv_now_title"
+                    android:layout_toEndOf="@+id/iv_now_cover"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="内蒙古交通广播"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorWhite"/>
-                <ImageView
-                    android:id="@+id/iv_share"
-                    android:padding="10dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_app_share"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
+                    android:textColor="@color/txtColorBlack"
+                    android:textSize="13sp"
+                    android:text="内蒙古交通之声广播"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="9dp"
+                    android:id="@+id/tv_now_collect"
+                    android:layout_toEndOf="@+id/iv_now_cover"
+                    android:layout_below="@+id/tv_now_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txtColorGray"
+                    android:textSize="9sp"
+                    android:text="2455人收藏"/>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_player">
-            <ImageView
-                android:id="@+id/iv_now_cover"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_neimengjiaotong"/>
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="45dp"
+                    android:layout_height="25dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="收藏"
+                    android:gravity="center"
+                    android:background="@drawable/rm_collect_bg"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorF5F5F5"/>
             <TextView
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="9dp"
-                android:id="@+id/tv_now_title"
-                android:layout_toEndOf="@+id/iv_now_cover"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_other_title"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/txtColorBlack"
+                android:textSize="14sp"
+                android:text="内蒙古交通之声广播-精彩栏目"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/rv_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/common_item_album_layout"
+                tools:itemCount="3"/><View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/colorF5F5F5"/>
+            <TextView
+                android:id="@+id/tv_other_fm"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/txtColorBlack"
-                android:textSize="13sp"
-                android:text="内蒙古交通之声广播"/>
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="9dp"
-                android:id="@+id/tv_now_collect"
-                android:layout_toEndOf="@+id/iv_now_cover"
-                android:layout_below="@+id/tv_now_title"
-                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="推荐电台"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/rv_fm_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/txtColorGray"
-                android:textSize="9sp"
-                android:text="2455人收藏"/>
-
-            <TextView
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:layout_width="45dp"
-                android:layout_height="25dp"
-                android:textSize="12sp"
-                android:textColor="@color/colorWhite"
-                android:text="收藏"
-                android:gravity="center"
-                android:background="@drawable/rm_collect_bg"/>
-        </RelativeLayout>
+                tools:listitem="@layout/common_fm_list_layout"
+                tools:itemCount="3"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical">
         <View
+            android:id="@+id/title_bg"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/colorF5F5F5"/>
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:background="@color/color_2A78D1" />
+        <ImageView
+            android:layout_marginTop="18dp"
+            android:id="@+id/iv_back"
+            android:padding="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_app_more"/>
         <TextView
-            android:id="@+id/tv_other_title"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
+            android:layout_marginTop="18dp"
+            android:paddingTop="9dp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/txtColorBlack"
-            android:textSize="14sp"
-            android:text="内蒙古交通之声广播-精彩栏目"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/rv_album"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/common_item_album_layout"
-            tools:itemCount="3"/><View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/colorF5F5F5"/>
-        <TextView
-            android:id="@+id/tv_other_fm"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/txtColorBlack"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:text="推荐电台"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/rv_fm_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/common_fm_list_layout"
-            tools:itemCount="3"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            android:layout_centerHorizontal="true"
+            android:text="内蒙古交通广播"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"/>
+        <ImageView
+            android:layout_marginTop="18dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/iv_share"
+            android:padding="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_app_share"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context=".BroadcastFragment">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -34,10 +36,16 @@
                 android:layout_marginEnd="14dp">
 
                 <ImageView
+                    android:id="@+id/pv_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/ic_bg_broadcast" />
+                    tools:src="@mipmap/ic_bg_broadcast" />
+                <com.lk.robin.commonlibrary.widget.PickHorizontalView
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/pv_fm_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </FrameLayout>
 
             <androidx.cardview.widget.CardView

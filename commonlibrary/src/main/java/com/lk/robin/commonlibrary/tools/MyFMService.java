@@ -7,6 +7,12 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+
 public class MyFMService extends Service {
     private MediaPlayer player;
     private String musicName;
@@ -28,6 +34,8 @@ public class MyFMService extends Service {
             player.setOnCompletionListener(mp -> {
                 if(playStateChangedListener!=null)
                     playStateChangedListener.onComplete();
+                if(mDisposable != null)
+                    mDisposable.dispose();
             });
             //播放错误监听
             player.setOnErrorListener((mp, what, extra) -> {
@@ -62,8 +70,12 @@ public class MyFMService extends Service {
     private void startPlay(MediaPlayer mp){
         try {
             mp.start();
-            if(playStateChangedListener!=null)
-                playStateChangedListener.onStart(musicName);
+            if(playStateChangedListener!=null){
+                int duration = mp.getDuration();
+                time(duration);
+                playStateChangedListener.onStart(musicName,duration);
+                Log.e("myFM服务 进度", duration + "");
+            }
         }catch (Exception e){
             Log.e("myFM服务", e.toString());
         }
@@ -86,6 +98,8 @@ public class MyFMService extends Service {
             player.stop();
         player.release();
         player = null;
+        if(mDisposable != null)
+            mDisposable.dispose();
         super.onDestroy();
     }
 
@@ -106,10 +120,13 @@ public class MyFMService extends Service {
         public void play() {
             if (player.isPlaying()) {
                 player.pause();
+                if(mDisposable != null)
+                    mDisposable.dispose();
                 if(playStateChangedListener != null)
                     playStateChangedListener.onPauseOrPlay(false);
             } else {
                 player.start();
+                time(player.getDuration());
                 if(playStateChangedListener != null)
                     playStateChangedListener.onPauseOrPlay(true);
             }
@@ -146,10 +163,25 @@ public class MyFMService extends Service {
         }
     }
 
+    private Disposable mDisposable;
+    private void time(long duration){
+        if(mDisposable != null)
+            mDisposable.dispose();
+        mDisposable = Flowable.intervalRange(0, (duration/1000), 0, 1, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(aLong -> {
+                    if(playStateChangedListener != null)
+                        playStateChangedListener.onProgress(player.getCurrentPosition(),player.getDuration());
+                })
+                //.doOnComplete(() -> tvTime.setText(new StringBuffer(voiceLength+"'")))
+                .subscribe();
+    }
+
     private OnPlayStateChangedListener playStateChangedListener;
     public interface OnPlayStateChangedListener{
         void onPrepare(String name);
-        void onStart(String name);
+        void onStart(String name,int duration);
+        void onProgress(int progress,int duration);//当前进度：毫秒
         void onPauseOrPlay(boolean isPlay);
         void onComplete();
         void onError(String error);

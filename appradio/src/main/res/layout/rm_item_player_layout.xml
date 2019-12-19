@@ -7,25 +7,33 @@
     android:layout_height="450dp"
     tools:ignore="SmallSp" >
     <ImageView
+        android:id="@+id/iv_player_bg"
         android:adjustViewBounds="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/rm_player_bg"/>
+        tools:src="@drawable/rm_player_bg"/>
 
-    <com.lk.robin.commonlibrary.widget.round.RoundedImageView
+    <RelativeLayout
+        android:id="@+id/rl_cover"
         android:layout_marginTop="88dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/rv_cover"
         android:layout_width="190dp"
         android:layout_height="190dp"
-        app:riv_oval="true"
-        app:riv_border_width="22dp"
-        app:riv_border_color="@color/colorWhite"/>
+        android:gravity="center"
+        android:background="@drawable/rm_bg_white_oval">
+        <com.lk.robin.commonlibrary.widget.round.RoundedImageView
+            android:id="@+id/rv_cover"
+            android:layout_width="147dp"
+            android:layout_height="147dp"
+            app:riv_oval="true"
+            app:riv_border_width="12dp"
+            app:riv_border_color="@color/colorF5F5F5"/>
+    </RelativeLayout>
     <TextView
         android:layout_margin="28dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/rv_cover"
+        android:layout_below="@+id/rl_cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
@@ -84,14 +92,27 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/ic_app_last"/>
-        <ImageView
-            android:id="@+id/iv_play"
+        <RelativeLayout
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:padding="6dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_app_pause"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/pb_loading"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/colorWhite"/>
+            <ImageView
+                android:visibility="visible"
+                android:id="@+id/iv_play"
+                android:padding="6dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_app_play"/>
+
+        </RelativeLayout>
         <ImageView
             android:id="@+id/iv_next"
             android:padding="10dp"
