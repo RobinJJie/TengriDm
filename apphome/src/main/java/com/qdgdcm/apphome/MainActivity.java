@@ -103,9 +103,10 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .setCustomAnimations(R.anim.no_anim,R.anim.no_anim)
                     .show(mainFragment).commit();
+        }else {
+            super.onBackPressed();
         }
 
-//        super.onBackPressed();
     }
 
     @Override
