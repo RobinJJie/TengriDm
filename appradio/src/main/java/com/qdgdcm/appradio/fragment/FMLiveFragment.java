@@ -1,4 +1,4 @@
-package com.qdgdcm.appradio;
+package com.qdgdcm.appradio.fragment;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.widget.round.RoundedImageView;
+import com.qdgdcm.appradio.R;
 
 
 /**

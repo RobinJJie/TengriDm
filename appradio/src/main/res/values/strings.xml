@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppRadio</string>
+    <string name="fm_jianjie">内蒙古交通之声定位于专业交通广播，立足交通、服务大众，以“资讯•路况•短信•话题•热线”为主线，努力营造“快乐交通 • 快乐广播”的氛围。交通之声以FM105.6同频覆盖内蒙古全境，收听率、市场占有率、覆盖率及忠诚度均位居同行业前列。
+24小时路况热线：6280999、16811666</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

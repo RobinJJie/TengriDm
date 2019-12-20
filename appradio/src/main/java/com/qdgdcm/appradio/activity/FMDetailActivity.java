@@ -1,22 +1,22 @@
 package com.qdgdcm.appradio.activity;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
+import com.lk.robin.commonlibrary.app.MyShareFragment;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.commonlibrary.widget.round.RoundedImageView;
 import com.qdgdcm.appradio.FMDataHelper;
-import com.qdgdcm.appradio.FMLiveFragment;
+import com.qdgdcm.appradio.fragment.FMLiveFragment;
 import com.qdgdcm.appradio.GalleryTransformer;
 import com.qdgdcm.appradio.R;
 import com.qdgdcm.appradio.R2;
@@ -54,7 +54,7 @@ public class FMDetailActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
-        List<FMLiveFragment> liveFragments = new ArrayList<>();
+        List<Fragment> liveFragments = new ArrayList<>();
         Collections.addAll(liveFragments,FMLiveFragment.newInstance(0,false),
                 FMLiveFragment.newInstance(1,false),
                 FMLiveFragment.newInstance(2,true),
@@ -82,10 +82,17 @@ public class FMDetailActivity extends ActivityPresenter {
         if (id == R.id.iv_left) {
             onBackPressed();
         } else if (id == R.id.iv_right) {
-            Factory.toast("分享");
+            showShare();
         } else if (id == R.id.ll_programs) {
-            Factory.toast("分享");
+            startActivity(new Intent(this,ScheduleActivity.class));
         }
     }
 
+    private MyShareFragment shareFragment;
+    public void showShare(){
+        if(shareFragment == null)
+            shareFragment = new MyShareFragment();
+        shareFragment.show(getSupportFragmentManager(),
+                MyShareFragment.class.getSimpleName());
+    }
 }

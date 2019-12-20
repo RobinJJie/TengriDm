@@ -13,6 +13,7 @@
     <color name="colorMainTheme">#1a92ff</color>
 
 
+    <color name="white">#ffffff</color>
     <color name="txtColorBlack">#333333</color>
     <color name="txtColorGray">#999999</color>
     <color name="txtColorGray666">#666666</color>
@@ -20,6 +21,10 @@
     <color name="colorBlack">#000000</color>
     <color name="bg_line">#f5f5f5</color>
     <color name="color_2A78D1">#2A78D1</color>
+    <color name="color_2a9aff">#2a9aff</color>
     <color name="color_1B4586">#1B4586</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_349eff">#349eff</color>
 
 </resources>

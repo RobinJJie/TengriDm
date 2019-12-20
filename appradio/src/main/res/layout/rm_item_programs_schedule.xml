@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="75dp">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/color_349eff"
+        android:text="内蒙古车友会"/>
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="@color/txtColorGray"
+        android:text="10:00-11:00" />
+    <ImageView
+        android:id="@+id/iv_live"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_time"
+        android:layout_alignParentEnd="true"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_programs_live"/>
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorF5F5F5"/>
+</RelativeLayout>

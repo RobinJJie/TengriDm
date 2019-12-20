@@ -1,6 +1,7 @@
 package com.qdgdcm.appradio.activity;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -9,6 +10,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -77,6 +79,8 @@ public class PlayFMActivity extends ActivityPresenter {
     NestedScrollView nsRoot;
     @BindView(R2.id.title_bg)
     View titleBg;
+    @BindView(R2.id.rl_programs)
+    RelativeLayout rlPrograms;
     private boolean isPrepare;
     private RotateAnimation rotateAnimation;
 
@@ -120,6 +124,8 @@ public class PlayFMActivity extends ActivityPresenter {
 
     private void initCover(){
         ivBack.setOnClickListener(view -> onBackPressed());
+        rlPrograms.setOnClickListener(view -> startActivity(new Intent(this,FMProgramsActivity.class)));
+        llPrograms.setOnClickListener(view -> startActivity(new Intent(this,ScheduleActivity.class)));
         Glide.with(this).load(R.mipmap.ic_local_fmdf_02).into(rvCover);
         rotateAnimation = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.anim_rotate_common);
         // 添加匀速转动动画

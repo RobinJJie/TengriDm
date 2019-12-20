@@ -21,6 +21,7 @@
                 android:id="@+id/rl_player"
                 layout="@layout/rm_item_player_layout" />
             <RelativeLayout
+                android:id="@+id/rl_programs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_player">

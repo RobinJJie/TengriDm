@@ -2,15 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qdgdcm.appradio">
 
-    <application>
-        <activity android:name=".activity.FMDetailActivity"></activity>
-        <activity android:name=".activity.FMListActivity" />
+    <application android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activity.ScheduleActivity"></activity>
+        <activity
+            android:name=".activity.FMProgramsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FMDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FMListActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PlayFMActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
     </application>
 

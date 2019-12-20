@@ -33,6 +33,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$project.ext.appcompat"
     implementation "com.jakewharton:butterknife:$project.ext.butterknifeV"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "com.jakewharton:butterknife-compiler:$project.ext.butterknifeV"
     api 'com.google.android.material:material:1.2.0-alpha01'
 
@@ -52,6 +53,11 @@ dependencies {
     api 'io.reactivex.rxjava2:rxjava:2.2.8'
     //图片加载
     api 'com.github.bumptech.glide:glide:4.9.0'
+    // 视频播放器
+    api 'com.shuyu:gsyVideoPlayer-java:7.1.1'
+    api 'com.shuyu:GSYVideoPlayer-exo2:7.1.1'
+    api 'com.shuyu:gsyVideoPlayer-ex_so:7.1.1'
+
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 }

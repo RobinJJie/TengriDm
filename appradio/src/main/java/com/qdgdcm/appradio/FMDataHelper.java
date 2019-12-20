@@ -735,4 +735,110 @@ public class FMDataHelper {
 
         return list;
     }
+
+
+    public static List<ContentBean> getPrograms(){
+        List<ContentBean> list=new ArrayList<>();
+        ContentBean bean1=new ContentBean();
+        bean1.id = 0;
+        bean1.title = "开始曲，收听指南";
+        bean1.info = "" ;
+        bean1.type = Type_Xiangsheng;
+        bean1.upDataTime="07:00  9月15日";
+        bean1.albumNum="10128";
+        bean1.resId = R.mipmap.ic_local_fmdf_02;
+        list.add(bean1);
+
+        ContentBean bean2=new ContentBean();
+        bean2.id = 0;
+        bean2.title = "1056声动我心";
+        bean2.info = "这里是内蒙古新闻广播。";
+        bean2.type = Type_Xiangsheng;
+        bean2.upDataTime="1.6万";
+        bean2.albumNum="12集";
+        bean2.resId = R.mipmap.ic_local_xs_01;
+        list.add(bean2);
+
+        ContentBean bean3=new ContentBean();
+        bean3.id = 0;
+        bean3.title = "新闻和报纸摘要（转播中央台）";
+        bean3.info = "赤峰广播电视台蒙古语综合节目是面向国内外广大蒙古族听众，以新闻节目为龙头，以社教文艺节目为两翼的综合性广播。";
+        bean3.type = Type_Xiangsheng;
+        bean3.countRead="1.6万";
+        bean3.albumNum="30集";
+        bean3.resId = R.mipmap.ic_local_fmdf_03;
+        list.add(bean3);
+
+        ContentBean bean4=new ContentBean();
+        bean4.id = 0;
+        bean4.title = "天天向上";
+        bean4.info = "";
+        bean4.type = Type_Xiangsheng;
+        bean4.countRead="3.6万";
+        bean4.albumNum="22集";
+        bean4.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean4);
+
+        
+        ContentBean bean5=new ContentBean();
+        bean5.id = 0;
+        bean5.title = "1056大家帮";
+        bean5.info = "";
+        bean5.type = Type_Xiangsheng;
+        bean5.countRead="3.6万";
+        bean5.albumNum="22集";
+        bean5.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean5);
+        
+        ContentBean bean6=new ContentBean();
+        bean6.id = 0;
+        bean6.title = "快乐向前冲";
+        bean6.info = "";
+        bean6.type = Type_Xiangsheng;
+        bean6.countRead="3.6万";
+        bean6.albumNum="22集";
+        bean6.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean6);
+
+        ContentBean bean7=new ContentBean();
+        bean7.id = 0;
+        bean7.title = "评书大剧场";
+        bean7.info = "";
+        bean7.type = Type_Xiangsheng;
+        bean7.countRead="3.6万";
+        bean7.albumNum="22集";
+        bean7.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean7);
+
+        ContentBean bean8=new ContentBean();
+        bean8.id = 0;
+        bean8.title = "第十放映室";
+        bean8.info = "";
+        bean8.type = Type_Xiangsheng;
+        bean8.countRead="3.6万";
+        bean8.albumNum="22集";
+        bean8.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean8);
+        
+        ContentBean bean9=new ContentBean();
+        bean9.id = 0;
+        bean9.title = "娱乐星天地";
+        bean9.info = "";
+        bean9.type = Type_Xiangsheng;
+        bean9.countRead="3.6万";
+        bean9.albumNum="22集";
+        bean9.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean9);
+        
+        ContentBean bean10=new ContentBean();
+        bean10.id = 0;
+        bean10.title = "吐槽大会";
+        bean10.info = "";
+        bean10.type = Type_Xiangsheng;
+        bean10.countRead="3.6万";
+        bean10.albumNum="22集";
+        bean10.resId = R.mipmap.ic_local_fmdf_04;
+        list.add(bean10);
+        return list;
+    }
 }
