@@ -180,11 +180,12 @@ public class TengriNewsHomeFragment extends AppFragment {
         if (id==R.id.root_home_biting){
             MsgRsp<TurnToFrag> rsp=new MsgRsp<>();
             TurnToFrag frag=new TurnToFrag();
-
+            frag.launchMode=TurnToFrag.FRAG_OPEN;
+            frag.fragHoust= ConstantsRouter.Home.HomeMainBitingListFragment;
             rsp.code= MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
             rsp.data=frag;
-            frag.fragHoust= ConstantsRouter.Home.HomeMainBitingListFragment;
             MsgServer.init().save(rsp);
+            Factory.LogE("frag_context_t",getContext()+" * "+getActivity());
         }
     }
 
@@ -292,10 +293,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
 
-//            imageView.setImageResource((Integer) path);
             Glide.with(context).
-                    load("http://up.enterdesk.com/edpic/54/a1/ba/54a1ba113f364341f9d8a94fd9406646.jpg")
-                    .skipMemoryCache(false)
+                    load(path)
                     .into(imageView);
         }
 
@@ -306,5 +305,4 @@ public class TengriNewsHomeFragment extends AppFragment {
             return imageView;
         }
     }
-
 }

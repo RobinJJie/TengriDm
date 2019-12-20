@@ -1,6 +1,7 @@
 package com.qdgdcm.apphome.fragment;
 
 
+import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.IdRes;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.commonlibrary.tools.StatusBarUtil;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
@@ -130,42 +132,20 @@ public class MainFragment extends AppFragment {
             }
 
         }
+    }
 
-//        if (pos == 0) {
-//            if (fragmentHome == null) {
-//                fragmentHome = new HomeFragment();
-//                manager.beginTransaction().replace(R.id.root_content_frg, fragmentHome).commit();
-//
-//            }
-//        } else if (pos == 1) {
-//            if (fragmentRadio==null){
-//                Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
-//                if (fragRadio instanceof AppFragment) {
-//                    fragmentRadio= (AppFragment) fragRadio;
-//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentRadio).commit();
-//
-//                }
-//            }
-//
-//        } else if (pos == 2) {
-//            if (fragmentLive==null){
-//                Object fragLive = mRouter.build(ConstantsRouter.Live.Live_Home).navigation();
-//                if (fragLive instanceof AppFragment) {
-//                    fragmentLive= (AppFragment) fragLive;
-//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentLive).commit();
-//
-//                }
-//            }
-//
-//        } else if (pos == 3) {
-//            if (fragmentMine==null){
-//                Object fragMine = mRouter.build(ConstantsRouter.Mine.MineHome).navigation();
-//                if (fragMine instanceof AppFragment) {
-//                    fragmentMine= (AppFragment) fragMine;
-//                    manager.beginTransaction().add(R.id.root_content_frg, fragmentMine).commit();
-//
-//                }
-//            }
-//        }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+
+            Factory.LogE("frag_context",getContext()+" * "+getActivity()+" "+hidden);
+
+        super.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        Factory.LogE("frag_context",getContext()+" * "+getActivity()+" ");
+        super.onAttach(context);
     }
 }

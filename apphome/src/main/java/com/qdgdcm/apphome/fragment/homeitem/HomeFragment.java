@@ -1,6 +1,7 @@
 package com.qdgdcm.apphome.fragment.homeitem;
 
 
+import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.lk.robin.commonlibrary.app.AppFragment;
+import com.lk.robin.commonlibrary.tools.Factory;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
 
@@ -65,6 +67,16 @@ public class HomeFragment extends AppFragment {
         }
     }
 
-
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
+            Factory.LogE("frag_context_h",getContext()+" * "+getActivity());
+        }
+        super.onHiddenChanged(hidden);
+    }
+    @Override
+    public void onAttach(Context context) {
+        Factory.LogE("frag_context",getContext()+" * "+getActivity()+" ");
+        super.onAttach(context);
+    }
 }

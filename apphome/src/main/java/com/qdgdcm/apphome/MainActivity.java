@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -13,19 +12,20 @@ import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.DpTool;
-import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.commonlibrary.widget.GlobalPlay;
 import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
 import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.fragment.MainFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = ConstantsRouter.Home.HomeMainActivity)
 public class MainActivity extends ActivityPresenter implements MsgServer.ChangedListener<TurnToFrag> {
     private GlobalPlay globalplay;
-    private AppFragment newFragment;
     private MainFragment mainFragment;
+
+    private List<AppFragment> taskFragLsit = new ArrayList<>();
 
     @Override
     protected BaseContract.Presenter initPresenter() {
@@ -50,8 +50,6 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
         playBar.addView(globalplay);
         globalplay.show();
         globalplay.play(R.mipmap.ic_home_biting_bangdan);
-        globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
-        globalplay.setBackgroundColor(Color.TRANSPARENT);
         globalplay.setProgress(0.6F);
 
     }
@@ -59,59 +57,94 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
     @Override
     protected void initData() {
         super.initData();
-
-        MsgServer.addChangedListener(TurnToFrag.class,this);
+        MsgServer.addChangedListener(TurnToFrag.class, this);
         mainFragment = new MainFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.root_view, mainFragment).commit();
+        taskFragLsit.add(mainFragment);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.root_view, mainFragment, "home_frag")
+                .commit();
     }
 
     @Override
     public void onDataPush(TurnToFrag data) {
-        Factory.LogE("msg_bus_m1",data.toString());
-        if (data==null)return;
-        if (ConstantsRouter.Home.HomeMainFragment.equals(data.fragHoust)&&mainFragment!=null){
-            getSupportFragmentManager().beginTransaction().show(mainFragment).commit();
-            return;
+        if (data == null) return;
+        if (data.launchMode == TurnToFrag.FRAG_OPEN) {
+            fragTonew(data);
+        } else if (data.launchMode == TurnToFrag.FRAG_CLOSE) {
+            frgBack();
         }
-        Object navigation = mRouter.build(data.fragHoust).navigation();
-        if (navigation instanceof AppFragment){
-            newFragment= (AppFragment) navigation;
+    }
+
+    private void frgBack() {
+        if (taskFragLsit.size() <= 1) {
+            return;
+        } else if (taskFragLsit.size() == 2) {
             getSupportFragmentManager().beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-                    .setCustomAnimations(R.anim.no_anim,R.anim.no_anim)
-                    .hide(mainFragment).commit();
+                    .setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out)
+                    .hide(taskFragLsit.get(taskFragLsit.size() - 1))
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setCustomAnimations(R.anim.no_anim, R.anim.no_anim)
+                    .show(taskFragLsit.get(taskFragLsit.size() - 2))
+                    .commit();
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                    .setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out)
+                    .hide(taskFragLsit.get(taskFragLsit.size() - 1))
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setCustomAnimations(R.anim.no_anim, R.anim.no_anim)
+                    .show(taskFragLsit.get(taskFragLsit.size() - 2))
+                    .commit();
+
+        }
+        taskFragLsit.remove(taskFragLsit.size() - 1);
+        if (taskFragLsit.size() == 1) {
+            globalplay.setBackgroundColor(Color.TRANSPARENT);
+        }
+    }
+
+    private void fragTonew(TurnToFrag data) {
+        if (ConstantsRouter.Home.HomeMainFragment.equals(data.fragHoust) && mainFragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.root_view, mainFragment).commit();
+            taskFragLsit.clear();
+            taskFragLsit.add(mainFragment);
+            return;
+        }
+        globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
+
+        Object navigation = mRouter.build(data.fragHoust).navigation();
+        if (navigation instanceof AppFragment) {
+            getSupportFragmentManager().beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                    .setCustomAnimations(R.anim.no_anim, R.anim.no_anim)
+                    .disallowAddToBackStack()
+                    .hide(taskFragLsit.get(taskFragLsit.size() - 1))
+                    .commit();
+            AppFragment newFragment = (AppFragment) navigation;
             getSupportFragmentManager().beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .setCustomAnimations(R.anim.push_right_in,R.anim.push_right_out)
-                    .add(R.id.root_view, newFragment).commit();
+                    .setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out)
+                    .add(R.id.root_view, newFragment, data.fragHoust)
+                    .commit();
+            taskFragLsit.add(newFragment);
         }
     }
 
     @Override
     public void onBackPressed() {
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        if (fragments.size()>1){
-            for (int i = 0; i < fragments.size(); i++) {
-                if (fragments.get(i)!=mainFragment){
-                    getSupportFragmentManager().beginTransaction()
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-                            .setCustomAnimations(R.anim.push_right_in,R.anim.push_right_out)
-                            .remove(fragments.get(i)).commitAllowingStateLoss();
-                }
-            }
-            getSupportFragmentManager().beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .setCustomAnimations(R.anim.no_anim,R.anim.no_anim)
-                    .show(mainFragment).commit();
-        }else {
+        if (taskFragLsit.size() == 1) {
             super.onBackPressed();
+        } else {
+            frgBack();
         }
 
     }
 
     @Override
     protected void onDestroy() {
-        MsgServer.removeChangedListener(TurnToFrag.class,this);
+        MsgServer.removeChangedListener(TurnToFrag.class, this);
         super.onDestroy();
     }
 }

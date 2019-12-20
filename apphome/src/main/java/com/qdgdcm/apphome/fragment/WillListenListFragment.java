@@ -1,6 +1,9 @@
 package com.qdgdcm.apphome.fragment;
 
 
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,8 +15,13 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.tabs.TabLayout;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.msgbuslibrary.mag.MsgRsp;
+import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
+import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
+import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
+import com.qdgdcm.apphome.fragment.bitingbandan.WillListenItemFragment;
 import com.qdgdcm.apphome.fragment.homeitem.TengriNewsHomeFragment;
 
 import java.util.ArrayList;
@@ -30,9 +38,13 @@ public class WillListenListFragment extends AppFragment {
     ViewPager viewPager;
     @BindView(R2.id.tab_layout)
     TabLayout tabLayout;
+    @BindView(R2.id.ic_bm_top_back)
+    View back;
+    @BindView(R2.id.txt_bm_top_title)
+    TextView txtTitle;
 
 
-    private String[] tabTitle={"总榜","综艺","情感"};
+    private String[] tabTitle={"总榜","听书","综艺","情感","文化","相声"};
     private List<AppFragment> fragmentList=new ArrayList<>();
     public WillListenListFragment() {
         // Required empty public constructor
@@ -47,15 +59,30 @@ public class WillListenListFragment extends AppFragment {
     @Override
     protected void initData() {
         super.initData();
-//        fragmentList.add(new TengriNewsHomeFragment());
-//        fragmentList.add(new TengriNewsHomeFragment());
-//        fragmentList.add(new TengriNewsHomeFragment());
-//
-//        viewPager.setAdapter(new FragAdapter(getChildFragmentManager(),0));
-//        tabLayout.setupWithViewPager(viewPager);
+        txtTitle.setText("必听榜单");
+        back.setVisibility(View.VISIBLE);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MsgRsp<TurnToFrag> rsp=new MsgRsp<>();
+                TurnToFrag frag=new TurnToFrag();
+                frag.launchMode=TurnToFrag.FRAG_CLOSE;
+                rsp.code= MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                rsp.data=frag;
+                MsgServer.init().save(rsp);
+            }
+        });
+        fragmentList.add(new WillListenItemFragment("1"));
+        fragmentList.add(new WillListenItemFragment("2"));
+        fragmentList.add(new WillListenItemFragment("3"));
+        fragmentList.add(new WillListenItemFragment("4"));
+        fragmentList.add(new WillListenItemFragment("5"));
+        fragmentList.add(new WillListenItemFragment("6"));
+
+        viewPager.setAdapter(new FragAdapter(getChildFragmentManager(),0));
+        tabLayout.setupWithViewPager(viewPager);
 
     }
-
 
     class FragAdapter extends FragmentStatePagerAdapter{
 

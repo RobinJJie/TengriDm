@@ -9,6 +9,7 @@
     tools:ignore="HardcodedText,SmallSp">
 
     <TextView
+        android:id="@+id/txt_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
