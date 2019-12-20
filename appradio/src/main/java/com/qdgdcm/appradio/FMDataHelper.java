@@ -13,7 +13,6 @@ public class FMDataHelper {
     public static String Type_Zongyi = "Type_Zongyi";//综艺
     public static String Type_Xiangsheng = "Type_Xiangsheng";//相声
     public static String Type_Guangbo = "Type_Guangbo";//广播
-
     /**
      * 儿童
      *
@@ -527,6 +526,212 @@ public class FMDataHelper {
         bean7.albumNum="22集";
         bean7.resId = R.mipmap.ic_local_fm_07;
         list.add(bean7);
+
+        return list;
+    }
+
+    public static List<ContentBean> getYangShiList(){
+        List<ContentBean> list = new ArrayList<>();
+        ContentBean bean1 = new ContentBean();
+        bean1.id = 0;
+        bean1.title = "CNR中国之声";
+        bean1.info = "中国之声――中央人民广播电台最悠久的第一套节目，中国国家电台最具权威的新闻综合广播；全天24小时不间断播音，遍布海内外数百家电台、与上千名记者全面合作。";
+        bean1.type = Type_Guangbo;
+        bean1.countRead="2.3万";
+        bean1.albumNum="32集";
+        bean1.resId = R.mipmap.ic_loacl_ys01;
+        list.add(bean1);
+
+        ContentBean bean2=new ContentBean();
+        bean2.id = 0;
+        bean2.title = "CNR经济之声";
+        bean2.info = "中央人民广播电台经济之声是中国最有影响力的财经广播，也是唯一一套覆盖全国的财经专业媒体，覆盖全国3亿多以城市为主体的广播听众。经济之声立足于“国家级现代传媒机构”的定位，传播全球最新财经资讯，引领经济话语，是中国最具成长性的专业财经媒体。";
+        bean2.type = Type_Guangbo;
+        bean2.countRead="1.6万";
+        bean2.albumNum="12集";
+        bean2.resId = R.mipmap.ic_loacl_ys02;
+        list.add(bean2);
+
+        ContentBean bean3=new ContentBean();
+        bean3.id = 0;
+        bean3.title = "CNR音乐之声";
+        bean3.info = "\"有一种快乐，在空中听见，Music Radio旋律在蔓延......感动让你听见——我要我的音乐\"，音乐之声是全华语市场最专业流行音乐频率，中国知名类型化流行音乐频率，覆盖全国，打破以往音乐广播板块型播出形态.";
+        bean3.type = Type_Guangbo;
+        bean3.countRead="1.6万";
+        bean3.albumNum="30集";
+        bean3.resId = R.mipmap.ic_loacl_ys03;
+        list.add(bean3);
+
+        ContentBean bean4 = new ContentBean();
+        bean4.id = 0;
+        bean4.title = "全球华语音乐之声";
+        bean4.info = "打造全国首家音乐榜单电台 集结百家广播电台音乐力量 制作流行 创造奇迹 FM99.9M-Radio全球华语音乐之声 来自火星的音乐广播 Music Master From Mars M-Radio全球华语音乐之声是KMG旗下优质音乐电台，多档优秀节目深受全国听众喜欢。";
+        bean4.type = Type_Guangbo;
+        bean4.countRead="3.6万";
+        bean4.albumNum="22集";
+        bean4.resId = R.mipmap.ic_loacl_ys04;
+        list.add(bean4);
+
+        ContentBean bean5=new ContentBean();
+        bean5.id = 0;
+        bean5.title = "CNR中华之声";
+        bean5.info = "中央人民广播电台对台湾广播有两套专门为台湾及海外听众服务的节目，累计播音37小时50分钟，两套节目覆盖祖国大陆东南沿海、台湾地区以及东南亚、南太平洋和日本等国家";
+        bean5.type = Type_Guangbo;
+        bean5.countRead="3.6万";
+        bean5.albumNum="22集";
+        bean5.resId = R.mipmap.ic_loacl_ys05;
+        list.add(bean5);
+
+        ContentBean bean6=new ContentBean();
+        bean6.id = 0;
+        bean6.title = "CNR神州之声";
+        bean6.info = "中央人民广播电台对台湾广播有两套专门为台湾及海外听众服务的节目，累计播音37小时50分钟，两套节目覆盖祖国大路东南沿海、台湾地区以及东南亚、南太平洋和日本等国家";
+        bean6.type = Type_Guangbo;
+        bean6.countRead="3.6万";
+        bean6.albumNum="22集";
+        bean6.resId = R.mipmap.ic_loacl_ys06;
+        list.add(bean6);
+
+        ContentBean bean7=new ContentBean();
+        bean7.id = 0;
+        bean7.title = "大湾区之声";
+        bean7.info = "中央人民广播电台第七套节目，打理您工作生活的方方面面，衣食住行，事无巨细。呈现南北文化，引领生活潮流；资讯、娱乐、休闲、时尚，引导消费，服务大众。";
+        bean7.type = Type_Guangbo;
+        bean7.countRead="3.6万";
+        bean7.albumNum="22集";
+        bean7.resId = R.mipmap.ic_loacl_ys07;
+        list.add(bean7);
+
+        ContentBean bean8=new ContentBean();
+        bean8.id = 0;
+        bean8.title = "中国校园之声";
+        bean8.info = "全球首家致力打造校园场景化伴随性电台。 中国校园之声电台，中国大学生第一台。";
+        bean8.type = Type_Guangbo;
+        bean8.countRead="3.6万";
+        bean8.albumNum="22集";
+        bean8.resId = R.mipmap.ic_loacl_ys08;
+        list.add(bean8);
+
+        ContentBean bean9=new ContentBean();
+        bean9.id = 0;
+        bean9.title = "CNR文艺之声";
+        bean9.info = "生活里的文艺，文艺里的生活。中央人民广播电台文艺之声，中国主流文化传播第一权威广播媒体。";
+        bean9.type = Type_Guangbo;
+        bean9.countRead="3.6万";
+        bean9.albumNum="22集";
+        bean9.resId = R.mipmap.ic_loacl_ys09;
+        list.add(bean9);
+
+        ContentBean bean10=new ContentBean();
+        bean10.id = 0;
+        bean10.title = "China Plus Radio";
+        bean10.info = "中国国际广播电台英语环球，中国最权威的英语资讯广播电台。学英语，听中国，知世界！Follow China Plus, follow China's changing pace!";
+        bean10.type = Type_Guangbo;
+        bean10.countRead="3.6万";
+        bean10.albumNum="22集";
+        bean10.resId = R.mipmap.ic_loacl_ys10;
+        list.add(bean10);
+
+        return list;
+    }
+
+    public static List<ContentBean> getGuoJiList(){
+        List<ContentBean> list = new ArrayList<>();
+        ContentBean bean1 = new ContentBean();
+        bean1.id = 0;
+        bean1.title = "国际关系学院广播台";
+        bean1.info = "国关之声下设动漫游戏，文艺欣赏，社会话题，旅游美食以及外语五个板块定期放送";
+        bean1.type = Type_Guangbo;
+        bean1.countRead="2.3万";
+        bean1.albumNum="32集";
+        bean1.resId = R.mipmap.ic_loacl_guoji01;
+        list.add(bean1);
+
+        ContentBean bean2=new ContentBean();
+        bean2.id = 0;
+        bean2.title = "国际旅游岛之声";
+        bean2.info = "国际旅游岛之声（海南旅游广播），完美旅行、一路惊喜！为您打造海南国际旅游岛独一无二的旅游、生活聆听方式。";
+        bean2.type = Type_Guangbo;
+        bean2.countRead="1.6万";
+        bean2.albumNum="12集";
+        bean2.resId = R.mipmap.ic_loacl_guoji02;
+        list.add(bean2);
+
+        ContentBean bean3=new ContentBean();
+        bean3.id = 0;
+        bean3.title = "CRI HIT FM";
+        bean3.info = "Hit FM是中国国际广播电台旗下的国际流行音乐频率，2003年4月16日开始在北京试播。";
+        bean3.type = Type_Guangbo;
+        bean3.countRead="1.6万";
+        bean3.albumNum="30集";
+        bean3.resId = R.mipmap.ic_loacl_guoji03;
+        list.add(bean3);
+
+        ContentBean bean4 = new ContentBean();
+        bean4.id = 0;
+        bean4.title = "CRI中文环球广播";
+        bean4.info = "中国国际广播电台（CRI）创办于1941年12月3日，是中国向全世界广播的国家广播电台。其宗旨是“向世界介绍中国，向中国介绍世界，向世界报道世界，增进中国人民与世界人民之间的了解和友谊”。";
+        bean4.type = Type_Guangbo;
+        bean4.countRead="3.6万";
+        bean4.albumNum="22集";
+        bean4.resId = R.mipmap.ic_loacl_guoji04;
+        list.add(bean4);
+
+        ContentBean bean5=new ContentBean();
+        bean5.id = 0;
+        bean5.title = "CRI南海之声";
+        bean5.info = "中国国际广播电台“南海之声”于2013年4月9日正式开播，是中国首个为南海海域及周边国家和地区服务的多语种广播。";
+        bean5.type = Type_Guangbo;
+        bean5.countRead="3.6万";
+        bean5.albumNum="22集";
+        bean5.resId = R.mipmap.ic_loacl_guoji05;
+        list.add(bean5);
+
+        ContentBean bean6=new ContentBean();
+        bean6.id = 0;
+        bean6.title = "CRI环球资讯";
+        bean6.info = "中国国际广播电台环球资讯广播CRI NewsRadio，集合国际台独特的资源优势和语言优势，四大新闻板块，辅以整点、半点快递，实现新闻的24小时滚动播出。";
+        bean6.type = Type_Guangbo;
+        bean6.countRead="3.6万";
+        bean6.albumNum="22集";
+        bean6.resId = R.mipmap.ic_loacl_guoji06;
+        list.add(bean6);
+
+        return list;
+    }
+
+    public static List<ContentBean> getShouCangList(){
+
+        List<ContentBean> list=new ArrayList<>();
+        ContentBean bean1=new ContentBean();
+        bean1.id = 0;
+        bean1.title = "内蒙古交通之声";
+        bean1.info = "内蒙古交通之声定位于专业交通广播，立足交通、服务大众，以“资讯•路况•短信•话题•热线”为主线，努力营造“快乐交通 • 快乐广播”的氛围。交通之声以FM105.6同频覆盖内蒙古全境，收听率、市场占有率、覆盖率及忠诚度均位居同行业前列。" ;
+        bean1.type = Type_Xiangsheng;
+        bean1.countRead="2.3万";
+        bean1.albumNum="32集";
+        bean1.resId = R.mipmap.ic_local_fmdf_02;
+        list.add(bean1);
+
+        ContentBean bean2=new ContentBean();
+        bean2.id = 0;
+        bean2.title = "CNR音乐之声";
+        bean2.info = "\"有一种快乐，在空中听见，Music Radio旋律在蔓延......感动让你听见——我要我的音乐\"，音乐之声是全华语市场最专业流行音乐频率，中国知名类型化流行音乐频率，覆盖全国，打破以往音乐广播板块型播出形态.";
+        bean2.type = Type_Xiangsheng;
+        bean2.countRead="1.6万";
+        bean2.albumNum="12集";
+        bean2.resId = R.mipmap.ic_local_fm_02;
+        list.add(bean2);
+
+        ContentBean bean3=new ContentBean();
+        bean3.id = 0;
+        bean3.title = "CRI HIT FM";
+        bean3.info = "Hit FM是中国国际广播电台旗下的国际流行音乐频率，2003年4月16日开始在北京试播。";
+        bean3.type = Type_Guangbo;
+        bean3.countRead="1.6万";
+        bean3.albumNum="30集";
+        bean3.resId = R.mipmap.ic_loacl_guoji03;
+        list.add(bean3);
 
         return list;
     }

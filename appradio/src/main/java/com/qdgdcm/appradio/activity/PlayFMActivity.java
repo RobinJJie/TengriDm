@@ -104,6 +104,7 @@ public class PlayFMActivity extends ActivityPresenter {
         rvAlbum.setNestedScrollingEnabled(false);
         rvAlbum.setAdapter(albumListAdapter);
         FMListAdapter fmListAdapter = new FMListAdapter(this);
+        fmListAdapter.setShowDeleteOrPlay(false,true);
         rvFmList.setLayoutManager(new LinearLayoutManager(this));
         rvFmList.setNestedScrollingEnabled(false);
         rvFmList.setAdapter(fmListAdapter);
@@ -212,4 +213,8 @@ public class PlayFMActivity extends ActivityPresenter {
         }
     }
 
+    @Override
+    protected boolean statusBarLightMode() {
+        return false;
+    }
 }

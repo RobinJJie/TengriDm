@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.lk.robin.commonlibrary.R;
 import com.lk.robin.commonlibrary.tools.DpTool;
+import com.lk.robin.commonlibrary.tools.StatusBarUtil;
 
 import java.util.List;
 
@@ -37,7 +38,9 @@ public abstract class AppActivity extends AppCompatActivity {
             // 得到界面Id并设置到Activity界面中
             int layId = getContentLayoutId();
             setContentView(layId);
-
+            if (statusBarLightMode()) {
+                StatusBarUtil.StatusBarLightMode(this, true);
+            }
             initBefore();
             initWidget();
             initData();
@@ -49,6 +52,10 @@ public abstract class AppActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    protected boolean statusBarLightMode() {
+        return true;
     }
 
     /**

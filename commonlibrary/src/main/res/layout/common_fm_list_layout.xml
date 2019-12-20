@@ -64,9 +64,20 @@
         </LinearLayout>
     </LinearLayout>
     <ImageView
+        android:visibility="visible"
+        android:id="@+id/iv_play"
         android:layout_marginEnd="13dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_play_blue"/>
+    <ImageView
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="13dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:id="@+id/iv_delete"
+        android:src="@drawable/ic_common_delete"/>
 
 </LinearLayout>

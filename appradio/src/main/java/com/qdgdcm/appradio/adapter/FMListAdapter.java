@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,12 @@ import butterknife.BindView;
 public class FMListAdapter extends BaseRecyclerAdapter<ContentBean> implements BaseRecyclerHolder.OnAdapterItemClick {
 
     private Context context;
+    private boolean showDelete,showPlay;
+
+    public void setShowDeleteOrPlay(boolean showDelete,boolean showPlay) {
+        this.showDelete = showDelete;
+        this.showPlay = showPlay;
+    }
 
     public FMListAdapter(Context context) {
         super(context);
@@ -50,7 +57,7 @@ public class FMListAdapter extends BaseRecyclerAdapter<ContentBean> implements B
 
     }
 
-    static class ViewHolder extends BaseRecyclerHolder<ContentBean> {
+    class ViewHolder extends BaseRecyclerHolder<ContentBean> {
         @BindView(R2.id.rv_fm_cover)
         RoundedImageView rvFmCover;
         @BindView(R2.id.tv_fm_title)
@@ -59,6 +66,10 @@ public class FMListAdapter extends BaseRecyclerAdapter<ContentBean> implements B
         TextView tvFmInfo;
         @BindView(R2.id.tv_fm_listener)
         TextView tvFmListener;
+        @BindView(R2.id.iv_play)
+        ImageView ivPlay;
+        @BindView(R2.id.iv_delete)
+        ImageView ivDelete;
         private Context context;
 
         ViewHolder(@NonNull View itemView,OnAdapterItemClick onAdapterItemClick) {
@@ -70,6 +81,8 @@ public class FMListAdapter extends BaseRecyclerAdapter<ContentBean> implements B
         @SuppressLint("ResourceType")
         @Override
         public void bindData(ContentBean bean) {
+            ivDelete.setVisibility(showDelete?View.VISIBLE:View.GONE);
+            ivPlay.setVisibility(showPlay?View.VISIBLE:View.GONE);
             tvFmTitle.setText(bean.title);
             tvFmInfo.setText("暂无节目");
             Glide.with(context).load(bean.resId).into(rvFmCover);
