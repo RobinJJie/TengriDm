@@ -49,8 +49,8 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
         playBar.setLayoutParams(layoutParams);
         playBar.addView(globalplay);
         globalplay.show();
-        globalplay.play(R.mipmap.ic_home_biting_bangdan);
-        globalplay.setProgress(0.6F);
+        globalplay.play(R.mipmap.ic_app_logo);
+        globalplay.setProgress(1F);
 
     }
 
