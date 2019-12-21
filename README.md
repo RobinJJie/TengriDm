@@ -6,7 +6,7 @@ APP端（Android）
     高仿喜马拉雅
 ```
 
-![示意图](/img/git_tgl01.gif)
+![示意图](https://github.com/RobinJJie/TengriDm/blob/master/img/git_tgl01.gif)
 
 * ![](https://img.shields.io/badge/version-v1.0.0-519dd9.svg)
 * ![](https://img.shields.io/badge/LK-Robin-green.svg)
