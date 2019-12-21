@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
+    android:paddingTop="24dp"
     tools:context=".fragment.WillListenListFragment">
 
     <include layout="@layout/app_action_bar_layout" />

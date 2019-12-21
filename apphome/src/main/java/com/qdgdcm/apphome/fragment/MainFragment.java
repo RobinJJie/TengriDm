@@ -2,7 +2,11 @@ package com.qdgdcm.apphome.fragment;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
@@ -19,6 +23,7 @@ import com.qdgdcm.apphome.fragment.homeitem.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +60,20 @@ public class MainFragment extends AppFragment {
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
-        StatusBarUtil.StatusBarLightMode(getActivity(),true);
+        //去除灰色遮罩
+        //Android5.0以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = Objects.requireNonNull(getActivity()).getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }else if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.KITKAT){//Android4.4以上,5.0以下
+            Objects.requireNonNull(getActivity()).getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        StatusBarUtil.StatusBarLightMode(getActivity(),false);
+
     }
 
     @Override
@@ -137,7 +155,9 @@ public class MainFragment extends AppFragment {
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-
+        if (!hidden){
+            StatusBarUtil.StatusBarLightMode(getActivity(),false);
+        }
             Factory.LogE("frag_context",getContext()+" * "+getActivity()+" "+hidden);
 
         super.onHiddenChanged(hidden);

@@ -17,6 +17,9 @@ public interface ConstantsRouter {
         String HomeMainActivity="/app_home/MainActivity";
         String HomeMainFragment="/app_home/MainFragment";
         String HomeMainBitingListFragment="/app_home/WillListenListFragment";
+        String HomeMainBoutiqueListFragment="/app_home/BoutiqueListFragment";
+        String HomeMainGuoXueCollectionFragment="/app_home/GuoXueCollectionFragment";
+        String HomeMainProgramInfoFragment="/app_home/ProgramInfoFragment";
     }
 
     interface Mine{

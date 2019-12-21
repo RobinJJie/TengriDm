@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".fragment.GuoXueCollectionFragment">
+
+    <FrameLayout
+        android:paddingTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:background="#94B8D0">
+
+        <include layout="@layout/app_action_bar_layout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
+            android:text="在专家、学者和百姓之间架起一座普及中国优秀传统文化的桥梁解读中华文化"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

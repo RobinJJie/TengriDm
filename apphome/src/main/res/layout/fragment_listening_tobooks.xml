@@ -11,11 +11,10 @@
         android:orientation="vertical">
 
         <com.youth.banner.Banner
+            android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="141dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="14dp" />
+            android:layout_marginTop="14dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

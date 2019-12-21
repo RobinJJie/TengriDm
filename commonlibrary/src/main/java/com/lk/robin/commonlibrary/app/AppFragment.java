@@ -11,6 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.msgbuslibrary.mag.MsgRsp;
+import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
+import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
+import com.lk.robin.msgbuslibrary.server.MsgServer;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -118,5 +123,15 @@ public abstract class AppFragment extends Fragment {
         return false;
     }
 
+
+    public void onHomeBack(){
+        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+        TurnToFrag frag = new TurnToFrag();
+        frag.launchMode = TurnToFrag.FRAG_CLOSE;
+        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+        rsp.data = frag;
+
+        MsgServer.init().save(rsp);
+    }
 
 }

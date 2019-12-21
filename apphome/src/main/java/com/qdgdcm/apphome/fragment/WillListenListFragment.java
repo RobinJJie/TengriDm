@@ -64,12 +64,7 @@ public class WillListenListFragment extends AppFragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MsgRsp<TurnToFrag> rsp=new MsgRsp<>();
-                TurnToFrag frag=new TurnToFrag();
-                frag.launchMode=TurnToFrag.FRAG_CLOSE;
-                rsp.code= MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
-                rsp.data=frag;
-                MsgServer.init().save(rsp);
+                onHomeBack();
             }
         });
         fragmentList.add(new WillListenItemFragment("1"));

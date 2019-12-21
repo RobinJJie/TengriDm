@@ -38,6 +38,11 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
     }
 
     @Override
+    protected boolean statusBarLightMode() {
+        return false;
+    }
+
+    @Override
     protected void initWidget() {
         super.initWidget();
         //手动添加布局,减少布局层级
@@ -112,6 +117,7 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
             taskFragLsit.add(mainFragment);
             return;
         }
+
         globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
 
         Object navigation = mRouter.build(data.fragHoust).navigation();
@@ -123,6 +129,9 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
                     .hide(taskFragLsit.get(taskFragLsit.size() - 1))
                     .commit();
             AppFragment newFragment = (AppFragment) navigation;
+            if (data.bundle != null) {
+                newFragment.setArguments(data.bundle);
+            }
             getSupportFragmentManager().beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out)

@@ -2,16 +2,19 @@ package com.qdgdcm.apphome.fragment.homeitem;
 
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
 import com.lk.robin.commonlibrary.app.AppFragment;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.Factory;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
@@ -28,8 +31,11 @@ import butterknife.BindView;
 public class HomeFragment extends AppFragment {
     @BindView(R2.id.view_pager)
     ViewPager mViewPager;
+    @BindView(R2.id.tab)
+    TabLayout tabLayout;
 
-    private List<Fragment> list=new ArrayList<>();
+    private List<Fragment> list = new ArrayList<>();
+    private String[] tabTitle={"","广播","听书","综艺","情感","文化","相声"};
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -43,10 +49,22 @@ public class HomeFragment extends AppFragment {
     protected void initWidget(View root) {
         super.initWidget(root);
         list.add(new TengriNewsHomeFragment());
-//        list.add(new TengriNewsHomeFragment());
-//        list.add(new TengriNewsHomeFragment());
+        Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
+        if (fragRadio instanceof AppFragment) {
+            AppFragment fragRadio1 = (AppFragment) fragRadio;
+            Bundle bundle=new Bundle();
+            bundle.putBoolean("hideTitle",true);
+            bundle.putString("title","title");
+            fragRadio1.setArguments(bundle);
+            list.add(fragRadio1);
+        }
+        list.add(new ListeningTobooksFragment());
+        list.add(new VarietyHomeFragment("1"));
+        list.add(new VarietyHomeFragment("2"));
+        list.add(new VarietyHomeFragment("3"));
 
-        mViewPager.setAdapter(new FragAdapter(getChildFragmentManager(),0));
+        mViewPager.setAdapter(new FragAdapter(getChildFragmentManager(), 0));
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     class FragAdapter extends FragmentPagerAdapter {
@@ -65,18 +83,25 @@ public class HomeFragment extends AppFragment {
         public int getCount() {
             return list.size();
         }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabTitle[position];
+        }
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        if (!hidden){
-            Factory.LogE("frag_context_h",getContext()+" * "+getActivity());
+        if (!hidden) {
+            Factory.LogE("frag_context_h", getContext() + " * " + getActivity());
         }
         super.onHiddenChanged(hidden);
     }
+
     @Override
     public void onAttach(Context context) {
-        Factory.LogE("frag_context",getContext()+" * "+getActivity()+" ");
+        Factory.LogE("frag_context", getContext() + " * " + getActivity() + " ");
         super.onAttach(context);
     }
 }

@@ -4,6 +4,7 @@ package com.qdgdcm.apphome.fragment.homeitem;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
-import com.lk.robin.commonlibrary.net.Rsp;
 import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.langlibrary.HomDataHelper;
 import com.lk.robin.langlibrary.bean.ContentBean;
@@ -31,6 +31,7 @@ import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -81,13 +82,32 @@ public class TengriNewsHomeFragment extends AppFragment {
         initXs();
         mBanner.setImageLoader(new GlideImageLoader());
         List<ContentBean> bannerList = HomDataHelper.getBannerList();
-        List<Integer> ids=new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
         for (int i = 0; i < bannerList.size(); i++) {
             ids.add(bannerList.get(i).resId);
         }
         mBanner.setImages(ids);
         mBanner.setDelayTime(2800);
         mBanner.start();
+
+        mBanner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+                TurnToFrag frag = new TurnToFrag();
+                Bundle bundle = new Bundle();
+                bundle.putString("title", bannerList.get(position).title);
+                bundle.putString("info", bannerList.get(position).info);
+                bundle.putInt("ic", bannerList.get(position).resId);
+                frag.launchMode = TurnToFrag.FRAG_OPEN;
+                frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+                frag.bundle = bundle;
+                rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                rsp.data = frag;
+
+                MsgServer.init().save(rsp);
+            }
+        });
     }
 
     private void initShSy() {
@@ -174,18 +194,46 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setNestedScrollingEnabled(false);
     }
 
-    @OnClick({R2.id.root_home_biting})
-    void onClicks(View view){
+    @OnClick({R2.id.root_home_biting, R2.id.root_home_jingpin, R2.id.root_home_gxsc, R2.id.root_home_ting_gb})
+    void onClicks(View view) {
         int id = view.getId();
-        if (id==R.id.root_home_biting){
-            MsgRsp<TurnToFrag> rsp=new MsgRsp<>();
-            TurnToFrag frag=new TurnToFrag();
-            frag.launchMode=TurnToFrag.FRAG_OPEN;
-            frag.fragHoust= ConstantsRouter.Home.HomeMainBitingListFragment;
-            rsp.code= MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
-            rsp.data=frag;
+        if (id == R.id.root_home_biting) {
+            MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+            TurnToFrag frag = new TurnToFrag();
+            frag.launchMode = TurnToFrag.FRAG_OPEN;
+            frag.fragHoust = ConstantsRouter.Home.HomeMainBitingListFragment;
+            rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+            rsp.data = frag;
             MsgServer.init().save(rsp);
-            Factory.LogE("frag_context_t",getContext()+" * "+getActivity());
+        } else if (id == R.id.root_home_jingpin) {
+            MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+            TurnToFrag frag = new TurnToFrag();
+            frag.launchMode = TurnToFrag.FRAG_OPEN;
+            frag.fragHoust = ConstantsRouter.Home.HomeMainBoutiqueListFragment;
+            rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+            rsp.data = frag;
+            MsgServer.init().save(rsp);
+        } else if (id == R.id.root_home_gxsc) {
+            MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+            TurnToFrag frag = new TurnToFrag();
+            frag.launchMode = TurnToFrag.FRAG_OPEN;
+            frag.fragHoust = ConstantsRouter.Home.HomeMainGuoXueCollectionFragment;
+            rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+            rsp.data = frag;
+            MsgServer.init().save(rsp);
+        } else if (id == R.id.root_home_ting_gb) {
+            MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+            TurnToFrag frag = new TurnToFrag();
+            Bundle bundle = new Bundle();
+            bundle.putString("title", "听广播");
+            bundle.putBoolean("hideTitle", false);
+            frag.launchMode = TurnToFrag.FRAG_OPEN;
+            frag.fragHoust = ConstantsRouter.Radio.RadioHome;
+            frag.bundle = bundle;
+            rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+            rsp.data = frag;
+
+            MsgServer.init().save(rsp);
         }
     }
 
@@ -210,6 +258,24 @@ public class TengriNewsHomeFragment extends AppFragment {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.txtTitle.setText(list.get(position).title);
             Glide.with(Objects.requireNonNull(getContext())).load(list.get(position).resId).into(holder.ic);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+                    TurnToFrag frag = new TurnToFrag();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", list.get(position).title);
+                    bundle.putString("info", list.get(position).info);
+                    bundle.putInt("ic", list.get(position).resId);
+                    frag.launchMode = TurnToFrag.FRAG_OPEN;
+                    frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+                    frag.bundle = bundle;
+                    rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                    rsp.data = frag;
+
+                    MsgServer.init().save(rsp);
+                }
+            });
         }
 
         @Override
@@ -259,6 +325,24 @@ public class TengriNewsHomeFragment extends AppFragment {
             holder.txtTitle.setText(list.get(position).title);
             holder.readCount.setText(list.get(position).countRead);
             Glide.with(Factory.app()).load(list.get(position).resId).into(holder.ic);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+                    TurnToFrag frag = new TurnToFrag();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", list.get(position).title);
+                    bundle.putString("info", list.get(position).info);
+                    bundle.putInt("ic", list.get(position).resId);
+                    frag.launchMode = TurnToFrag.FRAG_OPEN;
+                    frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+                    frag.bundle = bundle;
+                    rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                    rsp.data = frag;
+
+                    MsgServer.init().save(rsp);
+                }
+            });
         }
 
         @Override
@@ -288,7 +372,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         }
     }
 
-    class GlideImageLoader extends ImageLoader {
+    static class GlideImageLoader extends ImageLoader {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
@@ -300,8 +384,8 @@ public class TengriNewsHomeFragment extends AppFragment {
 
         @Override
         public ImageView createImageView(Context context) {
-            ImageView imageView=new ImageView(context);
-            imageView.setPadding(34,0,34,0);
+            ImageView imageView = new ImageView(context);
+            imageView.setPadding(34, 0, 34, 0);
             return imageView;
         }
     }

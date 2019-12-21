@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txt_num"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:textColor="@color/txtColorBlack"
+        android:textSize="18sp"
+        tools:text="12" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/txt_num"
+        android:textColor="@color/txtColorBlack"
+        android:textSize="15sp"
+        tools:text="哈哈哈" />
+
+    <LinearLayout
+        android:id="@+id/root_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:padding="2dp"
+            android:src="@mipmap/ic_app_bofang_count_01" />
+
+        <TextView
+            android:id="@+id/txt_bofang_liang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/txtColorGray666"
+            android:textSize="11sp"
+            tools:text="111" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="10dp"
+            android:padding="2dp"
+            android:src="@mipmap/ic_app_bofang_time_01" />
+
+        <TextView
+            android:id="@+id/txt_bofang_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/txtColorGray666"
+            android:textSize="11sp"
+            tools:text="10:11" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:padding="6dp"
+        android:src="@mipmap/ic_app_bofang_more_01" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/root_1"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
+        android:background="#ececec" />
+</RelativeLayout>

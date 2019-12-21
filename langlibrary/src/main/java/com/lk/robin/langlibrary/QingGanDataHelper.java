@@ -18,7 +18,7 @@ public class QingGanDataHelper {
         bean2.countRead = "32.9万";
         bean2.albumNum = "";
         bean2.ReadioMan = "小猪佩奇";
-        bean2.duration = " 59:59";
+        bean2.duration = " 09:59";
         bean2.upDataTime = "2019-01-25";
         bean2.resId = R.mipmap.ic_local_qg_jybjm_2;
         list.add(bean2);
@@ -30,7 +30,7 @@ public class QingGanDataHelper {
         bean3.countRead = "32.9万";
         bean3.albumNum = "";
         bean3.ReadioMan = "小猪佩奇";
-        bean3.duration = " 59:59";
+        bean3.duration = " 09:59";
         bean3.upDataTime = "2019-01-25";
         bean3.resId = R.mipmap.ic_local_qg_jybjm_3;
         list.add(bean3);
@@ -42,7 +42,7 @@ public class QingGanDataHelper {
         bean4.countRead = "32.9万";
         bean4.albumNum = "";
         bean4.ReadioMan = "小猪佩奇";
-        bean4.duration = " 59:59";
+        bean4.duration = " 08:59";
         bean4.upDataTime = "2019-01-25";
         bean4.resId = R.mipmap.ic_local_qg_jybjm_4;
         list.add(bean4);
@@ -66,7 +66,7 @@ public class QingGanDataHelper {
         bean6.countRead = "32.9万";
         bean6.albumNum = "";
         bean6.ReadioMan = "小猪佩奇";
-        bean6.duration = " 59:59";
+        bean6.duration = " 10:59";
         bean6.upDataTime = "2019-01-25";
         bean6.resId = R.mipmap.ic_local_qg_jybjm_6;
         list.add(bean6);
@@ -78,7 +78,7 @@ public class QingGanDataHelper {
         bean7.countRead = "32.9万";
         bean7.albumNum = "";
         bean7.ReadioMan = "小猪佩奇";
-        bean7.duration = " 59:59";
+        bean7.duration = " 10:59";
         bean7.upDataTime = "2019-01-25";
         bean7.resId = R.mipmap.ic_local_qg_jybjm_7;
         list.add(bean7);
@@ -90,7 +90,7 @@ public class QingGanDataHelper {
         bean8.countRead = "32.9万";
         bean8.albumNum = "";
         bean8.ReadioMan = "小猪佩奇";
-        bean8.duration = " 59:59";
+        bean8.duration = " 11:59";
         bean8.upDataTime = "2019-01-25";
         bean8.resId = R.mipmap.ic_local_qg_jybjm_8;
         list.add(bean8);
@@ -102,7 +102,7 @@ public class QingGanDataHelper {
         bean9.countRead = "32.9万";
         bean9.albumNum = "";
         bean9.ReadioMan = "小猪佩奇";
-        bean9.duration = " 59:59";
+        bean9.duration = " 12:59";
         bean9.upDataTime = "2019-01-25";
         bean9.resId = R.mipmap.ic_local_qg_jybjm_9;
         list.add(bean9);

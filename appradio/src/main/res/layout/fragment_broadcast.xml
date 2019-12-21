@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
     tools:context=".BroadcastFragment">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="广播"
-        android:textColor="@color/txtColorBlack"
-        android:textSize="20sp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_back_black"
+            android:padding="10dp"
+            android:id="@+id/image_back"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="广播"
+            android:textColor="@color/txtColorBlack"
+            android:textSize="20sp" />
+
+    </FrameLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -41,11 +56,12 @@
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     tools:src="@mipmap/ic_bg_broadcast" />
+
                 <com.lk.robin.commonlibrary.widget.PickHorizontalView
-                    android:layout_marginTop="16dp"
                     android:id="@+id/pv_fm_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
             </FrameLayout>
 
             <androidx.cardview.widget.CardView

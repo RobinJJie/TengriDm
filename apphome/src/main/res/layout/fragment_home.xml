@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:orientation="vertical"
+    android:paddingTop="24dp"
     tools:context=".fragment.homeitem.HomeFragment">
 
     <FrameLayout
@@ -20,6 +22,14 @@
             android:src="@mipmap/ic_home_seach_logo" />
 
         <com.google.android.material.tabs.TabLayout
+            app:tabIndicatorColor="@color/colorMainTheme"
+            app:tabIndicatorHeight="3dp"
+            app:tabTextColor="@color/txtColorBlack"
+            app:tabSelectedTextColor="@color/colorMainTheme"
+            app:tabMode="auto"
+            app:tabGravity="fill"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorFullWidth="false"
             android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="36dp"

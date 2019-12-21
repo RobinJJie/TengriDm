@@ -1,6 +1,8 @@
 package com.qdgdcm.appradio;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -15,8 +17,13 @@ import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.Factory;
+import com.lk.robin.commonlibrary.tools.StatusBarUtil;
 import com.lk.robin.commonlibrary.widget.PickHorizontalView;
 import com.lk.robin.langlibrary.bean.ContentBean;
+import com.lk.robin.msgbuslibrary.mag.MsgRsp;
+import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
+import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
+import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.appradio.activity.FMDetailActivity;
 import com.qdgdcm.appradio.activity.FMListActivity;
 import com.qdgdcm.appradio.activity.PlayFMActivity;
@@ -55,7 +62,8 @@ public class BroadcastFragment extends AppFragment {
     RecyclerView recyclerView;
     @BindView(R2.id.pv_fm_list)
     PickHorizontalView pvFmList;
-
+    @BindView(R2.id.image_back)
+    View back;
     public BroadcastFragment() {
         // Required empty public constructor
     }
@@ -103,6 +111,30 @@ public class BroadcastFragment extends AppFragment {
     public void setStyle(String mainTitle,String listTitle){
         title.setText(mainTitle);
         txtTitle.setText(listTitle);
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        Bundle arguments = getArguments();
+        if (arguments!=null){
+            String titArg = arguments.getString("title");
+            if (!TextUtils.isEmpty(titArg)){
+                setStyle(titArg,"音乐随身听");
+                boolean hideTitle = arguments.getBoolean("hideTitle");
+                if (hideTitle){
+                    title.setVisibility(View.GONE);
+                }else {
+                    back.setVisibility(View.VISIBLE);
+                    back.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onHomeBack();
+                        }
+                    });
+                }
+            }
+        }
     }
 
 

@@ -12,6 +12,7 @@
     <style name="AppTheme.NoStatusBar.StartPage">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@mipmap/ic_app_start_page</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
