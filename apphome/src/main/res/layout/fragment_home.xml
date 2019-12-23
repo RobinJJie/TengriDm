@@ -37,6 +37,7 @@
             android:layout_marginEnd="36dp" />
 
         <FrameLayout
+            android:id="@+id/root_search"
             android:layout_width="309dp"
             android:layout_height="33dp"
             android:layout_gravity="bottom"
@@ -57,6 +58,7 @@
 
 
         <ImageView
+            android:id="@+id/btn_fenlei"
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:layout_gravity="end"

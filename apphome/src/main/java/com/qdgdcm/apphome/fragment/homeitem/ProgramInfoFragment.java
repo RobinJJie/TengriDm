@@ -200,7 +200,7 @@ public class ProgramInfoFragment extends AppFragment {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.txtJi.setText(list.get(position).duration+"  12月29日");
-            holder.txtInfo.setText(""+position);
+            holder.txtInfo.setText(String.valueOf(position+1));
             holder.txtTitle.setText(list.get(position).title);
             holder.readCount.setText(list.get(position).countRead);
         }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.lk.robin.commonlibrary.widget.round.RoundedImageView
+        android:id="@+id/rv_album_cover"
+        android:layout_width="145dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="5dp"
+        app:riv_oval="false" />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大师相声精选"
+            android:textColor="@color/color_111111"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_marginTop="14dp"
+            android:background="#0093FF"
+            android:id="@+id/tv_album_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在直播"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/ic_app_home_live" />
+
+            <TextView
+                android:id="@+id/tv_album_listener"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="354参与"
+                android:textColor="@color/txtColorGray"
+                android:textSize="9sp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_play_time" />
+
+            <TextView
+                android:id="@+id/tv_album_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="11-27"
+                android:textColor="@color/txtColorGray"
+                android:textSize="9sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

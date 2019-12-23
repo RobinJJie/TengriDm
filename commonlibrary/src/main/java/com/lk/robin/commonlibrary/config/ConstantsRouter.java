@@ -20,8 +20,10 @@ public interface ConstantsRouter {
         String HomeMainBoutiqueListFragment="/app_home/BoutiqueListFragment";
         String HomeMainGuoXueCollectionFragment="/app_home/GuoXueCollectionFragment";
         String HomeMainProgramInfoFragment="/app_home/ProgramInfoFragment";
-
+        String HomeMainSearchActivityFragment="/app_home/SearchActivityFragment";
+        String HomeMainSearchInfoActivityFragment="/app_home/SearchInfoActivityFragment";
         String LiveDetailActivity="/app_live/LiveDetailActivity";
+        String HomeClassifyFragment="/app_home/ClassifyFragment";
     }
 
     interface Mine{

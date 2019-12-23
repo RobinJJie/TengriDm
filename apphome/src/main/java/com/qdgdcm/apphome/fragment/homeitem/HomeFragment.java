@@ -16,6 +16,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.Factory;
+import com.lk.robin.msgbuslibrary.mag.MsgRsp;
+import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
+import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
+import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
 
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -35,7 +40,8 @@ public class HomeFragment extends AppFragment {
     TabLayout tabLayout;
 
     private List<Fragment> list = new ArrayList<>();
-    private String[] tabTitle={"","广播","听书","综艺","情感","文化","相声"};
+    private String[] tabTitle = {"", "广播", "听书", "综艺", "情感", "文化", "相声"};
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -52,9 +58,9 @@ public class HomeFragment extends AppFragment {
         Object fragRadio = mRouter.build(ConstantsRouter.Radio.RadioHome).navigation();
         if (fragRadio instanceof AppFragment) {
             AppFragment fragRadio1 = (AppFragment) fragRadio;
-            Bundle bundle=new Bundle();
-            bundle.putBoolean("hideTitle",true);
-            bundle.putString("title","title");
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("hideTitle", true);
+            bundle.putString("title", "title");
             fragRadio1.setArguments(bundle);
             list.add(fragRadio1);
         }
@@ -65,6 +71,28 @@ public class HomeFragment extends AppFragment {
 
         mViewPager.setAdapter(new FragAdapter(getChildFragmentManager(), 0));
         tabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @OnClick(R2.id.root_search)
+    void onSearch() {
+        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+        TurnToFrag frag = new TurnToFrag();
+        frag.launchMode = TurnToFrag.FRAG_OPEN;
+        frag.fragHoust = ConstantsRouter.Home.HomeMainSearchActivityFragment;
+        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+        rsp.data = frag;
+        MsgServer.init().save(rsp);
+    }
+
+    @OnClick(R2.id.btn_fenlei)
+    void onFenlei(){
+        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+        TurnToFrag frag = new TurnToFrag();
+        frag.launchMode = TurnToFrag.FRAG_OPEN;
+        frag.fragHoust = ConstantsRouter.Home.HomeClassifyFragment;
+        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+        rsp.data = frag;
+        MsgServer.init().save(rsp);
     }
 
     class FragAdapter extends FragmentPagerAdapter {
