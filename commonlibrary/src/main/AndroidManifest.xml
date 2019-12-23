@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lk.robin.commonlibrary">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:networkSecurityConfig="@xml/network_not_https_config"
-        android:name=".app.AppApplication">
+        android:name=".app.AppApplication"
+        android:networkSecurityConfig="@xml/network_not_https_config">
+        <activity android:name=".app.PictureShowActivity"></activity>
 
         <meta-data
             android:name="design_width_in_dp"
@@ -12,6 +15,8 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="667" />
-        <service android:name=".tools.MyFMService" /> <!-- 音频播放服务 -->
+
+        <service android:name=".tools.MyFMService" />
     </application>
+
 </manifest>

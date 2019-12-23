@@ -1,5 +1,6 @@
 package com.qdgdcm.applive;
 
+import com.lk.robin.commonlibrary.model.CommentBean;
 import com.lk.robin.langlibrary.bean.ContentBean;
 
 import java.util.ArrayList;
@@ -94,6 +95,41 @@ public class LiveDataHelper {
         bean6.title = "直播|好记者讲好故事”";
         bean6.resId = R.mipmap.ic_local_shizheng06;
         list.add(bean6);
+        return list;
+    }
+
+    /**
+     * 时政直播
+     */
+    public static List<CommentBean> getComment() {
+        List<CommentBean> list = new ArrayList<>();
+        CommentBean bean1 = new CommentBean("小艾","http://pic.qqtn.com/up/2019-11/201911131624402645.png",
+                1576567266,"不忘初心牢记使命！",
+                "http://img2.imgtn.bdimg.com/it/u=298595840,1368886200&fm=26&gp=0.jpg",
+                "","");
+        list.add(bean1);
+        CommentBean bean2 = new CommentBean("奥斯陆","http://img5.imgtn.bdimg.com/it/u=3070585544,3060736657&fm=26&gp=0.jpg",
+                1576969299,"千里之行始于足下",
+                "",
+                "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8","http://img4.imgtn.bdimg.com/it/u=1228662566,1255568936&fm=26&gp=0.jpg");
+        list.add(bean2);
+        CommentBean bean3 = new CommentBean("草上飞","http://img3.imgtn.bdimg.com/it/u=1453979179,1110909512&fm=11&gp=0.jpg",
+                1576567266,"青岛啤酒节将澎湃着新时代青岛“开放、现代、活力、时尚”的城市基因，以利比里亚为起点，畅行“一带一路”沿线的新加坡、韩国、德国等15个国家。通过打造以“青岛啤酒节+城市推广+商旅文化”为主题的国际节会新模式，以响应国家“一带一路”倡议，为助力青岛打造“一带一路”国际合作新平台贡献力量。！",
+                "http://www.cnr.cn/sd/ppsd/20191223/W020191223502488639736.jpg",
+                "","");
+        list.add(bean3);
+
+        CommentBean bean4 = new CommentBean("不知名主播","http://img4.imgtn.bdimg.com/it/u=3926076932,4064187258&fm=26&gp=0.jpg",
+                1576567266,"厉害了",
+                "",
+                "","");
+        list.add(bean4);
+        CommentBean bean5 = new CommentBean("路人甲","http://img0.imgtn.bdimg.com/it/u=639596538,2404307934&fm=11&gp=0.jpg",
+                1576567266,"沙发！",
+                "",
+                "","");
+        list.add(bean5);
+
         return list;
     }
 }

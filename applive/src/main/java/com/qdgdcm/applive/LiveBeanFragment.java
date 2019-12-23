@@ -13,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.lk.robin.langlibrary.bean.ContentBean;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +43,9 @@ public class LiveBeanFragment extends Fragment {
         RecyclerView rvLive = view.findViewById(R.id.rv_live);
         rvLive.setLayoutManager(new LinearLayoutManager(getContext()));
         MainLiveAdapter adapter = new MainLiveAdapter(getContext());
+        adapter.setOnItemClickListener((type, position, bean) -> {
+            ARouter.getInstance().build(ConstantsRouter.Home.LiveDetailActivity).navigation();
+        });
         rvLive.setAdapter(adapter);
         if(type == 0){
             adapter.refresh(LiveDataHelper.getLiveHD());

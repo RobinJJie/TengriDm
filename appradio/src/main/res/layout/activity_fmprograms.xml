@@ -31,8 +31,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#00000000"
-        android:orientation="vertical"
-        tools:context=".fragment.CommunityIndexFragment">
+        android:orientation="vertical">
         <com.google.android.material.appbar.AppBarLayout
             app:elevation="0dp"
             android:background="#00000000"

@@ -19,7 +19,7 @@ import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 public class SampleCoverVideo extends StandardGSYVideoPlayer {
 
     private boolean isVoice = false;
-    RoundedImageView mCoverImage;
+    ImageView mCoverImage;
 
     String mCoverOriginUrl;
 
@@ -72,6 +72,12 @@ public class SampleCoverVideo extends StandardGSYVideoPlayer {
                                 .centerCrop()
                                 .error(res)
                                 .placeholder(res))
+                .load(url)
+                .into(mCoverImage);
+    }
+
+    public void loadCoverImage(int url) {
+        Glide.with(getContext().getApplicationContext())
                 .load(url)
                 .into(mCoverImage);
     }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AppLive</string>
 
+    <string name="live_info">简介：今年以来，面对国内外风险挑战明显上升的复杂局面，以习近平同志为核心的党中央高瞻远瞩、科学决策，推动高质量发展，全面建成小康社会取得了新的重大进展。一年来，习近平总书记在不同场合多次强调高质量发展，阐明了许多关键问题，提出一系列具体要求。新华社《学习进行时》为您梳理今年以来习近平关于经济高质量发展的重要论述，与您共同学习。</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

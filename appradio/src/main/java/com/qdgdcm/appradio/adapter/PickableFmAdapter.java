@@ -64,9 +64,8 @@ public class PickableFmAdapter extends BaseRecyclerAdapter<ContentBean> implemen
 //        }else{
 //            holder1.bar.setBackgroundColor(Color.BLUE);
 //        }
-//        Log.e("onViewSelected",pos + "isSelected：" +isSelected);
         if(itemSelectedListener != null && isSelected) {
-            itemSelectedListener.onSelected(pos-1,items.get(pos-1));
+            itemSelectedListener.onSelected(pos,items.get(pos));
         }
     }
 

@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lk.robin.commonlibrary.tools.Factory;
+
 /**
  * 具有选中效果的水平RecyclerView
  */
@@ -20,7 +22,7 @@ public class PickHorizontalView extends RecyclerView {
     /**
      * 一个屏幕中显示多少个item，必须为奇数
      */
-    private int itemCount = 7;
+    private int itemCount = 3;
     /**
      * 初始时选中的位置
      */
@@ -49,16 +51,16 @@ public class PickHorizontalView extends RecyclerView {
     private boolean isMoveFinished = true;
 
     public PickHorizontalView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public PickHorizontalView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init();
+        this(context, attrs,0);
     }
 
     public PickHorizontalView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init();
     }
 
     private void init() {
@@ -84,6 +86,7 @@ public class PickHorizontalView extends RecyclerView {
      */
     public void setInitPos(int initPos) {
         if (adapter != null) {
+            Factory.LogE("setInitPos","adapter != null");
             throw new RuntimeException("This method should be called before setAdapter()!");
         }
         this.initPos = initPos;
@@ -315,8 +318,9 @@ public class PickHorizontalView extends RecyclerView {
             }
         }
 
+        @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             if (viewType == HEADER_FOOTER_TYPE) {
                 View view = new View(context);
                 headerFooterWidth = parent.getMeasuredWidth() / 2 - (parent.getMeasuredWidth() / itemCount) / 2;

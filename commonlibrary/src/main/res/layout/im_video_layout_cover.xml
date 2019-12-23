@@ -27,13 +27,11 @@
         android:background="@android:color/white"
         android:scaleType="fitCenter">
 
-        <com.lk.robin.commonlibrary.widget.round.RoundedImageView
+        <ImageView
             android:id="@+id/thumbImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:riv_oval="false"
-            app:riv_corner_radius="5dp"/>
+            android:scaleType="centerCrop"/>
 
     </RelativeLayout>
 

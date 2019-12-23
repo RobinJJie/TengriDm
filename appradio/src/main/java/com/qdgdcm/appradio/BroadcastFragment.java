@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,10 +84,11 @@ public class BroadcastFragment extends AppFragment {
         ivPlay.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), PlayFMActivity.class));
         });
-        int index = 1;
-        pvFmList.setItemCount(4);
-        pvFmList.setInitPos(index);
-        txtSyjName.setText(FMDataHelper.getYYSList().get(index).title);
+
+        Glide.with(Objects.requireNonNull(getContext())).load(R.mipmap.ic_bg_broadcast).into(pvBg);
+
+        pvFmList.setItemCount(3);
+        txtSyjName.setText(FMDataHelper.getYYSList().get(0).title);
         PickableFmAdapter fmAdapter = new PickableFmAdapter(getContext());
         fmAdapter.setItemSelectedListener((position, bean) -> {
             txtSyjName.setText(bean.title);
@@ -94,7 +96,6 @@ public class BroadcastFragment extends AppFragment {
         });
         pvFmList.setAdapter(fmAdapter);
         fmAdapter.refresh(FMDataHelper.getYYSList());
-        Glide.with(Objects.requireNonNull(getContext())).load(R.mipmap.ic_bg_broadcast).into(pvBg);
 
         FMListAdapter fmListAdapter = new FMListAdapter(getContext());
         fmListAdapter.setShowDeleteOrPlay(false,true);
