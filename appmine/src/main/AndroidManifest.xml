@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.qdgdcm.appmine">
 
-    <application
-        tools:ignore="GoogleAppIndexingWarning">
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.SubscribeActivity"></activity>
+        <activity android:name=".activity.SignInActivity" />
+        <activity android:name=".activity.DownloadActivity" />
+        <activity android:name=".activity.MyScoreActivity" />
+        <activity android:name=".activity.EditUserInfoActivity" />
     </application>
 
 </manifest>

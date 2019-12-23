@@ -14,6 +14,7 @@
 
 
     <color name="white">#ffffff</color>
+    <color name="red_main">#e00e03</color>
     <color name="txtColorBlack">#333333</color>
     <color name="txtColorGray">#999999</color>
     <color name="txtColorGray666">#666666</color>
