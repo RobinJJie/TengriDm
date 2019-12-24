@@ -250,6 +250,10 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
 
     @Override
     public void onComplete() {
+        currentProgress.setText(DateTimeTool
+                .longToStr(MyFMUtils.getInstance(this).getDuration(),"mm:ss"));
+        totalProgress.setText(DateTimeTool
+                .longToStr(MyFMUtils.getInstance(this).getDuration(),"mm:ss"));
         ivPlay.setImageResource(R.drawable.ic_app_play);
         rvCover.clearAnimation();
     }
