@@ -129,7 +129,7 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
             return;
         }
 
-        globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
+//        globalplay.setBackground(getResources().getDrawable(R.drawable.shap_main_globalplay));
 
         Object navigation = mRouter.build(data.fragHoust).navigation();
         if (navigation instanceof AppFragment) {

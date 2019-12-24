@@ -46,6 +46,7 @@
         android:layout_marginBottom="8dp">
 
         <ImageView
+            android:tint="@color/white"
             android:src="@drawable/ic_listener_num"
             android:layout_width="13dp"
             android:layout_height="13dp"
