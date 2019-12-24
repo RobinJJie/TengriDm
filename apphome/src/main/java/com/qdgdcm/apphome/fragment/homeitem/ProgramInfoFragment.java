@@ -3,6 +3,7 @@ package com.qdgdcm.apphome.fragment.homeitem;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +16,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.Factory;
-import com.lk.robin.langlibrary.JingPinDataHelper;
 import com.lk.robin.langlibrary.QingGanDataHelper;
 import com.lk.robin.langlibrary.XiangShengDataHelper;
 import com.lk.robin.langlibrary.bean.ContentBean;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
-import com.qdgdcm.apphome.fragment.BoutiqueListFragment;
+import com.shehuan.nicedialog.BaseNiceDialog;
+import com.shehuan.nicedialog.NiceDialog;
+import com.shehuan.nicedialog.ViewConvertListener;
+import com.shehuan.nicedialog.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +82,7 @@ public class ProgramInfoFragment extends AppFragment {
         super.initData();
         setBar(R.id.root_jm);
         Bundle arguments = getArguments();
-        if (arguments!=null){
+        if (arguments != null) {
             String title = arguments.getString("title");
             String info = arguments.getString("info");
             int ic = arguments.getInt("ic");
@@ -129,19 +133,34 @@ public class ProgramInfoFragment extends AppFragment {
     void onClicks(View view) {
         setBar(view.getId());
     }
+    @OnClick(R2.id.btn_share)
+    void onShare(){
+        NiceDialog.init().setLayoutId(R.layout.fragment_my_share)
+                .setConvertListener(new ViewConvertListener() {
+                    @Override
+                    protected void convertView(ViewHolder holder, BaseNiceDialog dialog) {
+                        View convertView = holder.getConvertView();
+                        convertView.setOnClickListener(v -> dialog.dismiss());
+                    }
+                })
+                .setDimAmount(0.3f)     //调节灰色背景透明度[0-1]，默认0.5f
+                .setOutCancel(true)
+                .setGravity(Gravity.BOTTOM)//点击dialog外是否可取消，默认true
+                .show(getChildFragmentManager());
+    }
 
-    private void setJieMu(){
+    private void setJieMu() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        JieMuAdapter adapter=new JieMuAdapter();
+        JieMuAdapter adapter = new JieMuAdapter();
         mRecyclerView.setAdapter(adapter);
         list.clear();
         list.addAll(QingGanDataHelper.getQgJybjm());
         adapter.notifyDataSetChanged();
     }
 
-    private void setTuiJian(){
+    private void setTuiJian() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        TuiJianAdapter adapter=new TuiJianAdapter();
+        TuiJianAdapter adapter = new TuiJianAdapter();
         mRecyclerView.setAdapter(adapter);
         list.clear();
         list.addAll(XiangShengDataHelper.getXsYmds());
@@ -149,7 +168,9 @@ public class ProgramInfoFragment extends AppFragment {
         adapter.notifyDataSetChanged();
 
     }
+
     private List<ContentBean> list = new ArrayList<>();
+
     class TuiJianAdapter extends RecyclerView.Adapter<TuiJianAdapter.ViewHolder> {
         @NonNull
         @Override
@@ -166,6 +187,7 @@ public class ProgramInfoFragment extends AppFragment {
             holder.txtTitle.setText(list.get(position).title);
             holder.readCount.setText(list.get(position).countRead);
             Glide.with(Factory.app()).load(list.get(position).resId).into(holder.ic);
+            holder.itemView.setOnClickListener(v -> ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
         }
 
         @Override
@@ -199,10 +221,12 @@ public class ProgramInfoFragment extends AppFragment {
         @SuppressLint("ResourceType")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.txtJi.setText(list.get(position).duration+"  12月29日");
-            holder.txtInfo.setText(String.valueOf(position+1));
+            holder.txtJi.setText(list.get(position).duration + "  12月29日");
+            holder.txtInfo.setText(String.valueOf(position + 1));
             holder.txtTitle.setText(list.get(position).title);
             holder.readCount.setText(list.get(position).countRead);
+            holder.image.setOnClickListener(v -> showXz());
+            holder.itemView.setOnClickListener(v -> ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
         }
 
         @Override
@@ -213,6 +237,7 @@ public class ProgramInfoFragment extends AppFragment {
         class ViewHolder extends RecyclerView.ViewHolder {
             private TextView txtTitle, txtInfo, readCount, txtJi;
             private ImageView image;
+
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 txtTitle = itemView.findViewById(R.id.txt_title);
@@ -222,6 +247,21 @@ public class ProgramInfoFragment extends AppFragment {
                 image = itemView.findViewById(R.id.menu);
             }
         }
+    }
+
+    private void showXz() {
+        NiceDialog.init().setLayoutId(R.layout.am_xiazai_botton_layout)
+                .setConvertListener(new ViewConvertListener() {
+                    @Override
+                    protected void convertView(ViewHolder holder, BaseNiceDialog dialog) {
+                        View convertView = holder.getConvertView();
+                        convertView.setOnClickListener(v -> dialog.dismiss());
+                    }
+                })
+                .setDimAmount(0.3f)     //调节灰色背景透明度[0-1]，默认0.5f
+                .setOutCancel(true)
+                .setGravity(Gravity.BOTTOM)//点击dialog外是否可取消，默认true
+                .show(getChildFragmentManager());
     }
 
 }
