@@ -63,5 +63,7 @@ dependencies {
     api 'com.github.chrisbanes:PhotoView:2.3.0'
 
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    //dialog
+    api 'com.github.SheHuan:NiceDialog:1.2.0'
 
 }

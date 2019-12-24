@@ -2,8 +2,11 @@ package com.qdgdcm.apphome.fragment.homeitem;
 
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.tabs.TabLayout;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
@@ -38,7 +42,8 @@ public class HomeFragment extends AppFragment {
     ViewPager mViewPager;
     @BindView(R2.id.tab)
     TabLayout tabLayout;
-
+    @BindView(R2.id.ic_open)
+    View pop;
     private List<Fragment> list = new ArrayList<>();
     private String[] tabTitle = {"", "广播", "听书", "综艺", "情感", "文化", "相声"};
 
@@ -85,7 +90,7 @@ public class HomeFragment extends AppFragment {
     }
 
     @OnClick(R2.id.btn_fenlei)
-    void onFenlei(){
+    void onFenlei() {
         MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
         TurnToFrag frag = new TurnToFrag();
         frag.launchMode = TurnToFrag.FRAG_OPEN;
@@ -93,6 +98,11 @@ public class HomeFragment extends AppFragment {
         rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
         rsp.data = frag;
         MsgServer.init().save(rsp);
+    }
+
+    @OnClick(R2.id.ic_open)
+    void onShowXh() {
+        showPop(pop);
     }
 
     class FragAdapter extends FragmentPagerAdapter {
@@ -132,4 +142,50 @@ public class HomeFragment extends AppFragment {
         Factory.LogE("frag_context", getContext() + " * " + getActivity() + " ");
         super.onAttach(context);
     }
+
+    private PopupWindow popupWindow;
+
+    private void showPop(View view) {
+        if (popupWindow == null) {
+            popupWindow = new PopupWindow(getContext());
+        }
+        View inflate = LayoutInflater.from(getContext()).inflate(R.layout.am_xiaxao_lishi_layout, null, false);
+        View v1 = inflate.findViewById(R.id.txt_xz);
+        View v2 = inflate.findViewById(R.id.txt_ls);
+        v1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ConstantsRouter.Mine.MineDownloadActivity).navigation();
+                popupWindow.dismiss();
+
+            }
+        });
+        v2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ConstantsRouter.Mine.MineMySubscriptionActivity).navigation();
+                popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.setContentView(inflate);
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAsDropDown(view);
+
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+            Factory.toast("1");
+            return true;
+        } else {
+            Factory.toast("2");
+            return super.onBackPressed();
+        }
+
+    }
+
 }

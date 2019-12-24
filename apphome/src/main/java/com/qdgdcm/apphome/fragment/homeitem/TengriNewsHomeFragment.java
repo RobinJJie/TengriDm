@@ -30,6 +30,10 @@ import com.lk.robin.msgbuslibrary.server.MsgCodeConfig;
 import com.lk.robin.msgbuslibrary.server.MsgServer;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
+import com.shehuan.nicedialog.BaseNiceDialog;
+import com.shehuan.nicedialog.NiceDialog;
+import com.shehuan.nicedialog.ViewConvertListener;
+import com.shehuan.nicedialog.ViewHolder;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
@@ -194,7 +198,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setNestedScrollingEnabled(false);
     }
 
-    @OnClick({R2.id.root_home_biting, R2.id.root_home_jingpin, R2.id.root_home_gxsc, R2.id.root_home_ting_gb})
+    @OnClick({R2.id.root_home_biting, R2.id.root_home_jingpin, R2.id.root_home_gxsc, R2.id.root_home_ting_gb, R2.id.root_home_qiandao})
     void onClicks(View view) {
         int id = view.getId();
         if (id == R.id.root_home_biting) {
@@ -234,6 +238,8 @@ public class TengriNewsHomeFragment extends AppFragment {
             rsp.data = frag;
 
             MsgServer.init().save(rsp);
+        } else if (id == R.id.root_home_qiandao) {
+            showQd();
         }
     }
 
@@ -389,4 +395,22 @@ public class TengriNewsHomeFragment extends AppFragment {
             return imageView;
         }
     }
+
+
+    private void showQd() {
+        NiceDialog.init().setLayoutId(R.layout.am_qiandao_dialog_layout).setConvertListener(new ViewConvertListener() {
+            @Override
+            protected void convertView(ViewHolder holder, BaseNiceDialog dialog) {
+                View convertView = holder.getConvertView();
+                ImageView im = convertView.findViewById(R.id.image);
+                Glide.with(Objects.requireNonNull(getContext())).load(R.mipmap.ic_bg_diaog_qiandao).into(im);
+                View btn = convertView.findViewById(R.id.btn);
+                btn.setOnClickListener(v -> dialog.dismiss());
+            }
+        })
+                .setDimAmount(0.3f)     //调节灰色背景透明度[0-1]，默认0.5f
+                .setOutCancel(true)     //点击dialog外是否可取消，默认true
+                .show(getChildFragmentManager());
+    }
+
 }

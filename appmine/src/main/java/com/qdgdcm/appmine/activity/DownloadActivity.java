@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.qdgdcm.appmine.MineDataHelper;
 import com.qdgdcm.appmine.R;
@@ -17,7 +19,7 @@ import com.qdgdcm.appmine.adapter.DownloadAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+@Route(path = ConstantsRouter.Mine.MineDownloadActivity)
 public class DownloadActivity extends ActivityPresenter {
 
     @BindView(R2.id.iv_left)

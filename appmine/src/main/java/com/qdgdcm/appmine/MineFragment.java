@@ -11,7 +11,11 @@ import com.qdgdcm.appmine.activity.CollectionActivity;
 import com.qdgdcm.appmine.activity.DownloadActivity;
 import com.qdgdcm.appmine.activity.EditUserInfoActivity;
 import com.qdgdcm.appmine.activity.FeedbackActivity;
+import com.qdgdcm.appmine.activity.ListenRecentlyActivity;
+import com.qdgdcm.appmine.activity.MyActionActivity;
 import com.qdgdcm.appmine.activity.MyScoreActivity;
+import com.qdgdcm.appmine.activity.MySubscriptionActivity;
+import com.qdgdcm.appmine.activity.NewsActivity;
 import com.qdgdcm.appmine.activity.SignInActivity;
 
 import butterknife.OnClick;
@@ -37,21 +41,24 @@ public class MineFragment extends AppFragment {
     }
 
     @OnClick({R2.id.root_zjst, R2.id.root_wdsc, R2.id.root_hd, R2.id.root_yjfk, R2.id.root_setting,
-            R2.id.iv_logo, R2.id.fl_signin, R2.id.ll_score, R2.id.ll_download, R2.id.ll_message})
+            R2.id.iv_logo, R2.id.fl_signin, R2.id.ll_score, R2.id.ll_download, R2.id.ll_message, R2.id.ll_dingyue})
     void onClick(View view) {
         int id = view.getId();
         if (id == R.id.root_zjst) {
             //最近收听
+            startActivity(new Intent(getContext(), ListenRecentlyActivity.class));
         } else if (id == R.id.root_wdsc) {
             //我的收藏
             startActivity(new Intent(getContext(), CollectionActivity.class));
         } else if (id == R.id.root_hd) {
             //活动
+            startActivity(new Intent(getContext(), MyActionActivity.class));
         } else if (id == R.id.root_yjfk) {
             //意见反馈
             startActivity(new Intent(getContext(), FeedbackActivity.class));
         } else if (id == R.id.root_setting) {
             //设置
+            startActivity(new Intent(getContext(), SettingActivity.class));
         } else if (id == R.id.iv_logo) {
             startActivity(new Intent(getContext(), EditUserInfoActivity.class));
         } else if (id == R.id.fl_signin) {
@@ -62,6 +69,9 @@ public class MineFragment extends AppFragment {
             startActivity(new Intent(getContext(), DownloadActivity.class));
         } else if (id == R.id.ll_message) {
             //消息
+            startActivity(new Intent(getContext(), NewsActivity.class));
+        } else if (id == R.id.ll_dingyue) {
+            startActivity(new Intent(getContext(), MySubscriptionActivity.class));
         }
     }
 

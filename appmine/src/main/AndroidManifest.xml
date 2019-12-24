@@ -4,13 +4,20 @@
     package="com.qdgdcm.appmine">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.FeedbackActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
         <activity android:name=".activity.CollectionActivity" />
         <activity android:name=".activity.SubscribeActivity" />
         <activity android:name=".activity.SignInActivity" />
         <activity android:name=".activity.DownloadActivity" />
         <activity android:name=".activity.MyScoreActivity" />
         <activity android:name=".activity.EditUserInfoActivity" />
+        <activity android:name=".activity.CollectionActivity" />
+        <activity android:name=".activity.ActionBaomingActivity" />
+        <activity android:name=".activity.MyActionActivity" />
+        <activity android:name=".activity.ListenRecentlyActivity" />
+        <activity android:name=".activity.MySubscriptionActivity" />
+        <activity android:name=".activity.NewsActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
     </application>
 
 </manifest>

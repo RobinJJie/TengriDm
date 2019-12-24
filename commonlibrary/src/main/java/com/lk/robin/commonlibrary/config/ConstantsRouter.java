@@ -29,6 +29,8 @@ public interface ConstantsRouter {
 
     interface Mine{
         String MineHome="/app_mine/MineFragment";
+        String MineMySubscriptionActivity="/app_mine/MySubscriptionActivity";
+        String MineDownloadActivity="/app_mine/DownloadActivity";
     }
     interface Radio{
         String RadioHome="/app_radio/BroadcastFragment";
