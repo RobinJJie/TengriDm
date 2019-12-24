@@ -1,6 +1,7 @@
 package com.qdgdcm.appmine.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -78,15 +79,21 @@ public class MyActionActivity extends ActivityPresenter {
 
     private void setList(boolean isIng) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ReAdapter reAdapter = new ReAdapter(XiangchangDataHelper.getLiveHD());
+        ReAdapter reAdapter = new ReAdapter(this,XiangchangDataHelper.getLiveHD());
         reAdapter.setIng(isIng);
         recyclerView.setAdapter(reAdapter);
     }
 
     class ReAdapter extends RecyclerView.Adapter<ReAdapter.Vh> {
+        private Context context;
         private List<ContentBean> list;
 
         public ReAdapter(List<ContentBean> list) {
+            this.list = list;
+        }
+
+        public ReAdapter(Context context, List<ContentBean> list) {
+            this.context = context;
             this.list = list;
         }
 
@@ -121,7 +128,7 @@ public class MyActionActivity extends ActivityPresenter {
                 @Override
                 public void onClick(View v) {
                     if (isIng) {
-                        getApplicationContext().startActivity(new Intent(getApplicationContext(), ActionBaomingActivity.class));
+                        context.startActivity(new Intent(context, ActionBaomingActivity.class));
                     } else {
                         Factory.toast("活动已结束");
                     }
