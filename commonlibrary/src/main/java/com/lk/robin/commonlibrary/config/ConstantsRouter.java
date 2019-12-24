@@ -25,6 +25,7 @@ public interface ConstantsRouter {
         String LiveDetailActivity="/app_live/LiveDetailActivity";
         String PlayFMActivity="/app_radio/PlayFMActivity";
         String HomeClassifyFragment="/app_home/ClassifyFragment";
+        String HomeMoreMainHomeFragment="/app_home/MoreMainHomeFragment";
     }
 
     interface Mine{

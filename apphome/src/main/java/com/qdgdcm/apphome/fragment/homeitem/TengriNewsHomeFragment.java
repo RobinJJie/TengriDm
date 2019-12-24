@@ -124,6 +124,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
+        TextView txtMore=rootShSy.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("1"));
     }
 
     private void initZy() {
@@ -136,6 +138,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
+        TextView txtMore=rootZy.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("3"));
     }
 
     private void initQg() {
@@ -148,6 +152,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
+        TextView txtMore=rootQg.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("4"));
     }
 
 
@@ -161,6 +167,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
+        TextView txtMore=rootErT.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("6"));
     }
 
     @SuppressLint({"SetTextI18n", "ResourceType"})
@@ -184,6 +192,8 @@ public class TengriNewsHomeFragment extends AppFragment {
                 layout.addView(itemView);
             }
         }
+        TextView txtMore=rootYzSd.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("2"));
     }
 
     private void initXs() {
@@ -196,6 +206,8 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(adapterV2);
         mRecyclerView.setNestedScrollingEnabled(false);
+        TextView txtMore=rootXs.findViewById(R.id.txt_more);
+        txtMore.setOnClickListener(v -> showMore("5"));
     }
 
     @OnClick({R2.id.root_home_biting, R2.id.root_home_jingpin, R2.id.root_home_gxsc, R2.id.root_home_ting_gb, R2.id.root_home_qiandao})
@@ -241,6 +253,20 @@ public class TengriNewsHomeFragment extends AppFragment {
         } else if (id == R.id.root_home_qiandao) {
             showQd();
         }
+    }
+
+    private void showMore(String id){
+        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+        TurnToFrag frag = new TurnToFrag();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        frag.launchMode = TurnToFrag.FRAG_OPEN;
+        frag.fragHoust = ConstantsRouter.Home.HomeMoreMainHomeFragment;
+        frag.bundle = bundle;
+        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+        rsp.data = frag;
+
+        MsgServer.init().save(rsp);
     }
 
     class HomeAdapterV1 extends RecyclerView.Adapter<HomeAdapterV1.ViewHolder> {
