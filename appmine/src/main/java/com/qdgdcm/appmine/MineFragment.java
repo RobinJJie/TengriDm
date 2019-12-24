@@ -7,6 +7,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
+import com.qdgdcm.appmine.activity.CollectionActivity;
 import com.qdgdcm.appmine.activity.DownloadActivity;
 import com.qdgdcm.appmine.activity.EditUserInfoActivity;
 import com.qdgdcm.appmine.activity.MyScoreActivity;
@@ -42,6 +43,7 @@ public class MineFragment extends AppFragment {
             //最近收听
         } else if (id == R.id.root_wdsc) {
             //我的收藏
+            startActivity(new Intent(getContext(), CollectionActivity.class));
         } else if (id == R.id.root_hd) {
             //活动
         } else if (id == R.id.root_yjfk) {

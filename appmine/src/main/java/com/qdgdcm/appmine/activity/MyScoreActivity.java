@@ -41,6 +41,7 @@ public class MyScoreActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivLeft.setOnClickListener(view -> onBackPressed());
         rvList.setLayoutManager(new LinearLayoutManager(this));
         MyScoreAdapter adapter = new MyScoreAdapter(this);
         rvList.setAdapter(adapter);

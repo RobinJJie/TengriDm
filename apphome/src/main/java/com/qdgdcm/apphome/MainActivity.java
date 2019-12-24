@@ -2,16 +2,20 @@ package com.qdgdcm.apphome;
 
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.DpTool;
+import com.lk.robin.commonlibrary.tools.MyFMService;
+import com.lk.robin.commonlibrary.tools.MyFMUtils;
 import com.lk.robin.commonlibrary.widget.GlobalPlay;
 import com.lk.robin.msgbuslibrary.mag.TurnToFrag;
 import com.lk.robin.msgbuslibrary.server.MsgServer;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = ConstantsRouter.Home.HomeMainActivity)
-public class MainActivity extends ActivityPresenter implements MsgServer.ChangedListener<TurnToFrag> {
+public class MainActivity extends ActivityPresenter implements MsgServer.ChangedListener<TurnToFrag>, MyFMService.OnPlayStateChangedListener {
     private GlobalPlay globalplay;
     private MainFragment mainFragment;
 
@@ -53,10 +57,17 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
         playBar.setLayoutParams(layoutParams);
         playBar.addView(globalplay);
-        globalplay.show();
-        globalplay.play(R.mipmap.ic_app_logo);
-        globalplay.setProgress(1F);
-
+        globalplay.setOnClickListener(view -> ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
+        MyFMUtils.getInstance(this).addPlayListener(this);
+        if(MyFMUtils.getInstance(this).hasLoadSource()){
+            globalplay.setProgress(1f*MyFMUtils.getInstance(this).getProgress()/
+                    MyFMUtils.getInstance(this).getDuration());
+            if(MyFMUtils.getInstance(this).isPlaying()){
+                globalplay.play(R.mipmap.ic_local_fm_01);
+            }else {
+                globalplay.pause();
+            }
+        }
     }
 
     @Override
@@ -153,7 +164,42 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
 
     @Override
     protected void onDestroy() {
+        MyFMUtils.getInstance(this).removePlayListener(this);
         MsgServer.removeChangedListener(TurnToFrag.class, this);
         super.onDestroy();
+    }
+
+
+    @Override
+    public void onPrepare(String name) {
+        setProgress(0);
+    }
+
+    @Override
+    public void onStart(String name, int duration) {
+        globalplay.play(R.mipmap.ic_local_fm_01);
+    }
+
+    @Override
+    public void onProgress(int progress, int duration) {
+        float p = 1f*progress/duration;
+        globalplay.setProgress(p);
+    }
+
+    @Override
+    public void onPauseOrPlay(boolean isPlay) {
+        if(isPlay){
+            globalplay.play(R.mipmap.ic_local_fm_01);
+        }else {
+            globalplay.pause();
+        }
+    }
+
+    @Override
+    public void onComplete() { globalplay.pause(); }
+
+    @Override
+    public void onError(String error) {
+        globalplay.pause();
     }
 }

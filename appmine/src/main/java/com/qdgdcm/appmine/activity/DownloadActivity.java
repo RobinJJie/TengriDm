@@ -1,6 +1,7 @@
 package com.qdgdcm.appmine.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class DownloadActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivLeft.setOnClickListener(view -> onBackPressed());
         rvList.setLayoutManager(new LinearLayoutManager(this));
         DownloadAdapter adapter = new DownloadAdapter(this);
         rvList.setAdapter(adapter);

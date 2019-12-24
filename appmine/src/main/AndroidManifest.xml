@@ -4,7 +4,8 @@
     package="com.qdgdcm.appmine">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SubscribeActivity"></activity>
+        <activity android:name=".activity.CollectionActivity"></activity>
+        <activity android:name=".activity.SubscribeActivity" />
         <activity android:name=".activity.SignInActivity" />
         <activity android:name=".activity.DownloadActivity" />
         <activity android:name=".activity.MyScoreActivity" />

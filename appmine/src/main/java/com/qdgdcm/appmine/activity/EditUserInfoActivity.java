@@ -38,6 +38,7 @@ public class EditUserInfoActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivLeft.setOnClickListener(view -> onBackPressed());
         Glide.with(this).load(R.mipmap.ic_mine_head).into(rvLogo);
     }
 }

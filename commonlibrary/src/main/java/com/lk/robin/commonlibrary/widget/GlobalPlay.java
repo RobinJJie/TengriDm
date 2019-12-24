@@ -28,6 +28,8 @@ import com.lk.robin.commonlibrary.R;
 import com.lk.robin.commonlibrary.tools.DpTool;
 import com.lk.robin.commonlibrary.tools.GlideApp;
 import com.lk.robin.commonlibrary.tools.ImageTools;
+import com.lk.robin.commonlibrary.tools.MyFMService;
+import com.lk.robin.commonlibrary.tools.MyFMUtils;
 
 /**
  * Author: Thomas.<br/>
@@ -37,7 +39,7 @@ import com.lk.robin.commonlibrary.tools.ImageTools;
  * Email: 1071931588@qq.com<br/>
  * Description:
  */
-public class GlobalPlay extends View implements ValueAnimator.AnimatorUpdateListener {
+public class GlobalPlay extends View implements ValueAnimator.AnimatorUpdateListener{
     private static final String TAG = "GlobalPlay";
     private Paint mPaint;
     private Paint mBpPaint;
@@ -89,14 +91,12 @@ public class GlobalPlay extends View implements ValueAnimator.AnimatorUpdateList
         mPathEffect = new CornerPathEffect(DpTool.DpToPx(getContext(), 2));
     }
 
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
     }
-
 
     @Override
     protected synchronized void onDraw(Canvas canvas) {

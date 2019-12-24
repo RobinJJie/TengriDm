@@ -47,6 +47,7 @@ public class FMListActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivLeft.setOnClickListener(view -> onBackPressed());
         fmListAdapter = new FMListAdapter(this);
         fmListAdapter.setOnItemClickListener((type, position, bean) -> {
             startActivity(new Intent(this, PlayFMActivity.class));

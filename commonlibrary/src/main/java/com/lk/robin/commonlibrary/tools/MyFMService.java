@@ -143,7 +143,8 @@ public class MyFMService extends Service {
         }
 
         //设置歌曲播放的进度，单位为毫秒
-        public void seekTo(int mesc){
+        public void seekTo(int progress){
+            int mesc = Math.min(player.getDuration(),(int) (progress/100f*player.getDuration()));
             player.seekTo(mesc);
         }
 

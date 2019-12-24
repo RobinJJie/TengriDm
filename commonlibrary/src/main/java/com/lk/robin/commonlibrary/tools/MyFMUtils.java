@@ -9,14 +9,18 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import static android.content.Context.BIND_AUTO_CREATE;
 
-public class MyFMUtils implements ServiceConnection {
+public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChangedListener {
 
+    private boolean hasLoadSource;
     private Context sContext;
     private static MyFMUtils myFMUtils;
     private Intent fmIntent;
     private MyFMService.MyFMBinder fmBinder;
+    private ArrayList<MyFMService.OnPlayStateChangedListener> stateChangedListeners;
 
     private boolean isBindService;
 
@@ -27,6 +31,7 @@ public class MyFMUtils implements ServiceConnection {
         intentFilter.addAction("android.intent.action.HEADSET_PLUG");
         HeadsetReceiver headsetReceiver = new HeadsetReceiver();
         sContext.registerReceiver(headsetReceiver, intentFilter);
+        stateChangedListeners =  new ArrayList<>();
     }
 
     /**
@@ -80,6 +85,29 @@ public class MyFMUtils implements ServiceConnection {
         }
     }
 
+    public int getDuration(){
+        if(fmBinder!=null){
+            return fmBinder.getDuration();
+        }
+        return 0;
+    }
+
+    public int getProgress(){
+        if(fmBinder!=null){
+            return fmBinder.getCurrenPostion();
+        }
+        return 0;
+    }
+
+    public void setProgress(int progress){
+        if(fmBinder!=null && hasLoadSource)
+            fmBinder.seekTo(progress);
+    }
+
+    public boolean hasLoadSource() {
+        return hasLoadSource;
+    }
+
     public void playFM(String name, String source){
         if(fmBinder!=null){
             fmBinder.startPlay(name,source);
@@ -112,9 +140,22 @@ public class MyFMUtils implements ServiceConnection {
         }
     }
 
-    public void setPlayListener(MyFMService.OnPlayStateChangedListener listener){
-        if(fmBinder!=null)
-            fmBinder.setPlayStateChangedListener(listener);
+    /**
+     * 添加播放状态监听
+     * @param listener
+     */
+    public void addPlayListener(MyFMService.OnPlayStateChangedListener listener){
+        if(!stateChangedListeners.contains(listener)){
+            stateChangedListeners.add(listener);
+        }
+    }
+
+    /**
+     * 移除播放状态监听
+     * @param listener
+     */
+    public void removePlayListener(MyFMService.OnPlayStateChangedListener listener){
+        stateChangedListeners.remove(listener);
     }
 
     public void setPreparedListener(OnBindPreparedListener preparedListener) {
@@ -124,9 +165,10 @@ public class MyFMUtils implements ServiceConnection {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         fmBinder = (MyFMService.MyFMBinder) service;
+        isBindService = true;
+        fmBinder.setPlayStateChangedListener(this);
         if(preparedListener != null){
             preparedListener.onPrepare();
-            isBindService = true;
         }
     }
 
@@ -134,6 +176,7 @@ public class MyFMUtils implements ServiceConnection {
     public void onServiceDisconnected(ComponentName name) {
         fmIntent = null;
         fmBinder = null;
+        stateChangedListeners.clear();
     }
 
     //耳机插拔广播接收器
@@ -154,4 +197,56 @@ public class MyFMUtils implements ServiceConnection {
     public interface OnBindPreparedListener{
         void onPrepare();
     }
+
+    //=======================播放状态监听======================
+    @Override
+    public void onPrepare(String name) {
+        hasLoadSource = true;
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onPrepare(name);
+            }
+    }
+
+    @Override
+    public void onStart(String name, int duration) {
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onStart(name,duration);
+            }
+    }
+
+    @Override
+    public void onProgress(int progress, int duration) {
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onProgress(progress,duration);
+            }
+    }
+
+    @Override
+    public void onPauseOrPlay(boolean isPlay) {
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onPauseOrPlay(isPlay);
+            }
+    }
+
+    @Override
+    public void onComplete() {
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onComplete();
+            }
+    }
+
+    @Override
+    public void onError(String error) {
+        hasLoadSource = false;
+        if(stateChangedListeners.size()>0)
+            for (int i = 0; i < stateChangedListeners.size(); i++) {
+                stateChangedListeners.get(i).onError(error);
+            }
+    }
+
 }

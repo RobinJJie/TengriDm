@@ -3,6 +3,7 @@ package com.lk.robin.commonlibrary.app;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.lk.robin.commonlibrary.tools.MyFMUtils;
 
 /**
  * @author lubin
@@ -22,6 +23,8 @@ public class AppApplication extends Application {
         //路由初始化
         ARouter.init(this);
 
+        //启动音频服务
+        MyFMUtils.getInstance(this).startSingletonService();
     }
 
     public static AppApplication getInstance() {

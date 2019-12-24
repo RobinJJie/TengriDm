@@ -1,13 +1,9 @@
 package com.qdgdcm.appmine.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.qdgdcm.appmine.MineDataHelper;
@@ -38,6 +34,7 @@ public class SubscribeActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivLeft.setOnClickListener(view -> onBackPressed());
         rvList.setLayoutManager(new LinearLayoutManager(this));
         DownloadAdapter adapter = new DownloadAdapter(this);
         rvList.setAdapter(adapter);

@@ -31,6 +31,7 @@
             app:riv_border_color="@color/colorF5F5F5"/>
     </RelativeLayout>
     <TextView
+        android:id="@+id/tv_play_name"
         android:layout_margin="28dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/rl_cover"
@@ -42,10 +43,28 @@
         android:gravity="center_horizontal"
         android:textColor="@color/colorWhite"
         android:text="那些年"/>
+
+<!--    <com.lk.robin.commonlibrary.widget.NumberProgressBar-->
+<!--        android:id="@+id/progress2"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:layout_above="@+id/ll_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:progress_reached_color="@color/white"-->
+<!--        app:progress_unreached_color="@color/colorWhiteAlpha"-->
+<!--        app:progress_max="100"-->
+<!--        app:progress_current="0"-->
+<!--        app:progress_reached_bar_height="2dp"-->
+<!--        app:progress_unreached_bar_height="2dp"-->
+<!--        app:progress_text_color="@color/txtColorBlack"-->
+<!--        app:progress_text_size="12sp"/>-->
+
     <SeekBar
         android:id="@+id/progress"
         android:layout_above="@+id/ll_btn"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -55,6 +74,25 @@
         android:minHeight="2dp"
         android:progressDrawable="@drawable/rm_seekbar_bg"
         android:thumb="@drawable/rm_seekbar_thumb" />
+    <TextView
+        android:id="@+id/tv_current_progress"
+        android:layout_marginStart="14dp"
+        android:layout_above="@+id/ll_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="00:00"
+        android:textColor="@color/colorWhiteAlpha2"/>
+    <TextView
+        android:id="@+id/tv_total_progress"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:layout_above="@+id/ll_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="00:00"
+        android:textColor="@color/colorWhiteAlpha2"/>
     <LinearLayout
         android:id="@+id/ll_btn"
         android:layout_marginBottom="20dp"

@@ -23,6 +23,7 @@ public interface ConstantsRouter {
         String HomeMainSearchActivityFragment="/app_home/SearchActivityFragment";
         String HomeMainSearchInfoActivityFragment="/app_home/SearchInfoActivityFragment";
         String LiveDetailActivity="/app_live/LiveDetailActivity";
+        String PlayFMActivity="/app_radio/PlayFMActivity";
         String HomeClassifyFragment="/app_home/ClassifyFragment";
     }
 
