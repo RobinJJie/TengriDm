@@ -182,8 +182,10 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
 
     @Override
     public void onProgress(int progress, int duration) {
-        float p = 1f*progress/duration;
-        globalplay.setProgress(p);
+        if(duration>0){
+            float p = 1f*progress/duration;
+            globalplay.setProgress(p);
+        }
     }
 
     @Override

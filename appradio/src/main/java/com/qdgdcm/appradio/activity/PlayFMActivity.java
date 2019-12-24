@@ -148,8 +148,17 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
 
         if(MyFMUtils.getInstance(this).hasLoadSource()){
             isPrepare = true;
-            setProgress(MyFMUtils.getInstance(this).getProgress(),
-                    MyFMUtils.getInstance(this).getDuration());
+            if(MyFMUtils.getInstance(this).getDuration() < 0){//直播流
+                playerSeekbar.setEnabled(false);
+                currentProgress.setVisibility(View.INVISIBLE);
+                totalProgress.setVisibility(View.INVISIBLE);
+            }else {
+                currentProgress.setVisibility(View.VISIBLE);
+                totalProgress.setVisibility(View.VISIBLE);
+                playerSeekbar.setEnabled(true);
+                setProgress(MyFMUtils.getInstance(this).getProgress(),
+                        MyFMUtils.getInstance(this).getDuration());
+            }
             ivPlay.setVisibility(View.VISIBLE);
             pbLoading.setVisibility(View.GONE);
             if(MyFMUtils.getInstance(this).isPlaying()){
@@ -183,8 +192,8 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     }
 
     private void playAudio(){
-        MyFMUtils.getInstance(this).playFM("李荣浩-麻雀",
-                "http://music.163.com/song/media/outer/url?id=1407551413.mp3");
+        MyFMUtils.getInstance(this).playFM("CNR中国之声",
+                "https://lhttp.qingting.fm/live/386/64k.mp3");
     }
 
     private MyShareFragment shareFragment;
@@ -220,6 +229,7 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         isPrepare = true;
         ivPlay.setVisibility(View.GONE);
         pbLoading.setVisibility(View.VISIBLE);
+        playerSeekbar.setEnabled(false);
     }
 
     @Override
@@ -229,11 +239,21 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         ivPlay.setImageResource(R.drawable.ic_app_pause);
         pbLoading.setVisibility(View.GONE);
         rvCover.startAnimation(rotateAnimation);
-        totalProgress.setText(DateTimeTool.longToStr(duration,"mm:ss"));
+        if(duration <= 0){//直播流
+            playerSeekbar.setEnabled(false);
+            currentProgress.setVisibility(View.INVISIBLE);
+            totalProgress.setVisibility(View.INVISIBLE);
+        }else {
+            currentProgress.setVisibility(View.VISIBLE);
+            totalProgress.setVisibility(View.VISIBLE);
+            playerSeekbar.setEnabled(true);
+            totalProgress.setText(DateTimeTool.longToStr(duration,"mm:ss"));
+        }
     }
 
     @Override
     public void onProgress(int progress,int duration) {
+        Factory.LogE("progress",progress+"  duration："+duration);
         setProgress(progress,duration);
     }
 

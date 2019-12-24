@@ -72,7 +72,7 @@ public class MyFMService extends Service {
             mp.start();
             if(playStateChangedListener!=null){
                 int duration = mp.getDuration();
-                time(duration);
+                if(duration>0) time(duration);
                 playStateChangedListener.onStart(musicName,duration);
                 Log.e("myFM服务 进度", duration + "");
             }
@@ -126,7 +126,7 @@ public class MyFMService extends Service {
                     playStateChangedListener.onPauseOrPlay(false);
             } else {
                 player.start();
-                time(player.getDuration());
+                if(player.getDuration()>0) time(player.getDuration());
                 if(playStateChangedListener != null)
                     playStateChangedListener.onPauseOrPlay(true);
             }
