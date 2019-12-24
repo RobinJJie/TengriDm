@@ -184,7 +184,7 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
 
     private void playAudio(){
         MyFMUtils.getInstance(this).playFM("李荣浩-麻雀",
-                "http://m10.music.126.net/20191224143030/64f56a9640e690897f756e3d593155cd/ymusic/555b/0f58/0609/b1e0b087cb826dde13b21cbaa504f963.mp3");
+                "http://music.163.com/song/media/outer/url?id=1407551413.mp3");
     }
 
     private MyShareFragment shareFragment;
