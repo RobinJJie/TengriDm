@@ -45,7 +45,7 @@ public class CollectDanquFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         CollectDanquAdapter adapter = new CollectDanquAdapter(getContext());
         adapter.setOnItemClickListener((type, position, bean) ->
-                ARouter.getInstance().build(ConstantsRouter.Home.LiveDetailActivity).navigation());
+                ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
         recyclerView.setAdapter(adapter);
         adapter.refresh(MineDataHelper.getCollectDanqu());
     }

@@ -44,7 +44,7 @@ public class CollectLiveFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         CollectLiveAdapter adapter = new CollectLiveAdapter(getContext());
         adapter.setOnItemClickListener((type, position, bean) ->
-                ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
+                ARouter.getInstance().build(ConstantsRouter.Home.LiveDetailActivity).navigation());
         recyclerView.setAdapter(adapter);
         adapter.refresh(MineDataHelper.getLiveHD());
     }

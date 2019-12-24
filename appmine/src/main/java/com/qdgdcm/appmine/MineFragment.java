@@ -10,6 +10,7 @@ import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.qdgdcm.appmine.activity.CollectionActivity;
 import com.qdgdcm.appmine.activity.DownloadActivity;
 import com.qdgdcm.appmine.activity.EditUserInfoActivity;
+import com.qdgdcm.appmine.activity.FeedbackActivity;
 import com.qdgdcm.appmine.activity.MyScoreActivity;
 import com.qdgdcm.appmine.activity.SignInActivity;
 
@@ -48,6 +49,7 @@ public class MineFragment extends AppFragment {
             //活动
         } else if (id == R.id.root_yjfk) {
             //意见反馈
+            startActivity(new Intent(getContext(), FeedbackActivity.class));
         } else if (id == R.id.root_setting) {
             //设置
         } else if (id == R.id.iv_logo) {
