@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -14,6 +15,7 @@ import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.tools.DpTool;
+import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.commonlibrary.tools.MyFMService;
 import com.lk.robin.commonlibrary.tools.MyFMUtils;
 import com.lk.robin.commonlibrary.widget.GlobalPlay;
@@ -117,7 +119,7 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
         }
         taskFragLsit.remove(taskFragLsit.size() - 1);
         if (taskFragLsit.size() == 1) {
-            globalplay.setBackgroundColor(Color.TRANSPARENT);
+//            globalplay.setBackgroundColor(Color.TRANSPARENT);
         }
     }
 
@@ -149,6 +151,11 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
                     .add(R.id.root_view, newFragment, data.fragHoust)
                     .commit();
             taskFragLsit.add(newFragment);
+        }
+
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        if (fragments.size()>0){
+            Factory.LogE("frag_size",fragments.size()+"");
         }
     }
 

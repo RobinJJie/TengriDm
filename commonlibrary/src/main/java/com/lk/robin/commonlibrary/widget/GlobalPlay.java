@@ -45,7 +45,7 @@ public class GlobalPlay extends View implements ValueAnimator.AnimatorUpdateList
     private Paint mBpPaint;
     private float mWidth, mHeight;
     private int mUnreachColor = 0x88a6a6a6;
-    private int mReachedColor = 0xffff7050;
+    private int mReachedColor = Color.parseColor("#EE0093FF");
     private float mRadius;
     private float mBarWidth;
     private Bitmap mBitmap;
