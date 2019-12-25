@@ -118,7 +118,7 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         rvAlbum.setNestedScrollingEnabled(false);
         rvAlbum.setAdapter(albumListAdapter);
         FMListAdapter fmListAdapter = new FMListAdapter(this);
-        fmListAdapter.setShowDeleteOrPlay(false, true);
+        fmListAdapter.setShowDeleteOrPlay(false,true);
         rvFmList.setLayoutManager(new LinearLayoutManager(this));
         rvFmList.setNestedScrollingEnabled(false);
         rvFmList.setAdapter(fmListAdapter);
@@ -128,15 +128,15 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         rvFmList.setFocusable(false);
         nsRoot.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener)
                 (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-                    titleBg.setAlpha(Math.min(scrollY, 1140) / 1140f);
-                });
+            titleBg.setAlpha(Math.min(scrollY,1140)/1140f);
+        });
     }
 
-    private void initCover() {
+    private void initCover(){
         ivBack.setOnClickListener(view -> onBackPressed());
         ivShare.setOnClickListener(view -> showShare());
-        rlPrograms.setOnClickListener(view -> startActivity(new Intent(this, FMProgramsActivity.class)));
-        llPrograms.setOnClickListener(view -> startActivity(new Intent(this, ScheduleActivity.class)));
+        rlPrograms.setOnClickListener(view -> startActivity(new Intent(this,FMProgramsActivity.class)));
+        llPrograms.setOnClickListener(view -> startActivity(new Intent(this,ScheduleActivity.class)));
         Glide.with(this).load(R.mipmap.ic_local_fm_01).into(rvCover);
         rotateAnimation = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.anim_rotate_common);
         // 添加匀速转动动画
@@ -144,15 +144,15 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         rotateAnimation.setInterpolator(lir);
     }
 
-    private void initPlayer() {
+    private void initPlayer(){
 
-        if (MyFMUtils.getInstance(this).hasLoadSource()) {
+        if(MyFMUtils.getInstance(this).hasLoadSource()){
             isPrepare = true;
-            if (MyFMUtils.getInstance(this).getDuration() <= 0) {//直播流
+            if(MyFMUtils.getInstance(this).getDuration() <= 0){//直播流
                 playerSeekbar.setEnabled(false);
                 currentProgress.setVisibility(View.INVISIBLE);
                 totalProgress.setVisibility(View.INVISIBLE);
-            } else {
+            }else {
                 currentProgress.setVisibility(View.VISIBLE);
                 totalProgress.setVisibility(View.VISIBLE);
                 playerSeekbar.setEnabled(true);
@@ -161,31 +161,27 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
             }
             ivPlay.setVisibility(View.VISIBLE);
             pbLoading.setVisibility(View.GONE);
-            if (MyFMUtils.getInstance(this).isPlaying()) {
+            if(MyFMUtils.getInstance(this).isPlaying()){
                 ivPlay.setImageResource(R.drawable.ic_app_pause);
                 rvCover.startAnimation(rotateAnimation);
-            } else {
+            }else {
                 ivPlay.setImageResource(R.drawable.ic_app_play);
             }
         }
 
         MyFMUtils.getInstance(this).addPlayListener(this);
         ivPlay.setOnClickListener(view -> {
-            if (isPrepare) {
+            if(isPrepare){
                 MyFMUtils.getInstance(this).pause();
-            } else {
+            }else {
                 playAudio();
             }
         });
         playerSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            }
-
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
+            public void onStartTrackingTouch(SeekBar seekBar) {}
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 MyFMUtils.getInstance(PlayFMActivity.this).setProgress(seekBar.getProgress());
@@ -195,24 +191,23 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         Glide.with(this).load(R.drawable.rm_player_bg).into(playerBg);
     }
 
-    private void playAudio() {
+    private void playAudio(){
         MyFMUtils.getInstance(this).playFM("CNR中国之声",
                 "https://lhttp.qingting.fm/live/386/64k.mp3");
     }
 
     private MyShareFragment shareFragment;
-
-    public void showShare() {
-        if (shareFragment == null)
+    public void showShare(){
+        if(shareFragment == null)
             shareFragment = new MyShareFragment();
         shareFragment.show(getSupportFragmentManager(),
                 MyShareFragment.class.getSimpleName());
     }
 
-    private void setProgress(int progress, int duration) {
-        int p = (int) (progress * 100f / duration);
-        currentProgress.setText(DateTimeTool.longToStr(progress, "mm:ss"));
-        totalProgress.setText(DateTimeTool.longToStr(duration, "mm:ss"));
+    private void setProgress(int progress,int duration){
+        int p = (int) (progress*100f/duration);
+        currentProgress.setText(DateTimeTool.longToStr(progress,"mm:ss"));
+        totalProgress.setText(DateTimeTool.longToStr(duration,"mm:ss"));
         playerSeekbar.setProgress(p);
     }
 
@@ -238,36 +233,36 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     }
 
     @Override
-    public void onStart(String name, int duration) {
-        Log.e("name", String.valueOf(name));
+    public void onStart(String name,int duration) {
+        Log.e("name",String.valueOf(name));
         ivPlay.setVisibility(View.VISIBLE);
         ivPlay.setImageResource(R.drawable.ic_app_pause);
         pbLoading.setVisibility(View.GONE);
         rvCover.startAnimation(rotateAnimation);
-        if (duration <= 0) {//直播流
+        if(duration <= 0){//直播流
             playerSeekbar.setEnabled(false);
             currentProgress.setVisibility(View.INVISIBLE);
             totalProgress.setVisibility(View.INVISIBLE);
-        } else {
+        }else {
             currentProgress.setVisibility(View.VISIBLE);
             totalProgress.setVisibility(View.VISIBLE);
             playerSeekbar.setEnabled(true);
-            totalProgress.setText(DateTimeTool.longToStr(duration, "mm:ss"));
+            totalProgress.setText(DateTimeTool.longToStr(duration,"mm:ss"));
         }
     }
 
     @Override
-    public void onProgress(int progress, int duration) {
-        Factory.LogE("progress", progress + "  duration：" + duration);
-        setProgress(progress, duration);
+    public void onProgress(int progress,int duration) {
+        Factory.LogE("progress",progress+"  duration："+duration);
+        setProgress(progress,duration);
     }
 
     @Override
     public void onPauseOrPlay(boolean isPlay) {
-        if (isPlay) {
+        if(isPlay){
             ivPlay.setImageResource(R.drawable.ic_app_pause);
             rvCover.startAnimation(rotateAnimation);
-        } else {
+        }else {
             ivPlay.setImageResource(R.drawable.ic_app_play);
             rvCover.clearAnimation();
         }
@@ -276,9 +271,9 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     @Override
     public void onComplete() {
         currentProgress.setText(DateTimeTool
-                .longToStr(MyFMUtils.getInstance(this).getDuration(), "mm:ss"));
+                .longToStr(MyFMUtils.getInstance(this).getDuration(),"mm:ss"));
         totalProgress.setText(DateTimeTool
-                .longToStr(MyFMUtils.getInstance(this).getDuration(), "mm:ss"));
+                .longToStr(MyFMUtils.getInstance(this).getDuration(),"mm:ss"));
         ivPlay.setImageResource(R.drawable.ic_app_play);
         rvCover.clearAnimation();
     }
@@ -289,7 +284,6 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         ivPlay.setImageResource(R.drawable.ic_app_play);
         pbLoading.setVisibility(View.GONE);
         rvCover.clearAnimation();
-        Factory.toast("播放出错" + error);
+        Factory.toast("播放出错"+error);
     }
-
 }

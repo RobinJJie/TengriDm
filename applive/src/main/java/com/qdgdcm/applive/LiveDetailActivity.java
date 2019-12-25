@@ -13,6 +13,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
+import com.lk.robin.commonlibrary.app.MyShareFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.lk.robin.commonlibrary.widget.MyPagerAdapter;
@@ -58,6 +59,8 @@ public class LiveDetailActivity extends ActivityPresenter {
     @Override
     protected void initWidget() {
         super.initWidget();
+        ivBack.setOnClickListener(view -> onBackPressed());
+        ivShare.setOnClickListener(view -> showShare());
         MyPagerAdapter pageAdapter = new MyPagerAdapter(getSupportFragmentManager(),
                 new Fragment[]{new LiveDetailFragment(),new LiveCommentFragment()},
                 new String[]{"直播间","互动",});
@@ -110,6 +113,14 @@ public class LiveDetailActivity extends ActivityPresenter {
     @Override
     protected boolean statusBarLightMode() {
         return false;
+    }
+
+    private MyShareFragment shareFragment;
+    public void showShare(){
+        if(shareFragment == null)
+            shareFragment = new MyShareFragment();
+        shareFragment.show(getSupportFragmentManager(),
+                MyShareFragment.class.getSimpleName());
     }
 
 
