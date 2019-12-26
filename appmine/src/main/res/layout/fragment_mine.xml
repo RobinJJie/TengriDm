@@ -30,7 +30,7 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
         android:layout_toEndOf="@id/card_view_head"
-        android:text="KaCi"
+        android:text="腾格里fm"
         android:textColor="@color/txtColorBlack"
         android:textSize="21sp" />
 
