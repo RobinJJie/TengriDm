@@ -105,6 +105,11 @@ public class HomeFragment extends AppFragment {
         showPop(pop);
     }
 
+    @OnClick(R2.id.tab_to_home)
+    void onToHome(){
+        mViewPager.setCurrentItem(0);
+    }
+
     class FragAdapter extends FragmentPagerAdapter {
 
         public FragAdapter(@NonNull FragmentManager fm, int behavior) {

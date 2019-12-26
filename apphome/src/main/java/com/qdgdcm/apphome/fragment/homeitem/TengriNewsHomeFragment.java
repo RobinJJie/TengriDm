@@ -179,6 +179,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         layout.setPadding(20, 20, 20, 20);
         layout.setBackgroundResource(R.drawable.bg_home_yzsd_082633);
         List<ContentBean> yizhouShudan = HomDataHelper.getYizhouShudan();
+        layout.removeAllViews();
         if (yizhouShudan.size() >= 3) {
             for (int i = 0; i < 3; i++) {
                 View itemView = LayoutInflater.from(getContext()).inflate(R.layout.app_item_one_icon_02_layout, layout, false);

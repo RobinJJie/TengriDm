@@ -111,7 +111,7 @@ public class VarietyHomeFragment extends AppFragment {
             txtTitle.setText("婚恋树洞");
             shuhaiSehngyan.addAll(QingGanDataHelper.getQgHlsd());
         }else if ("3".equals(id)){
-            txtTitle.setText("轻知识");
+            txtTitle.setText("短音频");
             shuhaiSehngyan.addAll(WenHuaDataHelper.getWenHuaQzs());
         }
 
