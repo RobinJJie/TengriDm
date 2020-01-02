@@ -9,6 +9,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.lk.robin.langlibrary.bean.ContentBean;
+
 import java.util.ArrayList;
 
 import static android.content.Context.BIND_AUTO_CREATE;
@@ -21,6 +23,15 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
     private Intent fmIntent;
     private MyFMService.MyFMBinder fmBinder;
     private ArrayList<MyFMService.OnPlayStateChangedListener> stateChangedListeners;
+    public ContentBean contentBean;
+
+    public ContentBean getContentBean() {
+        return contentBean;
+    }
+
+    public void setContentBean(ContentBean contentBean) {
+        this.contentBean = contentBean;
+    }
 
     private boolean isBindService;
 
@@ -140,6 +151,17 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
         }
     }
 
+    public boolean isLoading(){
+        if(fmBinder!=null)
+            return fmBinder.isLoading();
+        return false;
+    }
+
+    public void release(){
+        if(fmBinder!=null)
+            fmBinder.release();
+    }
+
     /**
      * 添加播放状态监听
      * @param listener
@@ -201,6 +223,7 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
     //=======================播放状态监听======================
     @Override
     public void onPrepare(String name) {
+        Log.e("onPrepare",name);
         hasLoadSource = true;
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {
@@ -210,6 +233,7 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
 
     @Override
     public void onStart(String name, int duration) {
+        Log.e("onStart",name);
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {
                 stateChangedListeners.get(i).onStart(name,duration);
@@ -218,6 +242,7 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
 
     @Override
     public void onProgress(int progress, int duration) {
+        Log.e("onProgress","");
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {
                 stateChangedListeners.get(i).onProgress(progress,duration);
@@ -226,6 +251,7 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
 
     @Override
     public void onPauseOrPlay(boolean isPlay) {
+        Log.e("onPauseOrPlay",String.valueOf(isPlay));
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {
                 stateChangedListeners.get(i).onPauseOrPlay(isPlay);
@@ -234,6 +260,8 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
 
     @Override
     public void onComplete() {
+        Log.e("onComplete","");
+        hasLoadSource = false;
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {
                 stateChangedListeners.get(i).onComplete();
@@ -242,6 +270,7 @@ public class MyFMUtils implements ServiceConnection, MyFMService.OnPlayStateChan
 
     @Override
     public void onError(String error) {
+        Log.e("onError",error);
         hasLoadSource = false;
         if(stateChangedListeners.size()>0)
             for (int i = 0; i < stateChangedListeners.size(); i++) {

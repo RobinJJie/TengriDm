@@ -16,6 +16,7 @@ import io.reactivex.disposables.Disposable;
 public class MyFMService extends Service {
     private MediaPlayer player;
     private String musicName;
+    private boolean isLoading;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -32,6 +33,7 @@ public class MyFMService extends Service {
             player.setOnPreparedListener(this::startPlay);
             //播放完成监听
             player.setOnCompletionListener(mp -> {
+                isLoading = false;
                 if(playStateChangedListener!=null)
                     playStateChangedListener.onComplete();
                 if(mDisposable != null)
@@ -39,7 +41,10 @@ public class MyFMService extends Service {
             });
             //播放错误监听
             player.setOnErrorListener((mp, what, extra) -> {
-                mp.stop();
+                if(player.isPlaying())
+                    player.stop();
+                player.release();
+                isLoading = false;
                 if(playStateChangedListener!=null)
                     playStateChangedListener.onError("播放失败");
                 return false;
@@ -52,6 +57,7 @@ public class MyFMService extends Service {
         try {
             if(data != null){
                 Log.v("myFM服务", "播放"+data);
+                isLoading = true;
                 musicName = name;
                 player.reset();
                 player.setDataSource(data);
@@ -69,6 +75,7 @@ public class MyFMService extends Service {
 
     private void startPlay(MediaPlayer mp){
         try {
+            isLoading = false;
             mp.start();
             if(playStateChangedListener!=null){
                 int duration = mp.getDuration();
@@ -161,6 +168,17 @@ public class MyFMService extends Service {
             if(player.isPlaying())
                 player.stop();
             player.release();
+        }
+
+        public void release(){
+            if(mDisposable != null)
+                mDisposable.dispose();
+            if(player.isPlaying())
+                player.pause();
+        }
+
+        public boolean isLoading(){
+            return isLoading;
         }
     }
 

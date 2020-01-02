@@ -2,7 +2,9 @@ package com.lk.robin.langlibrary.bean;
 
 import androidx.annotation.IdRes;
 
-public class ContentBean {
+import java.io.Serializable;
+
+public class ContentBean implements Serializable {
     public String title;
     public String info;
     public String type;
@@ -14,4 +16,6 @@ public class ContentBean {
     public String ReadioMan;
     public String upDataTime;
     public String duration;
+
+    public String playUrl;
 }

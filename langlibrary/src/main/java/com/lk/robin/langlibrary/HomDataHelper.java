@@ -23,26 +23,26 @@ public class HomDataHelper {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
         bean1.id = 0;
-        bean1.title = "怪物大师（第二季）";
+        bean1.title = "乌兰牧骑之恋";
         bean1.type = Type_ErTong;
         bean1.info = "千万孩子自主选择的冒险正能量故事续集来袭！跟着布布路和他的小伙伴们继续踏上成为优秀怪物大师的历练之旅吧";
-        bean1.resId = R.mipmap.ic_local_et_zwdzjs1;
+        bean1.resId = R.mipmap.ic_local_sy16;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
-        bean2.id = 1;
-        bean2.title = "植物大战僵尸之功夫世界";
+        bean2.id = ZhuanJiDataHelper.KONGFEIZHUAN;
+        bean2.title = "孔飞传";
         bean2.type = Type_ErTong;
         bean2.info = "【每周六，每周日更新一集】故事结合孩子们最喜欢的时空穿越与冒险元素，融入大量奇思妙想的创意，彻底放飞想象力，精彩刺激乐不听。小朋友们，和我们一起坐上时空穿越车潘妮，跟随疯狂的戴夫、勇敢的豌豆射手和其他植物伙伴们，开启一段跌宕起伏的功夫世界之旅吧！";
-        bean2.resId = R.mipmap.ic_local_et_zwdzjs_gfsj;
+        bean2.resId = R.mipmap.ic_local_sy17;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
         bean3.id = 2;
-        bean3.title = "米小圈快乐西游记";
+        bean3.title = "乌兰夫";
         bean3.type = Type_ErTong;
         bean3.info = "米小圈化身孙悟空斩妖除魔";
-        bean3.resId = R.mipmap.ic_local_et_mxsyj;
+        bean3.resId = R.mipmap.ic_local_sy18;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
@@ -98,51 +98,51 @@ public class HomDataHelper {
     public static List<ContentBean> getShuhaiSehngyan() {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
-        bean1.id = 0;
-        bean1.title = "沉睡的人鱼之家【东野圭吾作品】";
+        bean1.id = ZhuanJiDataHelper.LVYEZHISHENG;
+        bean1.title = "大道朝天";
         bean1.info = "讲述一个关于“死亡”的故事，也是一个关于“生命”的故事";
         bean1.type = Type_ShuhaiShengyan;
-        bean1.resId = R.mipmap.ic_local_shsy_1;
+        bean1.resId = R.mipmap.ic_local_sy01;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
-        bean2.id = 1;
-        bean2.title = "侯氏笔记";
+        bean2.id = ZhuanJiDataHelper.XUNLU;
+        bean2.title = "驯鹿角上的彩带";
         bean2.info = "10年摸爬滚打，逐层剥开茫茫名利场的现状与秘密。";
         bean2.type = Type_ShuhaiShengyan;
-        bean2.resId = R.mipmap.ic_local_shsy_2;
+        bean2.resId = R.mipmap.ic_local_sy02;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
-        bean3.id = 2;
-        bean3.title = "《流浪地球》原著-刘慈欣经典作品集：最璀璨的银河";
+        bean3.id = ZhuanJiDataHelper.HUANGHE;
+        bean3.title = "黄河那道弯";
         bean3.info = "【限时免费】吴京主演《流浪地球》原著！会员畅听";
         bean3.type = Type_ShuhaiShengyan;
-        bean3.resId = R.mipmap.ic_local_shsy_3;
+        bean3.resId = R.mipmap.ic_local_sy03;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
-        bean4.id = 3;
-        bean4.title = "绝密档案";
+        bean4.id = ZhuanJiDataHelper.ZHUIMENG;
+        bean4.title = "永远的歌声";
         bean4.info = "注：近期有人在评论区冒充大碗，诸位小心提防，大碗本人不会在己方及任何其他节目的评论区现身。 悬疑案子，未解之谜，灵异事件… 是你我身边的玄幻？还是科学面纱下的伪装？ 还原事实，探索真相。 每周一下午四点，我们共同关注。 微/信/公/众/号：dawanshuogushi； 商务合作：dwjuemidangan@163.com。";
         bean4.type = Type_ShuhaiShengyan;
-        bean4.resId = R.mipmap.ic_local_shsy_4;
+        bean4.resId = R.mipmap.ic_local_sy04;
         list.add(bean4);
 
         ContentBean bean5 = new ContentBean();
         bean5.id = 4;
-        bean5.title = "吴晓波推荐管理必学课：团队管理40条军规";
+        bean5.title = "总理批示";
         bean5.info = "超50万人学习的 Google 管理智慧";
         bean5.type = Type_ShuhaiShengyan;
-        bean5.resId = R.mipmap.ic_local_shsy_5;
+        bean5.resId = R.mipmap.ic_local_sy05;
         list.add(bean5);
 
         ContentBean bean6 = new ContentBean();
-        bean6.id = 5;
-        bean6.title = "叶武滨时间管理九段";
+        bean6.id = ZhuanJiDataHelper.DALIAOGONGZHU;
+        bean6.title = "大辽公主";
         bean6.info = "叶武滨时间管理·2019全新升级， 首次公布时间管理九段法， 让你测到、学到、做到、得到， 10节课让你战胜拖延症，成为时间管理高手。";
         bean6.type = Type_ShuhaiShengyan;
-        bean6.resId = R.mipmap.ic_local_shsy_6;
+        bean6.resId = R.mipmap.ic_local_sy06;
         list.add(bean6);
 
         ContentBean bean7 = new ContentBean();
@@ -226,51 +226,51 @@ public class HomDataHelper {
     public static List<ContentBean> getZongyiList() {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
-        bean1.id = 0;
-        bean1.title = "老梁说电影";
+        bean1.id = ZhuanJiDataHelper.BEIFANGJIAREN;
+        bean1.title = "北方佳人";
         bean1.info = "国内首档以揭秘“电影里的生活,生活里的电影”为主题的漫谈式电视脱口秀日播栏目。 ";
         bean1.type = Type_Zongyi;
-        bean1.resId = R.mipmap.ic_loacl_zy_01;
+        bean1.resId = R.mipmap.ic_local_sy07;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
-        bean2.id = 0;
-        bean2.title = "宋小宝综艺小品爆笑合集";
+        bean2.id = ZhuanJiDataHelper.RILUOHEICHENG;
+        bean2.title = "日落黑城";
         bean2.info = "宋小宝近年火爆全国，受邀各大综艺，参加《欢乐喜剧人》、《食在囧途》、《笑声传奇》、《欢乐总动员》等，给更多观众带来欢乐。";
         bean2.type = Type_Zongyi;
-        bean2.resId = R.mipmap.ic_loacl_zy_02;
+        bean2.resId = R.mipmap.ic_local_sy08;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
         bean3.id = 0;
-        bean3.title = "《相声有新人》";
+        bean3.title = "喵卷卷来了";
         bean3.info = "全国首档相声类综艺竞演节目。全国相声新人集结角逐，究竟谁将C位出道？";
         bean3.type = Type_Zongyi;
-        bean3.resId = R.mipmap.ic_loacl_zy_03;
+        bean3.resId = R.mipmap.ic_local_sy09;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
         bean4.id = 0;
-        bean4.title = "我是唱作人";
+        bean4.title = "棒棒老师";
         bean4.info = "最近很火的一档音乐类综艺，里面有很多优秀的华语音乐人，介绍给大家。\n";
         bean4.type = Type_Zongyi;
-        bean4.resId = R.mipmap.ic_loacl_zy_04;
+        bean4.resId = R.mipmap.ic_local_sy10;
         list.add(bean4);
 
         ContentBean bean5 = new ContentBean();
         bean5.id = 0;
-        bean5.title = "蔡康永演讲集";
+        bean5.title = "永远的歌声";
         bean5.info = "蔡康永，中国台湾节目主持人、作家、编剧，与徐熙娣搭档主持综艺访谈节目《康熙来了》深受观众喜爱，曾夺得金钟奖最佳综艺节目主持人奖，7度主持金马奖颁奖典礼。2014年正式进入内地，参与中国首档说话达人秀《奇葩说》。出版过《那些男孩教我的事》、《蔡康永的说话之道》等多本著作。";
         bean5.type = Type_Zongyi;
-        bean5.resId = R.mipmap.ic_loacl_zy_05;
+        bean5.resId = R.mipmap.ic_local_sy11;
         list.add(bean5);
 
         ContentBean bean6 = new ContentBean();
-        bean6.id = 0;
-        bean6.title = "东北F4欢乐集结号";
+        bean6.id = ZhuanJiDataHelper.HONGLANGDU;
+        bean6.title = "红狼毒";
         bean6.info = "东北F4（东北天团）是由莱昂纳多·小沈阳、约翰尼·宋小宝、克里斯蒂安·刘能、尼古拉斯·赵四四个人物组成。四个人在戏剧界有着举足轻重的地位，他们的出现给中国喜剧界带来更多精彩的作品。";
         bean6.type = Type_Zongyi;
-        bean6.resId = R.mipmap.ic_loacl_zy_06;
+        bean6.resId = R.mipmap.ic_local_sy12;
         list.add(bean6);
 
         ContentBean bean7 = new ContentBean();
@@ -295,27 +295,27 @@ public class HomDataHelper {
     public static List<ContentBean> getQingGanList() {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
-        bean1.id = 0;
-        bean1.title = "原来你也在这里";
+        bean1.id = ZhuanJiDataHelper.PAJIECHUANQI;
+        bean1.title = "琶杰传奇";
         bean1.info = "个人公号“晓慧主播”。于千万人中，刚巧遇见了你……";
         bean1.type = Type_Qingan;
-        bean1.resId = R.mipmap.ic_local_qg_01;
+        bean1.resId = R.mipmap.ic_local_sy13;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
         bean2.id = 0;
-        bean2.title = "我要活得无可取代";
+        bean2.title = "草原英雄小姐妹";
         bean2.info = "女性心理健康，积极应对工作与生活，探讨人生价值等 新浪微博:妍妍淼 微信：yanyan2lg qq:83408201";
         bean2.type = Type_Qingan;
-        bean2.resId = R.mipmap.ic_local_qg_02;
+        bean2.resId = R.mipmap.ic_local_sy14;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
-        bean3.id = 0;
-        bean3.title = "程一电台";
+        bean3.id = ZhuanJiDataHelper.YUANGU;
+        bean3.title = "远古的呼唤-鄂尔多斯青铜器";
         bean3.info = "声音是有温度的，夜晚的声音会发光。睡前一段优美文字，一首暖心歌曲。程一电台，用声音温暖每个有你的夜晚，在你耳边伴你入眠。新浪微博：DJ程一，微信公众号：DJ程一（ID : djchengyi），QQ群：348166503（①群），384016829（②群）。";
         bean3.type = Type_Qingan;
-        bean3.resId = R.mipmap.ic_local_qg_03;
+        bean3.resId = R.mipmap.ic_local_sy15;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();

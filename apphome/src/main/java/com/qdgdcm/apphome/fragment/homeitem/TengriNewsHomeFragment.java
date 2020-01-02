@@ -300,6 +300,7 @@ public class TengriNewsHomeFragment extends AppFragment {
                     bundle.putString("title", list.get(position).title);
                     bundle.putString("info", list.get(position).info);
                     bundle.putInt("ic", list.get(position).resId);
+                    bundle.putInt("id", list.get(position).id);
                     frag.launchMode = TurnToFrag.FRAG_OPEN;
                     frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
                     frag.bundle = bundle;

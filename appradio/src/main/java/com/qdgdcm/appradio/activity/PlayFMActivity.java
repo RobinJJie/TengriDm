@@ -1,6 +1,8 @@
 package com.qdgdcm.appradio.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -28,6 +30,7 @@ import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.commonlibrary.tools.MyFMService;
 import com.lk.robin.commonlibrary.tools.MyFMUtils;
 import com.lk.robin.commonlibrary.widget.round.RoundedImageView;
+import com.lk.robin.langlibrary.bean.ContentBean;
 import com.qdgdcm.appradio.FMDataHelper;
 import com.qdgdcm.appradio.R;
 import com.qdgdcm.appradio.R2;
@@ -93,6 +96,10 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     RelativeLayout rlPrograms;
     private boolean isPrepare;
     private RotateAnimation rotateAnimation;
+    private int id,ic;
+    private String title,info;
+    private ContentBean contentBean;
+
 
     @Override
     protected BaseContract.Presenter initPresenter() {
@@ -113,6 +120,10 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     }
 
     private void initList() {
+        tvTitle.setText("中央人民广播电视台");
+        tvNowTitle.setText("经典音乐广播");
+        Glide.with(this).load(R.mipmap.ic_local_fm_01).into(rvCover);
+
         AlbumListAdapter albumListAdapter = new AlbumListAdapter(this);
         rvAlbum.setLayoutManager(new LinearLayoutManager(this));
         rvAlbum.setNestedScrollingEnabled(false);
@@ -137,35 +148,48 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         ivShare.setOnClickListener(view -> showShare());
         rlPrograms.setOnClickListener(view -> startActivity(new Intent(this,FMProgramsActivity.class)));
         llPrograms.setOnClickListener(view -> startActivity(new Intent(this,ScheduleActivity.class)));
-        Glide.with(this).load(R.mipmap.ic_local_fm_01).into(rvCover);
         rotateAnimation = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.anim_rotate_common);
         // 添加匀速转动动画
         LinearInterpolator lir = new LinearInterpolator();
         rotateAnimation.setInterpolator(lir);
     }
 
+    @SuppressLint("ResourceType")
     private void initPlayer(){
 
         if(MyFMUtils.getInstance(this).hasLoadSource()){
-            isPrepare = true;
-            if(MyFMUtils.getInstance(this).getDuration() <= 0){//直播流
+            if(MyFMUtils.getInstance(this).isLoading()){
+                ivPlay.setVisibility(View.GONE);
+                pbLoading.setVisibility(View.VISIBLE);
                 playerSeekbar.setEnabled(false);
-                currentProgress.setVisibility(View.INVISIBLE);
-                totalProgress.setVisibility(View.INVISIBLE);
             }else {
-                currentProgress.setVisibility(View.VISIBLE);
-                totalProgress.setVisibility(View.VISIBLE);
-                playerSeekbar.setEnabled(true);
-                setProgress(MyFMUtils.getInstance(this).getProgress(),
-                        MyFMUtils.getInstance(this).getDuration());
-            }
-            ivPlay.setVisibility(View.VISIBLE);
-            pbLoading.setVisibility(View.GONE);
-            if(MyFMUtils.getInstance(this).isPlaying()){
-                ivPlay.setImageResource(R.drawable.ic_app_pause);
-                rvCover.startAnimation(rotateAnimation);
-            }else {
-                ivPlay.setImageResource(R.drawable.ic_app_play);
+                isPrepare = true;
+                if(MyFMUtils.getInstance(this).getDuration() <= 0){//直播流
+                    playerSeekbar.setEnabled(false);
+                    currentProgress.setVisibility(View.INVISIBLE);
+                    totalProgress.setVisibility(View.INVISIBLE);
+                }else {
+                    currentProgress.setVisibility(View.VISIBLE);
+                    totalProgress.setVisibility(View.VISIBLE);
+                    playerSeekbar.setEnabled(true);
+                    setProgress(MyFMUtils.getInstance(this).getProgress(),
+                            MyFMUtils.getInstance(this).getDuration());
+                }
+                ivPlay.setVisibility(View.VISIBLE);
+                pbLoading.setVisibility(View.GONE);
+                if(MyFMUtils.getInstance(this).isPlaying()){
+                    ivPlay.setImageResource(R.drawable.ic_app_pause);
+                    rvCover.startAnimation(rotateAnimation);
+                }else {
+                    ivPlay.setImageResource(R.drawable.ic_app_play);
+                }
+
+                ContentBean contentBean = MyFMUtils.getInstance(this).getContentBean();
+                if(contentBean != null){
+                    Glide.with(this).load(contentBean.resId).into(rvCover);
+                    tvTitle.setText(contentBean.info);
+                    tvNowTitle.setText(contentBean.title);
+                }
             }
         }
 
@@ -191,7 +215,31 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         Glide.with(this).load(R.drawable.rm_player_bg).into(playerBg);
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        Bundle bundle = getIntent().getBundleExtra("bundle");
+        if(bundle != null){
+            title = bundle.getString("title","驯鹿角上的丝带");
+            info = bundle.getString("info");
+            ic = bundle.getInt("ic",R.mipmap.ic_local_sy02);
+            id = bundle.getInt("id",0);
+            contentBean = (ContentBean) bundle.getSerializable("bean");
+            Glide.with(this).load(ic).into(rvCover);
+            tvTitle.setText(title);
+            tvNowTitle.setText(contentBean.title);
+            if(contentBean != null){
+                contentBean.info = title;
+                contentBean.resId = ic;
+                MyFMUtils.getInstance(this).setContentBean(contentBean);
+                MyFMUtils.getInstance(this).release();
+                MyFMUtils.getInstance(this).playFM(contentBean.title, contentBean.playUrl);
+            }
+        }
+    }
+
     private void playAudio(){
+        MyFMUtils.getInstance(this).release();
         MyFMUtils.getInstance(this).playFM("CNR中国之声",
                 "https://lhttp.qingting.fm/live/386/64k.mp3");
     }
@@ -226,7 +274,6 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     @Override
     public void onPrepare(String name) {
         tvPlayName.setText(name);
-        isPrepare = true;
         ivPlay.setVisibility(View.GONE);
         pbLoading.setVisibility(View.VISIBLE);
         playerSeekbar.setEnabled(false);
@@ -235,6 +282,7 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
     @Override
     public void onStart(String name,int duration) {
         Log.e("name",String.valueOf(name));
+        isPrepare = true;
         ivPlay.setVisibility(View.VISIBLE);
         ivPlay.setImageResource(R.drawable.ic_app_pause);
         pbLoading.setVisibility(View.GONE);

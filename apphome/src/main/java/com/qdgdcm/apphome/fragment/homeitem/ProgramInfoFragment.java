@@ -23,6 +23,7 @@ import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.tools.Factory;
 import com.lk.robin.langlibrary.QingGanDataHelper;
 import com.lk.robin.langlibrary.XiangShengDataHelper;
+import com.lk.robin.langlibrary.ZhuanJiDataHelper;
 import com.lk.robin.langlibrary.bean.ContentBean;
 import com.qdgdcm.apphome.R;
 import com.qdgdcm.apphome.R2;
@@ -66,6 +67,8 @@ public class ProgramInfoFragment extends AppFragment {
     RecyclerView mRecyclerView;
     @BindView(R2.id.txt_xgnr)
     TextView txtXgnr;
+    private int id,ic;
+    private String title,info;
 
     public ProgramInfoFragment() {
         // Required empty public constructor
@@ -83,9 +86,10 @@ public class ProgramInfoFragment extends AppFragment {
         setBar(R.id.root_jm);
         Bundle arguments = getArguments();
         if (arguments != null) {
-            String title = arguments.getString("title");
-            String info = arguments.getString("info");
-            int ic = arguments.getInt("ic");
+            title = arguments.getString("title");
+            info = arguments.getString("info");
+            ic = arguments.getInt("ic");
+            id = arguments.getInt("id");
             imageHead.setImageResource(ic);
             txtTitle.setText(title);
             txtJJ.setText(info);
@@ -154,7 +158,7 @@ public class ProgramInfoFragment extends AppFragment {
         JieMuAdapter adapter = new JieMuAdapter();
         mRecyclerView.setAdapter(adapter);
         list.clear();
-        list.addAll(QingGanDataHelper.getQgJybjm());
+        list.addAll(ZhuanJiDataHelper.getPlayList(id));
         adapter.notifyDataSetChanged();
     }
 
@@ -221,12 +225,20 @@ public class ProgramInfoFragment extends AppFragment {
         @SuppressLint("ResourceType")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.txtJi.setText(list.get(position).duration + "  12月29日");
+            holder.txtJi.setText("20:10  12月29日");
             holder.txtInfo.setText(String.valueOf(position + 1));
             holder.txtTitle.setText(list.get(position).title);
-            holder.readCount.setText(list.get(position).countRead);
+            holder.readCount.setText("22.9万");
             holder.image.setOnClickListener(v -> showXz());
-            holder.itemView.setOnClickListener(v -> ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).navigation());
+            holder.itemView.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("bean",list.get(position));
+                bundle.putInt("id",id);
+                bundle.putString("title",title);
+                bundle.putInt("ic",ic);
+                bundle.putString("info",info);
+                ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
+            });
         }
 
         @Override
