@@ -26,6 +26,7 @@
             app:tabSelectedTextColor="@color/colorMainTheme"
             app:tabMode="auto"
             app:tabGravity="fill"
+            app:tabTextAppearance="@style/tabTxtSize"
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorFullWidth="false"
             android:id="@+id/tab"
