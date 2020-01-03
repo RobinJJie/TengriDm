@@ -87,7 +87,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mBanner.setImageLoader(new GlideImageLoader());
         List<ContentBean> bannerList = HomDataHelper.getBannerList();
         List<Integer> ids = new ArrayList<>();
-        for (int i = 0; i < bannerList.size(); i++) {
+        for (int i = 0; i < 4; i++) {
             ids.add(bannerList.get(i).resId);
         }
         mBanner.setImages(ids);
@@ -97,12 +97,26 @@ public class TengriNewsHomeFragment extends AppFragment {
         mBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
+//                MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+//                TurnToFrag frag = new TurnToFrag();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("title", bannerList.get(position).title);
+//                bundle.putString("info", bannerList.get(position).info);
+//                bundle.putInt("ic", bannerList.get(position).resId);
+//                frag.launchMode = TurnToFrag.FRAG_OPEN;
+//                frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+//                frag.bundle = bundle;
+//                rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+//                rsp.data = frag;
+//
+//                MsgServer.init().save(rsp);
                 MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
                 TurnToFrag frag = new TurnToFrag();
                 Bundle bundle = new Bundle();
                 bundle.putString("title", bannerList.get(position).title);
                 bundle.putString("info", bannerList.get(position).info);
                 bundle.putInt("ic", bannerList.get(position).resId);
+                bundle.putInt("id", bannerList.get(position).id);
                 frag.launchMode = TurnToFrag.FRAG_OPEN;
                 frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
                 frag.bundle = bundle;

@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.lk.robin.commonlibrary.app.ActivityPresenter;
+import com.lk.robin.commonlibrary.config.ConstantsRouter;
 import com.lk.robin.commonlibrary.presenter.BaseContract;
 import com.qdgdcm.appradio.FMDataHelper;
 import com.qdgdcm.appradio.R;
@@ -50,7 +52,15 @@ public class FMListActivity extends ActivityPresenter {
         ivLeft.setOnClickListener(view -> onBackPressed());
         fmListAdapter = new FMListAdapter(this);
         fmListAdapter.setOnItemClickListener((type, position, bean) -> {
-            startActivity(new Intent(this, PlayFMActivity.class));
+            bean.playUrl = "https://lhttp.qingting.fm/live/386/64k.mp3";
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("bean",bean);
+            bundle.putInt("id",0);
+            bundle.putString("title",bean.title);
+            bundle.putInt("ic",bean.resId);
+            bundle.putString("info",bean.info);
+            ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
+//            startActivity(new Intent(this, PlayFMActivity.class));
         });
         rvList.setLayoutManager(new LinearLayoutManager(this));
         rvList.setNestedScrollingEnabled(false);

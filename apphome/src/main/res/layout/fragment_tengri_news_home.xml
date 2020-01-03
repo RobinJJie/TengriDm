@@ -165,6 +165,7 @@
             android:layout_marginTop="28dp" />
 
         <include
+            android:visibility="gone"
             android:id="@+id/root_xs"
             layout="@layout/frag_item_title_recycler_view_layout"
             android:layout_width="match_parent"
