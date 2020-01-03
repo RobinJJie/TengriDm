@@ -1,10 +1,14 @@
 package com.qdgdcm.tengridemo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -36,8 +40,8 @@ public class StartActivity extends AppCompatActivity {
         }
 
 
-//        ImageView imageView = findViewById(R.id.image);
-//        Glide.with(this).load(R.mipmap.ic_app_start_page).into(imageView);
+        ImageView imageView = findViewById(R.id.image);
+        Glide.with(this).load(R.mipmap.ic_main_background_v2).into(imageView);
 //
 //        TimerTool timerTool=new TimerTool(2000,900);
 //        timerTool.setOnTimer(new TimerTool.OnTimer() {
@@ -53,8 +57,28 @@ public class StartActivity extends AppCompatActivity {
 //            }
 //        });
 //        timerTool.start();
-        ARouter.getInstance().build(ConstantsRouter.Home.HomeMainActivity).navigation();
-        finish();
-
+//        ARouter.getInstance().build(ConstantsRouter.Home.HomeMainActivity).navigation();
+//        finish();
+        Message message = handler.obtainMessage(1010);
+        handler.sendMessageDelayed(message, 1000);
     }
+
+    int a=1;
+    @SuppressLint("HandlerLeak")
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            Message message = handler.obtainMessage(1010);
+            handler.sendMessageDelayed(message, 1000);
+            if (msg.what==1010){
+                a++;
+            }
+            if (a==2){
+                ARouter.getInstance().build(ConstantsRouter.Home.HomeMainActivity).navigation();
+                finish();
+            }
+
+        }
+    };
 }

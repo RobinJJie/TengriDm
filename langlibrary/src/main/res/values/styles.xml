@@ -12,7 +12,7 @@
     <style name="AppTheme.NoStatusBar.StartPage">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@mipmap/ic_app_start_page</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
@@ -30,5 +30,7 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-
+    <style name="tabTxtSize">
+        <item name="android:textSize">15sp</item>
+    </style>
 </resources>
