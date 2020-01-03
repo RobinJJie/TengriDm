@@ -18,8 +18,8 @@
         <com.google.android.material.tabs.TabLayout
             app:tabMaxWidth="60dp"
             app:tabMinWidth="40dp"
-            app:tabPaddingStart="10dp"
-            app:tabPaddingEnd="10dp"
+            app:tabPaddingStart="8dp"
+            app:tabPaddingEnd="8dp"
             app:tabIndicatorColor="@color/colorMainTheme"
             app:tabIndicatorHeight="2dp"
             app:tabTextColor="@color/txtColorGray"
@@ -32,7 +32,7 @@
             android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:layout_marginStart="120dp"
+            android:layout_marginStart="116dp"
             android:layout_marginEnd="36dp" />
         <ImageView
             android:layout_marginTop="7dp"

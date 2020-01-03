@@ -281,7 +281,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
         rsp.data = frag;
 
-        MsgServer.init().save(rsp);
+//        MsgServer.init().save(rsp); 更多跳转
     }
 
     class HomeAdapterV1 extends RecyclerView.Adapter<HomeAdapterV1.ViewHolder> {
