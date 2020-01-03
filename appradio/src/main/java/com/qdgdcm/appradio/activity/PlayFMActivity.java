@@ -196,8 +196,10 @@ public class PlayFMActivity extends ActivityPresenter implements MyFMService.OnP
         MyFMUtils.getInstance(this).addPlayListener(this);
         ivPlay.setOnClickListener(view -> {
             if(isPrepare){
+                Factory.LogE("pause","");
                 MyFMUtils.getInstance(this).pause();
             }else {
+                Factory.LogE("playAudio","");
                 playAudio();
             }
         });

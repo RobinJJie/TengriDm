@@ -83,7 +83,6 @@ public class ProgramInfoFragment extends AppFragment {
     @Override
     protected void initData() {
         super.initData();
-        setBar(R.id.root_jm);
         Bundle arguments = getArguments();
         if (arguments != null) {
             title = arguments.getString("title");
@@ -101,7 +100,7 @@ public class ProgramInfoFragment extends AppFragment {
                 onHomeBack();
             }
         });
-
+        setBar(R.id.root_jm);
     }
 
     private void setBar(int id) {

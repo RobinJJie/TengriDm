@@ -43,7 +43,9 @@ public class MyFMService extends Service {
             player.setOnErrorListener((mp, what, extra) -> {
                 if(player.isPlaying())
                     player.stop();
-                player.release();
+                player.reset();
+                if(mDisposable != null)
+                    mDisposable.dispose();
                 isLoading = false;
                 if(playStateChangedListener!=null)
                     playStateChangedListener.onError("播放失败");
@@ -116,7 +118,12 @@ public class MyFMService extends Service {
     class MyFMBinder extends Binder {
         //判断是否处于播放状态
         public boolean isPlaying(){
-            return player.isPlaying();
+            try {
+                return player.isPlaying();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+                return false;
+            }
         }
 
         public void startPlay(String name, String url){
@@ -125,34 +132,52 @@ public class MyFMService extends Service {
 
         //播放或暂停歌曲
         public void play() {
-            if (player.isPlaying()) {
-                player.pause();
-                if(mDisposable != null)
-                    mDisposable.dispose();
-                if(playStateChangedListener != null)
-                    playStateChangedListener.onPauseOrPlay(false);
-            } else {
-                player.start();
-                if(player.getDuration()>0) time(player.getDuration());
-                if(playStateChangedListener != null)
-                    playStateChangedListener.onPauseOrPlay(true);
+            try {
+                if (player.isPlaying()) {
+                    player.pause();
+                    if(mDisposable != null)
+                        mDisposable.dispose();
+                    if(playStateChangedListener != null)
+                        playStateChangedListener.onPauseOrPlay(false);
+                } else {
+                    player.start();
+                    if(player.getDuration()>0) time(player.getDuration());
+                    if(playStateChangedListener != null)
+                        playStateChangedListener.onPauseOrPlay(true);
+                }
+            }catch (Exception e){
+                Factory.LogE("play",e.toString());
             }
         }
 
         //返回歌曲的长度，单位为毫秒
         public int getDuration(){
-            return player.getDuration();
+            try {
+                return player.getDuration();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+                return 0;
+            }
         }
 
         //返回歌曲目前的进度，单位为毫秒
         public int getCurrenPostion(){
-            return player.getCurrentPosition();
+            try {
+                return player.getCurrentPosition();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+                return 0;
+            }
         }
 
         //设置歌曲播放的进度，单位为毫秒
         public void seekTo(int progress){
-            int mesc = Math.min(player.getDuration(),(int) (progress/100f*player.getDuration()));
-            player.seekTo(mesc);
+            try {
+                int mesc = Math.min(player.getDuration(),(int) (progress/100f*player.getDuration()));
+                player.seekTo(mesc);
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+            }
         }
 
         public void setPlayStateChangedListener(OnPlayStateChangedListener Listener) {
@@ -160,21 +185,33 @@ public class MyFMService extends Service {
         }
 
         public void stop(){
-            if(player.isPlaying())
-                player.stop();
+            try {
+                if(player.isPlaying())
+                    player.stop();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+            }
         }
 
         public void stopAndRelease(){
-            if(player.isPlaying())
-                player.stop();
-            player.release();
+            try {
+                if(player.isPlaying())
+                    player.stop();
+                player.release();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+            }
         }
 
         public void release(){
-            if(mDisposable != null)
-                mDisposable.dispose();
-            if(player.isPlaying())
-                player.pause();
+            try {
+                if(mDisposable != null)
+                    mDisposable.dispose();
+                if(player.isPlaying())
+                    player.pause();
+            } catch (Exception e){
+                Factory.LogE("play",e.toString());
+            }
         }
 
         public boolean isLoading(){
