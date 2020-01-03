@@ -171,6 +171,8 @@ public class MainActivity extends ActivityPresenter implements MsgServer.Changed
 
     @Override
     protected void onDestroy() {
+        if(MyFMUtils.getInstance(this).isPlaying())
+            MyFMUtils.getInstance(this).pause();
         MyFMUtils.getInstance(this).removePlayListener(this);
         MsgServer.removeChangedListener(TurnToFrag.class, this);
         super.onDestroy();
