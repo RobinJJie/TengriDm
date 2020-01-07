@@ -45,7 +45,7 @@ public class HomeFragment extends AppFragment {
     @BindView(R2.id.ic_open)
     View pop;
     private List<Fragment> list = new ArrayList<>();
-    private String[] tabTitle = {"首页", "广播", "听书", "综艺", "情感", "文化", "相声"};
+    private String[] tabTitle = {"首页", "广播", "听书", "蒙古语", "情感", "文化", "相声"};
 
     public HomeFragment() {
         // Required empty public constructor

@@ -130,7 +130,7 @@ public class TengriNewsHomeFragment extends AppFragment {
 
     private void initShSy() {
         TextView txtTitle = rootShSy.findViewById(R.id.txt_title);
-        txtTitle.setText("书海盛宴");
+        txtTitle.setText("百灵悦听");
         RecyclerView mRecyclerView = rootShSy.findViewById(R.id.recycler_view);
         List<ContentBean> shuhaiSehngyan = HomDataHelper.getShuhaiSehngyan();
         HomeAdapterV1 adapterV1 = new HomeAdapterV1(shuhaiSehngyan);
