@@ -87,7 +87,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mBanner.setImageLoader(new GlideImageLoader());
         List<ContentBean> bannerList = HomDataHelper.getBannerList();
         List<Integer> ids = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < bannerList.size(); i++) {
             ids.add(bannerList.get(i).resId);
         }
         mBanner.setImages(ids);

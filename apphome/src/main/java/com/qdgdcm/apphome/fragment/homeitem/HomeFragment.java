@@ -106,7 +106,7 @@ public class HomeFragment extends AppFragment {
     }
 
     @OnClick(R2.id.tab_to_home)
-    void onToHome(){
+    void onToHome() {
         mViewPager.setCurrentItem(0);
     }
 
