@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
@@ -65,6 +66,8 @@ public class BroadcastFragment extends AppFragment {
     PickHorizontalView pvFmList;
     @BindView(R2.id.image_back)
     View back;
+    private ContentBean currentBean;
+
     public BroadcastFragment() {
         // Required empty public constructor
     }
@@ -82,7 +85,13 @@ public class BroadcastFragment extends AppFragment {
         });
         setStyle("广播","音乐随身听");
         ivPlay.setOnClickListener(view -> {
-            startActivity(new Intent(getContext(), PlayFMActivity.class));
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("bean",currentBean);
+            bundle.putInt("id",0);
+            bundle.putString("title","广播");
+            bundle.putInt("ic",currentBean.resId);
+            bundle.putString("info","广播");
+            ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
         });
 
         Glide.with(Objects.requireNonNull(getContext())).load(R.mipmap.ic_bg_broadcast).into(pvBg);
@@ -91,16 +100,24 @@ public class BroadcastFragment extends AppFragment {
         txtSyjName.setText(FMDataHelper.getYYSList().get(0).title);
         PickableFmAdapter fmAdapter = new PickableFmAdapter(getContext());
         fmAdapter.setItemSelectedListener((position, bean) -> {
+            currentBean = bean;
             txtSyjName.setText(bean.title);
-            txtSyjContent.setText("正在直播:大力水手");
+            txtSyjContent.setText("正在直播");
         });
         pvFmList.setAdapter(fmAdapter);
         fmAdapter.refresh(FMDataHelper.getYYSList());
+        currentBean = FMDataHelper.getYYSList().get(0);
 
         FMListAdapter fmListAdapter = new FMListAdapter(getContext());
         fmListAdapter.setShowDeleteOrPlay(false,true);
         fmListAdapter.setOnItemClickListener((type, position, bean) -> {
-            startActivity(new Intent(getContext(), PlayFMActivity.class));
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("bean",bean);
+            bundle.putInt("id",0);
+            bundle.putString("title","广播");
+            bundle.putInt("ic",bean.resId);
+            bundle.putString("info","广播");
+            ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setNestedScrollingEnabled(false);

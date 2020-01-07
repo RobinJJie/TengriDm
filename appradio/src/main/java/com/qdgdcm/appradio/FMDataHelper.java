@@ -420,6 +420,7 @@ public class FMDataHelper {
         bean1.countRead="2.3万";
         bean1.albumNum="32集";
         bean1.resId = R.mipmap.ic_local_fmdf_02;
+        bean1.playUrl="https://lhttp.qingting.fm/live/1884/64k.mp3";
         list.add(bean1);
 
         ContentBean bean2=new ContentBean();
@@ -429,7 +430,8 @@ public class FMDataHelper {
         bean2.type = Type_Xiangsheng;
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
-        bean2.resId = R.mipmap.ic_local_xs_01;
+        bean2.resId = R.mipmap.ic_local_fmdf_01;
+        bean2.playUrl="https://lhttp.qingting.fm/live/1881/64k.mp3";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
@@ -440,6 +442,7 @@ public class FMDataHelper {
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_local_fmdf_03;
+        bean3.playUrl="https://lhttp.qingting.fm/live/1897/64k.mp3";
         list.add(bean3);
 
         ContentBean bean4=new ContentBean();
@@ -450,6 +453,7 @@ public class FMDataHelper {
         bean4.countRead="3.6万";
         bean4.albumNum="22集";
         bean4.resId = R.mipmap.ic_local_fmdf_04;
+        bean4.playUrl="https://lhttp.qingting.fm/live/20973/64k.mp3";
         list.add(bean4);
         return list;
     }
@@ -465,6 +469,7 @@ public class FMDataHelper {
         bean1.countRead="2.3万";
         bean1.albumNum="32集";
         bean1.resId = R.mipmap.ic_local_fm_01;
+        bean1.playUrl = "https://lhttp.qingting.fm/live/389/64k.mp3";
         list.add(bean1);
 
         ContentBean bean2=new ContentBean();
@@ -475,6 +480,7 @@ public class FMDataHelper {
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
         bean2.resId = R.mipmap.ic_local_fm_02;
+        bean2.playUrl = "https://lhttp.qingting.fm/live/388/64k.mp3";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
@@ -485,6 +491,7 @@ public class FMDataHelper {
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_local_fm_03;
+        bean3.playUrl = "https://lhttp.qingting.fm/live/20207765/64k.mp3";
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
@@ -495,6 +502,7 @@ public class FMDataHelper {
         bean4.countRead="3.6万";
         bean4.albumNum="22集";
         bean4.resId = R.mipmap.ic_local_fm_04;
+        bean4.playUrl = "https://lhttp.qingting.fm/live/20207761/64k.mp3";
         list.add(bean4);
 
         ContentBean bean5=new ContentBean();
@@ -505,17 +513,19 @@ public class FMDataHelper {
         bean5.countRead="3.6万";
         bean5.albumNum="22集";
         bean5.resId = R.mipmap.ic_local_fm_05;
+        bean5.playUrl = "https://lhttp.qingting.fm/live/1892/64k.mp3";
         list.add(bean5);
 
-        ContentBean bean6=new ContentBean();
-        bean6.id = 0;
-        bean6.title = "猫巷有声广播";
-        bean6.info = "用声音为你的耳朵取暖,聆听猫巷有声，带给您喧嚣城市中的片刻安宁！";
-        bean6.type = Type_Xiangsheng;
-        bean6.countRead="3.6万";
-        bean6.albumNum="22集";
-        bean6.resId = R.mipmap.ic_local_fm_06;
-        list.add(bean6);
+//        ContentBean bean6=new ContentBean();
+//        bean6.id = 0;
+//        bean6.title = "猫巷有声广播";
+//        bean6.info = "用声音为你的耳朵取暖,聆听猫巷有声，带给您喧嚣城市中的片刻安宁！";
+//        bean6.type = Type_Xiangsheng;
+//        bean6.countRead="3.6万";
+//        bean6.albumNum="22集";
+//        bean6.resId = R.mipmap.ic_local_fm_06;
+//        bean6.playUrl = "https://lhttp.qingting.fm/live/1892/64k.mp3";
+//        list.add(bean6);
 
         ContentBean bean7=new ContentBean();
         bean7.id = 0;
@@ -525,6 +535,7 @@ public class FMDataHelper {
         bean7.countRead="3.6万";
         bean7.albumNum="22集";
         bean7.resId = R.mipmap.ic_local_fm_07;
+        bean7.playUrl = "https://lhttp.qingting.fm/live/1007/64k.mp3";
         list.add(bean7);
 
         return list;
@@ -540,6 +551,7 @@ public class FMDataHelper {
         bean1.countRead="2.3万";
         bean1.albumNum="32集";
         bean1.resId = R.mipmap.ic_loacl_ys01;
+        bean1.playUrl = "https://lhttp.qingting.fm/live/386/64k.mp3";
         list.add(bean1);
 
         ContentBean bean2=new ContentBean();
@@ -550,6 +562,7 @@ public class FMDataHelper {
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
         bean2.resId = R.mipmap.ic_loacl_ys02;
+        bean2.playUrl = "https://lhttp.qingting.fm/live/387/64k.mp3";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
@@ -560,6 +573,7 @@ public class FMDataHelper {
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_loacl_ys03;
+        bean3.playUrl = "https://lhttp.qingting.fm/live/388/64k.mp3";
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
@@ -570,6 +584,7 @@ public class FMDataHelper {
         bean4.countRead="3.6万";
         bean4.albumNum="22集";
         bean4.resId = R.mipmap.ic_loacl_ys04;
+        bean4.playUrl = "https://lhttp.qingting.fm/live/5022542/64k.mp3";
         list.add(bean4);
 
         ContentBean bean5=new ContentBean();
@@ -580,6 +595,7 @@ public class FMDataHelper {
         bean5.countRead="3.6万";
         bean5.albumNum="22集";
         bean5.resId = R.mipmap.ic_loacl_ys05;
+        bean5.playUrl = "https://lhttp.qingting.fm/live/390/64k.mp3";
         list.add(bean5);
 
         ContentBean bean6=new ContentBean();
@@ -590,6 +606,7 @@ public class FMDataHelper {
         bean6.countRead="3.6万";
         bean6.albumNum="22集";
         bean6.resId = R.mipmap.ic_loacl_ys06;
+        bean6.playUrl = "https://lhttp.qingting.fm/live/391/64k.mp3";
         list.add(bean6);
 
         ContentBean bean7=new ContentBean();
@@ -600,6 +617,7 @@ public class FMDataHelper {
         bean7.countRead="3.6万";
         bean7.albumNum="22集";
         bean7.resId = R.mipmap.ic_loacl_ys07;
+        bean7.playUrl = "https://lhttp.qingting.fm/live/392/64k.mp3";
         list.add(bean7);
 
         ContentBean bean8=new ContentBean();
@@ -610,6 +628,7 @@ public class FMDataHelper {
         bean8.countRead="3.6万";
         bean8.albumNum="22集";
         bean8.resId = R.mipmap.ic_loacl_ys08;
+        bean8.playUrl = "https://lhttp.qingting.fm/live/20091/64k.mp3";
         list.add(bean8);
 
         ContentBean bean9=new ContentBean();
@@ -620,6 +639,7 @@ public class FMDataHelper {
         bean9.countRead="3.6万";
         bean9.albumNum="22集";
         bean9.resId = R.mipmap.ic_loacl_ys09;
+        bean9.playUrl = "https://lhttp.qingting.fm/live/395/64k.mp3";
         list.add(bean9);
 
         ContentBean bean10=new ContentBean();
@@ -630,6 +650,7 @@ public class FMDataHelper {
         bean10.countRead="3.6万";
         bean10.albumNum="22集";
         bean10.resId = R.mipmap.ic_loacl_ys10;
+        bean10.playUrl = "https://lhttp.qingting.fm/live/4584/64k.mp3";
         list.add(bean10);
 
         return list;
@@ -637,15 +658,15 @@ public class FMDataHelper {
 
     public static List<ContentBean> getGuoJiList(){
         List<ContentBean> list = new ArrayList<>();
-        ContentBean bean1 = new ContentBean();
-        bean1.id = 0;
-        bean1.title = "国际关系学院广播台";
-        bean1.info = "国关之声下设动漫游戏，文艺欣赏，社会话题，旅游美食以及外语五个板块定期放送";
-        bean1.type = Type_Guangbo;
-        bean1.countRead="2.3万";
-        bean1.albumNum="32集";
-        bean1.resId = R.mipmap.ic_loacl_guoji01;
-        list.add(bean1);
+//        ContentBean bean1 = new ContentBean();
+//        bean1.id = 0;
+//        bean1.title = "国际关系学院广播台";
+//        bean1.info = "国关之声下设动漫游戏，文艺欣赏，社会话题，旅游美食以及外语五个板块定期放送";
+//        bean1.type = Type_Guangbo;
+//        bean1.countRead="2.3万";
+//        bean1.albumNum="32集";
+//        bean1.resId = R.mipmap.ic_loacl_guoji01;
+//        list.add(bean1);
 
         ContentBean bean2=new ContentBean();
         bean2.id = 0;
@@ -655,6 +676,7 @@ public class FMDataHelper {
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
         bean2.resId = R.mipmap.ic_loacl_guoji02;
+        bean2.playUrl="https://lhttp.qingting.fm/live/1862/64k.mp3";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
@@ -665,6 +687,7 @@ public class FMDataHelper {
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_loacl_guoji03;
+        bean3.playUrl="https://lhttp.qingting.fm/live/1007/64k.mp3";
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
@@ -675,6 +698,7 @@ public class FMDataHelper {
         bean4.countRead="3.6万";
         bean4.albumNum="22集";
         bean4.resId = R.mipmap.ic_loacl_guoji04;
+        bean4.playUrl="https://lhttp.qingting.fm/live/4995/64k.mp3";
         list.add(bean4);
 
         ContentBean bean5=new ContentBean();
@@ -685,6 +709,7 @@ public class FMDataHelper {
         bean5.countRead="3.6万";
         bean5.albumNum="22集";
         bean5.resId = R.mipmap.ic_loacl_guoji05;
+        bean5.playUrl="https://lhttp.qingting.fm/live/20402/64k.mp3";
         list.add(bean5);
 
         ContentBean bean6=new ContentBean();
@@ -695,6 +720,7 @@ public class FMDataHelper {
         bean6.countRead="3.6万";
         bean6.albumNum="22集";
         bean6.resId = R.mipmap.ic_loacl_guoji06;
+        bean6.playUrl="https://lhttp.qingting.fm/live/1005/64k.mp3";
         list.add(bean6);
 
         return list;
@@ -711,6 +737,7 @@ public class FMDataHelper {
         bean1.countRead="2.3万";
         bean1.albumNum="32集";
         bean1.resId = R.mipmap.ic_local_fmdf_02;
+        bean1.playUrl="https://lhttp.qingting.fm/live/1884/64k.mp3";
         list.add(bean1);
 
         ContentBean bean2=new ContentBean();
@@ -721,6 +748,7 @@ public class FMDataHelper {
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
         bean2.resId = R.mipmap.ic_local_fm_02;
+        bean2.playUrl="https://lhttp.qingting.fm/live/388/64k.mp3";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
@@ -731,6 +759,7 @@ public class FMDataHelper {
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
         bean3.resId = R.mipmap.ic_loacl_guoji03;
+        bean3.playUrl="https://lhttp.qingting.fm/live/1007/64k.mp3";
         list.add(bean3);
 
         return list;

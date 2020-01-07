@@ -1,6 +1,4 @@
 package com.qdgdcm.appradio.activity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,15 +50,13 @@ public class FMListActivity extends ActivityPresenter {
         ivLeft.setOnClickListener(view -> onBackPressed());
         fmListAdapter = new FMListAdapter(this);
         fmListAdapter.setOnItemClickListener((type, position, bean) -> {
-            bean.playUrl = "https://lhttp.qingting.fm/live/386/64k.mp3";
             Bundle bundle = new Bundle();
             bundle.putSerializable("bean",bean);
             bundle.putInt("id",0);
-            bundle.putString("title",bean.title);
+            bundle.putString("title","广播");
             bundle.putInt("ic",bean.resId);
-            bundle.putString("info",bean.info);
+            bundle.putString("info","广播");
             ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
-//            startActivity(new Intent(this, PlayFMActivity.class));
         });
         rvList.setLayoutManager(new LinearLayoutManager(this));
         rvList.setNestedScrollingEnabled(false);
