@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.lk.robin.commonlibrary.app.AppFragment;
 import com.lk.robin.commonlibrary.config.ConstantsRouter;
@@ -162,7 +164,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         RecyclerView mRecyclerView = rootQg.findViewById(R.id.recycler_view);
         List<ContentBean> dataLsit = HomDataHelper.getQingGanList();
         HomeAdapterV1 adapterV1 = new HomeAdapterV1(dataLsit);
-        adapterV1.setSetCount(3);
+        adapterV1.setSetCount(6);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
@@ -308,20 +310,31 @@ public class TengriNewsHomeFragment extends AppFragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
-                    TurnToFrag frag = new TurnToFrag();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("title", list.get(position).title);
-                    bundle.putString("info", list.get(position).info);
-                    bundle.putInt("ic", list.get(position).resId);
-                    bundle.putInt("id", list.get(position).id);
-                    frag.launchMode = TurnToFrag.FRAG_OPEN;
-                    frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
-                    frag.bundle = bundle;
-                    rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
-                    rsp.data = frag;
+                    if (!TextUtils.isEmpty(list.get(position).playUrl)&&list.get(position).playUrl.length()>10){
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean",list.get(position));
+//                        bundle.putInt("id",id);
+                        bundle.putString("title",list.get(position).title);
+                        bundle.putInt("ic",list.get(position).resId);
+                        bundle.putString("info",list.get(position).info);
+                        ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
 
-                    MsgServer.init().save(rsp);
+                    }else {
+                        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+                        TurnToFrag frag = new TurnToFrag();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", list.get(position).title);
+                        bundle.putString("info", list.get(position).info);
+                        bundle.putInt("ic", list.get(position).resId);
+                        bundle.putInt("id", list.get(position).id);
+                        frag.launchMode = TurnToFrag.FRAG_OPEN;
+                        frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+                        frag.bundle = bundle;
+                        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                        rsp.data = frag;
+
+                        MsgServer.init().save(rsp);
+                    }
                 }
             });
         }

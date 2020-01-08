@@ -23,50 +23,56 @@ public class HomDataHelper {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
         bean1.id = ZhuanJiDataHelper.LVYEZHISHENG;
-        bean1.title = "绿野之声";
+        bean1.title = "田父献曝";
         bean1.info = "讲述一个关于“死亡”的故事，也是一个关于“生命”的故事";
         bean1.type = Type_ShuhaiShengyan;
-        bean1.resId = R.mipmap.ic_local_sy19;
+        bean1.resId = R.mipmap.ic_m3_et_tfxp;
+        bean1.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/2%20%E7%94%B0%E7%88%B6%E7%8C%AE%E6%9B%9D%E5%90%88%E6%88%90%E7%89%88MMM.mp3";
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
         bean2.id = ZhuanJiDataHelper.KONGFEIZHUAN;
-        bean2.title = "孔飞传";
+        bean2.title = "十法九例";
         bean2.type = Type_ErTong;
         bean2.info = "【每周六，每周日更新一集】故事结合孩子们最喜欢的时空穿越与冒险元素，融入大量奇思妙想的创意，彻底放飞想象力，精彩刺激乐不听。小朋友们，和我们一起坐上时空穿越车潘妮，跟随疯狂的戴夫、勇敢的豌豆射手和其他植物伙伴们，开启一段跌宕起伏的功夫世界之旅吧！";
-        bean2.resId = R.mipmap.ic_local_sy17;
+        bean2.resId = R.mipmap.ic_m3_et_sfjl;
+        bean2.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/3%20%E5%8D%81%E6%B3%95%E4%B9%9D%E4%BE%8BMMM.mp3";
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
         bean3.id = ZhuanJiDataHelper.HUANGHE;
-        bean3.title = "黄河那道弯";
+        bean3.title = "深孚众望";
         bean3.info = "【限时免费】吴京主演《流浪地球》原著！会员畅听";
         bean3.type = Type_ShuhaiShengyan;
-        bean3.resId = R.mipmap.ic_local_sy03;
+        bean3.resId = R.mipmap.ic_m3_et_sfzw;
+        bean3.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/6%20%E6%B7%B1%E5%AD%9A%E4%BC%97%E6%9C%9BMMM.mp3";
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
         bean4.id = ZhuanJiDataHelper.ZHUIMENG;
-        bean4.title = "追梦中原";
+        bean4.title = "人眼是秤";
         bean4.info = "注：近期有人在评论区冒充大碗，诸位小心提防，大碗本人不会在己方及任何其他节目的评论区现身。 悬疑案子，未解之谜，灵异事件… 是你我身边的玄幻？还是科学面纱下的伪装？ 还原事实，探索真相。 每周一下午四点，我们共同关注。 微/信/公/众/号：dawanshuogushi； 商务合作：dwjuemidangan@163.com。";
         bean4.type = Type_ShuhaiShengyan;
-        bean4.resId = R.mipmap.ic_local_sy20;
+        bean4.resId = R.mipmap.ic_m3_et_rysc;
+        bean4.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/5%20%E4%BA%BA%E7%9C%BC%E6%98%AF%E7%A7%A4MMM.mp3";
         list.add(bean4);
 
         ContentBean bean5 = new ContentBean();
         bean5.id = ZhuanJiDataHelper.BEIFANGJIAREN;
-        bean5.title = "北方佳人";
+        bean5.title = "人心向背";
         bean5.info = "国内首档以揭秘“电影里的生活,生活里的电影”为主题的漫谈式电视脱口秀日播栏目。 ";
         bean5.type = Type_Zongyi;
-        bean5.resId = R.mipmap.ic_local_sy07;
+        bean5.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/4%20%E4%BA%BA%E5%BF%83%E5%90%91%E8%83%8CMMM.mp3";
+        bean5.resId = R.mipmap.ic_m3_et_rxxb;
         list.add(bean5);
 
         ContentBean bean6 = new ContentBean();
         bean6.id = ZhuanJiDataHelper.DALIAOGONGZHU;
-        bean6.title = "大辽公主";
+        bean6.title = "群策群力";
         bean6.info = "叶武滨时间管理·2019全新升级， 首次公布时间管理九段法， 让你测到、学到、做到、得到， 10节课让你战胜拖延症，成为时间管理高手。";
         bean6.type = Type_ShuhaiShengyan;
-        bean6.resId = R.mipmap.ic_local_sy06;
+        bean6.playUrl="https://staticfile.haimifm.com/2020_NMG/%E6%95%85%E4%BA%8B/1%20%E7%BE%A4%E7%AD%96%E7%BE%A4%E5%8A%9B%20MMM.mp3";
+        bean6.resId = R.mipmap.ic_m3_et_qcql;
         list.add(bean6);
 
         ContentBean bean7 = new ContentBean();
@@ -97,12 +103,13 @@ public class HomDataHelper {
 
     public static List<ContentBean> getShuhaiSehngyan() {
         List<ContentBean> list = new ArrayList<>();
+
         ContentBean bean1 = new ContentBean();
-        bean1.id = ZhuanJiDataHelper.LVYEZHISHENG;
-        bean1.title = "绿野之声";
-        bean1.info = "讲述一个关于“死亡”的故事，也是一个关于“生命”的故事";
+        bean1.id = 7;
+        bean1.title = "千叶医生联盟：你的私人健康顾问";
+        bean1.info = "千叶医生联盟，你的私人健康顾问 1年精心打磨，56期节目横扫健康误区 10位顶级专家，是你全程陪伴的私人顾问 100位医学博士，为常见疾病快速支招 1000篇文献数据，验证实用高效的就医攻略";
         bean1.type = Type_ShuhaiShengyan;
-        bean1.resId = R.mipmap.ic_local_sy19;
+        bean1.resId = R.mipmap.ic_local_shsy_1;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
@@ -153,12 +160,19 @@ public class HomDataHelper {
         bean7.resId = R.mipmap.ic_local_shsy_7;
         list.add(bean7);
 
+//        ContentBean bean8 = new ContentBean();
+//        bean8.id = 7;
+//        bean8.title = "千叶医生联盟：你的私人健康顾问";
+//        bean8.info = "千叶医生联盟，你的私人健康顾问 1年精心打磨，56期节目横扫健康误区 10位顶级专家，是你全程陪伴的私人顾问 100位医学博士，为常见疾病快速支招 1000篇文献数据，验证实用高效的就医攻略";
+//        bean8.type = Type_ShuhaiShengyan;
+//        bean8.resId = R.mipmap.ic_local_shsy_1;
+//        list.add(bean8);
         ContentBean bean8 = new ContentBean();
-        bean8.id = 7;
-        bean8.title = "千叶医生联盟：你的私人健康顾问";
-        bean8.info = "千叶医生联盟，你的私人健康顾问 1年精心打磨，56期节目横扫健康误区 10位顶级专家，是你全程陪伴的私人顾问 100位医学博士，为常见疾病快速支招 1000篇文献数据，验证实用高效的就医攻略";
+        bean8.id = ZhuanJiDataHelper.LVYEZHISHENG;
+        bean8.title = "绿野之声";
+        bean8.info = "讲述一个关于“死亡”的故事，也是一个关于“生命”的故事";
         bean8.type = Type_ShuhaiShengyan;
-        bean8.resId = R.mipmap.ic_local_shsy_1;
+        bean8.resId = R.mipmap.ic_local_sy19;
         list.add(bean8);
 
         return list;
@@ -228,47 +242,53 @@ public class HomDataHelper {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
         bean1.id = ZhuanJiDataHelper.BEIFANGJIAREN;
-        bean1.title = "北方佳人";
+        bean1.title = "宁舍一顿饭，不舍二人转";
         bean1.info = "国内首档以揭秘“电影里的生活,生活里的电影”为主题的漫谈式电视脱口秀日播栏目。 ";
+        bean1.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E3%80%8A%E5%AE%81%E8%88%8D%E4%B8%80%E9%A1%BF%E9%A5%AD%EF%BC%8C%E4%B8%8D%E8%88%8D%E4%BA%8C%E4%BA%BA%E8%BD%AC%E3%80%8B.mp3";
         bean1.type = Type_Zongyi;
-        bean1.resId = R.mipmap.ic_local_sy07;
+        bean1.resId = R.mipmap.ic_m2_zy_ysydf_bserz;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
         bean2.id = ZhuanJiDataHelper.RILUOHEICHENG;
-        bean2.title = "日落黑城";
+        bean2.title = "他的歌声希望你听不懂";
         bean2.info = "宋小宝近年火爆全国，受邀各大综艺，参加《欢乐喜剧人》、《食在囧途》、《笑声传奇》、《欢乐总动员》等，给更多观众带来欢乐。";
+        bean2.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E4%BB%96%E7%9A%84%E6%AD%8C%E5%B8%8C%E6%9C%9B%E4%BD%A0%E5%90%AC%E4%B8%8D%E6%87%82.mp3";
         bean2.type = Type_Zongyi;
-        bean2.resId = R.mipmap.ic_local_sy08;
+        bean2.resId = R.mipmap.ic_m2_zy_tdg_tbd;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
         bean3.id = ZhuanJiDataHelper.HUANGHE;
-        bean3.title = "黄河那道弯";
+        bean3.title = "夜晚我变成了诗人";
         bean3.info = "【限时免费】吴京主演《流浪地球》原著！会员畅听";
+        bean3.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E5%A4%9C%E6%99%9A%E6%88%91%E5%8F%98%E6%88%90%E4%BA%86%E8%AF%97%E4%BA%BA.mp3";
         bean3.type = Type_ShuhaiShengyan;
-        bean3.resId = R.mipmap.ic_local_sy03;
+        bean3.resId = R.mipmap.ic_m2_zy_jybcsr;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
         bean4.id = ZhuanJiDataHelper.ZHUIMENG;
-        bean4.title = "追梦中原";
+        bean4.title = "戏里戏外《喜上喜》";
+        bean4.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%88%8F%E9%87%8C%E6%88%8F%E5%A4%96%E3%80%8A%E5%96%9C%E4%B8%8A%E5%96%9C%E3%80%8B.mp3";
         bean4.info = "注：近期有人在评论区冒充大碗，诸位小心提防，大碗本人不会在己方及任何其他节目的评论区现身。 悬疑案子，未解之谜，灵异事件… 是你我身边的玄幻？还是科学面纱下的伪装？ 还原事实，探索真相。 每周一下午四点，我们共同关注。 微/信/公/众/号：dawanshuogushi； 商务合作：dwjuemidangan@163.com。";
         bean4.type = Type_ShuhaiShengyan;
-        bean4.resId = R.mipmap.ic_local_sy20;
+        bean4.resId = R.mipmap.ic_m2_zy_xlxw;
         list.add(bean4);
 
         ContentBean bean5 = new ContentBean();
         bean5.id = ZhuanJiDataHelper.BEIFANGJIAREN;
-        bean5.title = "北方佳人";
+        bean5.title = "一座城市的末班车";
         bean5.info = "国内首档以揭秘“电影里的生活,生活里的电影”为主题的漫谈式电视脱口秀日播栏目。 ";
+        bean5.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E4%B8%80%E5%BA%A7%E5%9F%8E%E5%B8%82%E7%9A%84%E6%9C%AB%E7%8F%AD%E8%BD%A6.mp3";
         bean5.type = Type_Zongyi;
-        bean5.resId = R.mipmap.ic_local_sy07;
+        bean5.resId = R.mipmap.ic_m2_zy_yzc_mbc;
         list.add(bean5);
 
         ContentBean bean6 = new ContentBean();
         bean6.id = ZhuanJiDataHelper.HONGLANGDU;
-        bean6.title = "红狼毒";
+        bean6.title = "愿世间美好与你环环相扣";
+        bean6.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%84%BF%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3.mp3";
         bean6.info = "东北F4（东北天团）是由莱昂纳多·小沈阳、约翰尼·宋小宝、克里斯蒂安·刘能、尼古拉斯·赵四四个人物组成。四个人在戏剧界有着举足轻重的地位，他们的出现给中国喜剧界带来更多精彩的作品。";
         bean6.type = Type_Zongyi;
         bean6.resId = R.mipmap.ic_local_sy12;
@@ -297,50 +317,56 @@ public class HomDataHelper {
         List<ContentBean> list = new ArrayList<>();
         ContentBean bean1 = new ContentBean();
         bean1.id = ZhuanJiDataHelper.PAJIECHUANQI;
-        bean1.title = "琶杰传奇";
+        bean1.title = "崩溃与自愈";
         bean1.info = "个人公号“晓慧主播”。于千万人中，刚巧遇见了你……";
         bean1.type = Type_Qingan;
-        bean1.resId = R.mipmap.ic_local_sy13;
+        bean1.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E5%B4%A9%E6%BA%83%E4%B8%8E%E8%87%AA%E6%84%88.mp3";
+        bean1.resId = R.mipmap.ic_m3_qg_bkyzy;
         list.add(bean1);
 
         ContentBean bean2 = new ContentBean();
         bean2.id = ZhuanJiDataHelper.XUNLU;
-        bean2.title = "驯鹿角上的彩带";
+        bean2.title = "往事清零 岁月可期";
         bean2.info = "10年摸爬滚打，逐层剥开茫茫名利场的现状与秘密。";
         bean2.type = Type_ShuhaiShengyan;
-        bean2.resId = R.mipmap.ic_local_sy02;
+        bean2.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E5%BE%80%E4%BA%8B%E6%B8%85%E9%9B%B6%20%E5%B2%81%E6%9C%88%E5%8F%AF%E6%9C%9F.mp3";
+        bean2.resId = R.mipmap.ic_m3_qg_sykq;
         list.add(bean2);
 
         ContentBean bean3 = new ContentBean();
         bean3.id = ZhuanJiDataHelper.YUANGU;
-        bean3.title = "远古的呼唤-鄂尔多斯青铜器";
+        bean3.title = "成熟的生存 幼稚的生活";
         bean3.info = "声音是有温度的，夜晚的声音会发光。睡前一段优美文字，一首暖心歌曲。程一电台，用声音温暖每个有你的夜晚，在你耳边伴你入眠。新浪微博：DJ程一，微信公众号：DJ程一（ID : djchengyi），QQ群：348166503（①群），384016829（②群）。";
         bean3.type = Type_Qingan;
-        bean3.resId = R.mipmap.ic_local_sy15;
+        bean3.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%88%90%E7%86%9F%E7%9A%84%E7%94%9F%E5%AD%98%20%E5%B9%BC%E7%A8%9A%E7%9A%84%E7%94%9F%E6%B4%BB.mp3";
+        bean3.resId = R.mipmap.ic_m3_qg_csdsc;
         list.add(bean3);
 
         ContentBean bean4 = new ContentBean();
         bean4.id = ZhuanJiDataHelper.ZHUIMENG;
-        bean4.title = "追梦中原";
+        bean4.title = "我们始终要学会告别";
         bean4.info = "注：近期有人在评论区冒充大碗，诸位小心提防，大碗本人不会在己方及任何其他节目的评论区现身。 悬疑案子，未解之谜，灵异事件… 是你我身边的玄幻？还是科学面纱下的伪装？ 还原事实，探索真相。 每周一下午四点，我们共同关注。 微/信/公/众/号：dawanshuogushi； 商务合作：dwjuemidangan@163.com。";
         bean4.type = Type_ShuhaiShengyan;
-        bean4.resId = R.mipmap.ic_local_sy20;
+        bean4.resId = R.mipmap.ic_m3_qg_xhgb;
+        bean4.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%88%91%E4%BB%AC%E5%A7%8B%E7%BB%88%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%91%8A%E5%88%AB.mp3";
         list.add(bean4);
 
         ContentBean bean5 = new ContentBean();
         bean5.id = ZhuanJiDataHelper.BEIFANGJIAREN;
-        bean5.title = "北方佳人";
+        bean5.title = "我们记住的样子才是我们活过的样子";
         bean5.info = "国内首档以揭秘“电影里的生活,生活里的电影”为主题的漫谈式电视脱口秀日播栏目。 ";
         bean5.type = Type_Zongyi;
-        bean5.resId = R.mipmap.ic_local_sy07;
+        bean5.resId = R.mipmap.ic_m3_qg_wmdyz;
+        bean5.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%88%91%E4%BB%AC%E8%AE%B0%E4%BD%8F%E7%9A%84%E6%A0%B7%E5%AD%90%E6%89%8D%E6%98%AF%E6%88%91%E4%BB%AC%E6%B4%BB%E8%BF%87%E7%9A%84%E6%A0%B7%E5%AD%90.mp3";
         list.add(bean5);
 
         ContentBean bean6 = new ContentBean();
         bean6.id = ZhuanJiDataHelper.DALIAOGONGZHU;
-        bean6.title = "大辽公主";
+        bean6.title = "我曾经那么渴望热闹";
         bean6.info = "叶武滨时间管理·2019全新升级， 首次公布时间管理九段法， 让你测到、学到、做到、得到， 10节课让你战胜拖延症，成为时间管理高手。";
         bean6.type = Type_ShuhaiShengyan;
-        bean6.resId = R.mipmap.ic_local_sy06;
+        bean6.resId = R.mipmap.ic_m3_qg_kwrn;
+        bean6.playUrl="https://staticfile.haimifm.com/2020_NMG/%E7%BB%BF%E9%87%8E%E4%B9%8B%E5%A3%B0%E9%9F%B3%E9%A2%91%E4%BD%9C%E5%93%81/%E6%88%91%E6%9B%BE%E7%BB%8F%E9%82%A3%E4%B9%88%E6%B8%B4%E6%9C%9B%E7%83%AD%E9%97%B9.MP3";
         list.add(bean6);
 
         return list;
