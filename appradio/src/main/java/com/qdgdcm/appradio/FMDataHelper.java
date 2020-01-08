@@ -414,47 +414,102 @@ public class FMDataHelper {
         List<ContentBean> list=new ArrayList<>();
         ContentBean bean1=new ContentBean();
         bean1.id = 0;
-        bean1.title = "内蒙古交通之声";
+        bean1.title = "蒙古语广播";
         bean1.info = "内蒙古交通之声定位于专业交通广播，立足交通、服务大众，以“资讯•路况•短信•话题•热线”为主线，努力营造“快乐交通 • 快乐广播”的氛围。交通之声以FM105.6同频覆盖内蒙古全境，收听率、市场占有率、覆盖率及忠诚度均位居同行业前列。" ;
         bean1.type = Type_Xiangsheng;
         bean1.countRead="2.3万";
         bean1.albumNum="32集";
-        bean1.resId = R.mipmap.ic_local_fmdf_02;
-        bean1.playUrl="https://lhttp.qingting.fm/live/1884/64k.mp3";
+        bean1.resId = R.mipmap.ic_local_fmbd_mgy;
+        bean1.playUrl="http://116.114.29.237:1935/liveradio/mgy/playlist.m3u8";
         list.add(bean1);
 
         ContentBean bean2=new ContentBean();
         bean2.id = 0;
-        bean2.title = "内蒙古新闻广播";
+        bean2.title = "新闻广播";
         bean2.info = "这里是内蒙古新闻广播。";
         bean2.type = Type_Xiangsheng;
         bean2.countRead="1.6万";
         bean2.albumNum="12集";
-        bean2.resId = R.mipmap.ic_local_fmdf_01;
-        bean2.playUrl="https://lhttp.qingting.fm/live/1881/64k.mp3";
+        bean2.resId = R.mipmap.ic_local_fmbd_xw;
+        bean2.playUrl="http://116.114.29.237:1935/liveradio/xw/playlist.m3u8";
         list.add(bean2);
 
         ContentBean bean3=new ContentBean();
         bean3.id = 0;
-        bean3.title = "赤峰蒙古语综合广播";
+        bean3.title = "新闻综合广播";
         bean3.info = "赤峰广播电视台蒙古语综合节目是面向国内外广大蒙古族听众，以新闻节目为龙头，以社教文艺节目为两翼的综合性广播。";
         bean3.type = Type_Xiangsheng;
         bean3.countRead="1.6万";
         bean3.albumNum="30集";
-        bean3.resId = R.mipmap.ic_local_fmdf_03;
-        bean3.playUrl="https://lhttp.qingting.fm/live/1897/64k.mp3";
+        bean3.resId = R.mipmap.ic_local_fmbd_zh;
+        bean3.playUrl="http://116.114.29.237:1935/liveradio/xwzh/playlist.m3u8";
         list.add(bean3);
 
         ContentBean bean4=new ContentBean();
         bean4.id = 0;
-        bean4.title = "内蒙古草原之声广播";
+        bean4.title = "交通之声";
         bean4.info = "";
         bean4.type = Type_Xiangsheng;
         bean4.countRead="3.6万";
         bean4.albumNum="22集";
-        bean4.resId = R.mipmap.ic_local_fmdf_04;
-        bean4.playUrl="https://lhttp.qingting.fm/live/20973/64k.mp3";
+        bean4.resId = R.mipmap.ic_local_fmbd_jt;
+        bean4.playUrl="http://116.114.29.237:1935/liveradio/jtzs/playlist.m3u8";
         list.add(bean4);
+        
+        ContentBean bean5=new ContentBean();
+        bean5.id = 0;
+        bean5.title = "经济生活广播";
+        bean5.info = "";
+        bean5.type = Type_Xiangsheng;
+        bean5.countRead="3.6万";
+        bean5.albumNum="22集";
+        bean5.resId = R.mipmap.ic_local_fmbd_jj;
+        bean5.playUrl="http://116.114.29.237:1935/liveradio/jjsh/playlist.m3u8";
+        list.add(bean5);
+        
+        ContentBean bean6=new ContentBean();
+        bean6.id = 0;
+        bean6.title = "音乐之声";
+        bean6.info = "";
+        bean6.type = Type_Xiangsheng;
+        bean6.countRead="3.6万";
+        bean6.albumNum="22集";
+        bean6.resId = R.mipmap.ic_local_fmbd_yy;
+        bean6.playUrl="http://116.114.29.237:1935/liveradio/yyzs/playlist.m3u8";
+        list.add(bean6);
+        
+        ContentBean bean7=new ContentBean();
+        bean7.id = 0;
+        bean7.title = "评书曲艺广播";
+        bean7.info = "";
+        bean7.type = Type_Xiangsheng;
+        bean7.countRead="3.6万";
+        bean7.albumNum="22集";
+        bean7.resId = R.mipmap.ic_local_fmbd_ps;
+        bean7.playUrl="http://116.114.29.237:1935/liveradio/psqy/playlist.m3u8";
+        list.add(bean7);
+        
+        ContentBean bean8=new ContentBean();
+        bean8.id = 0;
+        bean8.title = "农村牧区广播";
+        bean8.info = "";
+        bean8.type = Type_Xiangsheng;
+        bean8.countRead="3.6万";
+        bean8.albumNum="22集";
+        bean8.resId = R.mipmap.ic_local_fmbd_ly;
+        bean8.playUrl="http://116.114.29.237:1935/liveradio/ncmq/playlist.m3u8";
+        list.add(bean8);
+        
+        ContentBean bean9=new ContentBean();
+        bean9.id = 0;
+        bean9.title = "草原之声";
+        bean9.info = "";
+        bean9.type = Type_Xiangsheng;
+        bean9.countRead="3.6万";
+        bean9.albumNum="22集";
+        bean9.resId = R.mipmap.ic_local_fmbd_cy;
+        bean9.playUrl="http://116.114.29.237:1935/liveradio/cyzs/playlist.m3u8";
+        list.add(bean9);
         return list;
     }
 

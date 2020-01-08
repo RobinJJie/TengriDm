@@ -80,6 +80,7 @@ public class BroadcastFragment extends AppFragment {
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
+        txtSyjContent.setText("正在直播");
         currentFM.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), FMDetailActivity.class));
         });
@@ -102,7 +103,6 @@ public class BroadcastFragment extends AppFragment {
         fmAdapter.setItemSelectedListener((position, bean) -> {
             currentBean = bean;
             txtSyjName.setText(bean.title);
-            txtSyjContent.setText("正在直播");
         });
         pvFmList.setAdapter(fmAdapter);
         fmAdapter.refresh(FMDataHelper.getYYSList());
