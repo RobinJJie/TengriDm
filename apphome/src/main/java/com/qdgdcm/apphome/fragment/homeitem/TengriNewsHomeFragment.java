@@ -141,6 +141,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
         TextView txtMore=rootShSy.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("1"));
     }
 
@@ -155,6 +156,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
         TextView txtMore=rootZy.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("3"));
     }
 
@@ -169,6 +171,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
         TextView txtMore=rootQg.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("4"));
     }
 
@@ -184,6 +187,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV1);
         mRecyclerView.setNestedScrollingEnabled(false);
         TextView txtMore=rootErT.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("6"));
     }
 
@@ -206,10 +210,39 @@ public class TengriNewsHomeFragment extends AppFragment {
                 txtName.setText(yizhouShudan.get(i).title);
                 txtNum.setText(yizhouShudan.get(i).countRead + "万");
                 Glide.with(Objects.requireNonNull(getContext())).load(yizhouShudan.get(i).resId).into(ic);
+                int finalI = i;
+                itemView.setOnClickListener(v ->{
+                    if (!TextUtils.isEmpty(yizhouShudan.get(finalI).playUrl)&&yizhouShudan.get(finalI).playUrl.length()>10){
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean",yizhouShudan.get(finalI));
+//                        bundle.putInt("id",id);
+                        bundle.putString("title",yizhouShudan.get(finalI).title);
+                        bundle.putInt("ic",yizhouShudan.get(finalI).resId);
+                        bundle.putString("info",yizhouShudan.get(finalI).info);
+                        ARouter.getInstance().build(ConstantsRouter.Home.PlayFMActivity).withBundle("bundle",bundle).navigation();
+
+                    }else {
+                        MsgRsp<TurnToFrag> rsp = new MsgRsp<>();
+                        TurnToFrag frag = new TurnToFrag();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", yizhouShudan.get(finalI).title);
+                        bundle.putString("info", yizhouShudan.get(finalI).info);
+                        bundle.putInt("ic", yizhouShudan.get(finalI).resId);
+                        bundle.putInt("id", yizhouShudan.get(finalI).id);
+                        frag.launchMode = TurnToFrag.FRAG_OPEN;
+                        frag.fragHoust = ConstantsRouter.Home.HomeMainProgramInfoFragment;
+                        frag.bundle = bundle;
+                        rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
+                        rsp.data = frag;
+
+                        MsgServer.init().save(rsp);
+                    }
+                } );
                 layout.addView(itemView);
             }
         }
         TextView txtMore=rootYzSd.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("2"));
     }
 
@@ -224,6 +257,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         mRecyclerView.setAdapter(adapterV2);
         mRecyclerView.setNestedScrollingEnabled(false);
         TextView txtMore=rootXs.findViewById(R.id.txt_more);
+        txtMore.setVisibility(View.VISIBLE);
         txtMore.setOnClickListener(v -> showMore("5"));
     }
 
@@ -283,7 +317,7 @@ public class TengriNewsHomeFragment extends AppFragment {
         rsp.code = MsgCodeConfig.MSG_TURN_TO_FRAGMENT;
         rsp.data = frag;
 
-//        MsgServer.init().save(rsp); 更多跳转
+        MsgServer.init().save(rsp); //更多跳转
     }
 
     class HomeAdapterV1 extends RecyclerView.Adapter<HomeAdapterV1.ViewHolder> {
